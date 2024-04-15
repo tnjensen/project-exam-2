@@ -1,6 +1,6 @@
 import './App.scss'
 import {Routes,Route} from 'react-router-dom'
-import Home from './components/home/Home'
+import Home from './pages/home/Home'
 import { useState } from 'react'
 import Login from './pages/login/Login';
 import { ProtectedRoute } from './pages/protected/ProtectedRoute';
@@ -16,7 +16,7 @@ function App() {
       <Route path='/' element={<ProtectedRoute><Layout /></ProtectedRoute>} />
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
-      <Route path='profile/:id' element={<Profile />} />
+      <Route path='profile/:name' element={<Profile />} />
     </Routes>
     
   )
