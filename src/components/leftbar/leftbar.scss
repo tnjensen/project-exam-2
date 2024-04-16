@@ -1,0 +1,76 @@
+@import '../../App.scss';
+
+.leftbar{
+    /* @include themify($themes){ */
+        flex: 2;
+        position: sticky;
+        top: 50px;
+        height: calc(100vh - 50px);//Needed to stay in postition for the scroll
+        overflow: scroll;
+        display: none;
+        /* background-color: themed("bg"); */
+       /*  color: themed("textColor"); */
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        @include mobile{
+            display: block;
+        }
+
+        .container{
+            padding: 20px;
+
+            hr{
+                margin: 20px 0;
+                border: none;
+                height: 0.5px;
+                /* background-color: themed("border"); */
+            }
+            .menu{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                span{
+                    font-size: 13px;
+                    
+                }
+
+                .user{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    
+                    span{
+                        font-size: 14px;
+                    }
+
+                    img{
+                        height: 30px;
+                        width: 30px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+                }
+
+                .item{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    
+                    span{
+                        font-size: 14px;
+                    }
+
+                    img{
+                        height: 30px;
+                        width: 30px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+   /*  } */
+}
