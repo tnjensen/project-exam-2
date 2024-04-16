@@ -73,6 +73,11 @@ $themes:(
     @return map-get($theme-map, $key);
 }
 
+@mixin mobile{
+    @media (min-width:600px){
+        @content;
+    }
+}
 @mixin tablet{
     @media (min-width:768px){
         @content;

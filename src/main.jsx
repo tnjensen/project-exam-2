@@ -8,13 +8,14 @@ import Sidebar from './components/sidebar/Sidebar.jsx'
 import Rightbar from './components/rightbar/Rightbar.jsx'
 import { AuthProvider } from './hooks/useAuth.jsx'
 import Home from './pages/home/Home.jsx'
+import LeftBar from './components/leftbar/LeftBar.jsx'
 
 export const Layout = () => {
   return(
-    <div className='container'>
+    <div className='wrapper'>
       <Header />
       <div style={{display:"flex"}}>
-        <Sidebar />
+        <LeftBar />
         <div style={{flex:6}}>
           <Outlet />
           <Home />
