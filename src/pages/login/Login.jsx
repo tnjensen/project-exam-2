@@ -20,7 +20,7 @@ const Login = () => {
         });
         console.log(user)
         setToken(user.accessToken);
-        setEmail(user.email);
+        setEmail(user);
         window.location.href = "/";
     }
     catch(err){

@@ -1,15 +1,15 @@
 import { PersonOutlineRounded, SearchOutlined } from "@mui/icons-material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './header.scss';
-import { useAuth } from "../../hooks/useAuth";
+import { useUserActions} from "../../stores/useUserStore";
 
 function Header(){
     const [search,setSearch] = useState("");
-    const {logout} = useAuth();
+    const {clearUser} = useUserActions();
 
     const handleLogout = () =>{
-        logout();
+        clearUser();  
     }
 
     return(
@@ -24,7 +24,6 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                <Link to="/register">Register</Link>
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
                 <PersonOutlineRounded className="profile-icon" />
             </div>

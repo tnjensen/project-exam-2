@@ -1,12 +1,12 @@
 import './App.scss'
 import {Routes,Route} from 'react-router-dom'
-import Home from './pages/home/Home'
 import { useState } from 'react'
-import Login from './pages/login/Login';
 import { ProtectedRoute } from './pages/protected/ProtectedRoute';
 import Register from './pages/register/Register';
 import Profile from './pages/profile/Profile';
 import { Layout } from './main';
+import LoginPage from './pages/login/LoginPage';
+import RegisterPage from './pages/register/RegisterPage';
 
 function App() {
   const [token,setToken] = useState(null);
@@ -14,8 +14,8 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<ProtectedRoute><Layout /></ProtectedRoute>} />
-      <Route path='login' element={<Login />} />
-      <Route path='register' element={<Register />} />
+      <Route path='login' element={<LoginPage />} />
+      <Route path='register' element={<RegisterPage />} />
       <Route path='profile/:name' element={<Profile />} />
     </Routes>
     

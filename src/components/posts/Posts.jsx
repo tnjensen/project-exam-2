@@ -2,12 +2,12 @@ import {apiUrl} from '../../constants/api.js';
 import './posts.scss';
 import useApi from '../../hooks/useApi.js';
 import Post from '../post/Post.jsx';
-import { useLocalStorage } from '../../hooks/useLocalStorage.jsx';
+import { useToken} from '../../stores/useUserStore.jsx';
 
 function Posts(){
-    const [token,setToken] = useLocalStorage("token");
+    const token = useToken();
     const {data:posts,isLoading,isError} = useApi(apiUrl,token);
-    console.log(posts);
+    
     if(isLoading){
         return <div>Loading...</div>
     }
