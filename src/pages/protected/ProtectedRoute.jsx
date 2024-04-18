@@ -1,10 +1,16 @@
-import {Navigate} from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import {useNavigate} from 'react-router-dom';
+import { useToken } from '../../stores/useUserStore';
+import { useEffect } from 'react';
 
 export const ProtectedRoute = ({children}) => {
-    const {user} = useAuth();
-    if(!user){
-        return <Navigate to="/login" />
-    }
+    const navigate = useNavigate();
+    const token = useToken();
+
+    useEffect(() =>{
+        if(!token){
+            navigate("/login");
+        }
+    })
+    
     return children;
 }

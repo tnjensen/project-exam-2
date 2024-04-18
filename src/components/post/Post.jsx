@@ -7,22 +7,22 @@ import { useState } from 'react';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
-    const {currentUser} = useAuth();
+    /* const {user} = useAuth(); */
     return(
         <div className='post'>
             <div className='container'>
-                <div className='user'>
+                {/* <div className='user'>
                     <div className='userInfo'>
-                        <div>{currentUser}</div>
+                        <div>{user}</div>
                         <div className='details'>
-                            <Link to={`/profile/${currentUser}`} style={{textDecoration: "none", color: "inherit"}}>
-                                <span className='name'>{currentUser}</span>
+                            <Link to={`/profile/${user}`} style={{textDecoration: "none", color: "inherit"}}>
+                                <span className='name'>{user}</span>
                             </Link>
                             <span className='date'>{moment(post.created).fromNow()}</span>
                         </div>
                     </div>
                     <MoreHoriz />
-                </div>
+                </div> */}
                 <div className='content'>
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>

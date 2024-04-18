@@ -5,21 +5,20 @@ import Image3 from '../../assets/person/3.jpeg';
 import Image4 from '../../assets/person/4.jpeg';
 import Image5 from '../../assets/person/5.jpeg';
 import Image6 from '../../assets/person/6.jpeg';
-
-import { useAuth } from '../../hooks/useAuth';
+import { useAvatar, useName} from '../../stores/useUserStore';
 
 function LeftBar(){
-    const {currentUser} = useAuth();
-   /*  console.log(currentUser.profilePic); */
+    const avatar = useAvatar();
+    const name = useName();
 
     return(
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
-                   {/*  <div className="user">
-                        <img src={currentUser.profilePic} alt='' />
-                        <span>{currentUser.name}</span>
-                    </div> */}
+                    <div className="user">
+                        <img src={avatar} alt='' />
+                        <span>{name}</span>
+                    </div>
                     <div className="item">
                         <img src={Image1} alt='user' />
                         <span>Michel Spaniard</span>
