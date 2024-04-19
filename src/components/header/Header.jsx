@@ -7,11 +7,19 @@ import { useUserActions} from "../../stores/useUserStore";
 function Header(){
     const [search,setSearch] = useState("");
     const {clearUser} = useUserActions();
+    const [display,setDisplay] = useState('none');
 
     const handleLogout = () =>{
         clearUser();  
     }
 
+    const handleClick = () => {
+        if(display == 'none'){
+            setDisplay('block')
+        }else{
+            setDisplay('none')
+        }
+    }
     return(
         <div className="header">
             <div className="left">
@@ -24,8 +32,15 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                <button className="logout-button" onClick={handleLogout}>Logout</button>
-                <PersonOutlineRounded className="profile-icon" />
+                <PersonOutlineRounded className="profile-icon" onClick={handleClick} />
+                <ul style={{display:display}} className="profile-menu">
+                    <li>
+                        <Link to="/profile">Profile</Link>
+                    </li>
+                    <li>
+                    <Link to="#" onClick={handleLogout}>Logout</Link>
+                    </li>
+                </ul>
             </div>
         </div>
     )
