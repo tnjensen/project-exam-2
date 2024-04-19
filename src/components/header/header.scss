@@ -44,14 +44,17 @@
             color: $secondary;
         }
 
-        .logout-button{
-            border: 1px solid $textColor;
-            background-color: $darkTextColor;
-            border-radius: 10px;
-            padding: 5px 10px;
-            font-weight: 600;
-            letter-spacing: .03rem;
+        .profile-icon{
             cursor: pointer;
+            position: relative;
+            font-size: 2rem;
+            color: $textColor;
+        }
+        .profile-menu{
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            z-index: 999;
         }
 
     }
