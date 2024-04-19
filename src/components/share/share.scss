@@ -1,0 +1,67 @@
+@import '../../App.scss';
+
+.share{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 10px; 
+
+    .left{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid lightgray;
+
+        img{
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+        }
+        input{
+            margin-left: 10px;
+            border: none;
+            width: 80vw;
+
+            @include tablet{
+                width: 40vw;
+            }
+
+            &:focus{
+                outline: none;
+            }
+        }
+        
+    }
+
+    .right{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        button{
+            display: flex;
+            align-items: center;
+            height: 32px;
+            border: none;
+            border-radius: 5px;
+            padding: 7px 9px;
+            background-color: $secondary;
+            color: $darkTextColor;
+            font-weight: 600;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    }
+}

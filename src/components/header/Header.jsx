@@ -21,7 +21,7 @@ function Header(){
         }
     }
     return(
-        <div className="header">
+        <header className="header">
             <div className="left">
                 <Link to="/">
                 <div className="logo">Sentire</div>
@@ -42,7 +42,7 @@ function Header(){
                     </li>
                 </ul>
             </div>
-        </div>
+        </header>
     )
 }
 export default Header;
