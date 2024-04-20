@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
 import './post.scss';
 import moment from 'moment';
 import { FavoriteBorderOutlined, FavoriteOutlined, MoreHoriz } from '@mui/icons-material';
 import { useState } from 'react';
+import { useAvatar, useName } from '../../stores/useUserStore';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
-    /* const {user} = useAuth(); */
+    const user = useName();
+    const avatar = useAvatar();
+
     return(
         <div className='post'>
             <div className='container'>
-                {/* <div className='user'>
+                <div className='user'>
                     <div className='userInfo'>
-                        <div>{user}</div>
+                        <img src={avatar} alt='user'/>
                         <div className='details'>
                             <Link to={`/profile/${user}`} style={{textDecoration: "none", color: "inherit"}}>
                                 <span className='name'>{user}</span>
@@ -22,7 +24,7 @@ function Post({post}){
                         </div>
                     </div>
                     <MoreHoriz />
-                </div> */}
+                </div>
                 <div className='content'>
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>

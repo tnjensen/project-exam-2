@@ -11,17 +11,19 @@ function Share(){
 
     return(
         <div className="share">
-            <div className="left">
+            <div className="top">
                 <img src={avatar} alt="" />
                 <input type='text' placeholder={`What are you thinking about, ${name} ?`} />
             </div>
-            <div className='right'>
-                <img src={Image1} alt='' />
-                <span>Add image</span>
-                <img src={Image2} alt='' />
-                <span>Add place</span>
-                <img src={Image3} alt='' />
-                <span>Tag friends</span>
+            <div className='bottom'>
+                <div className="left">
+                    <img src={Image1} alt='' />
+                    <span>Add image</span>
+                    <img src={Image2} alt='' />
+                    <span>Add place</span>
+                    <img src={Image3} alt='' />
+                    <span>Tag friends</span>
+                </div>
                 <button className='share-button'>Share</button>
             </div>
         </div>
