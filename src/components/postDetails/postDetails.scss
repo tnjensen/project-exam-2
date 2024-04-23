@@ -1,0 +1,16 @@
+@import '../../App.scss';
+
+.more{
+    display: flex;
+    position: relative;
+    
+    a{
+        position: absolute;
+        left: -40px;
+        background-color: $primary;
+        color: $darkTextColor;
+        padding: 5px 10px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
