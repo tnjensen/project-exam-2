@@ -6,7 +6,7 @@ import Register from './pages/register/Register';
 import Profile from './pages/profile/Profile';
 import { Layout } from './main';
 import LoginPage from './pages/login/LoginPage';
-import RegisterPage from './pages/register/RegisterPage';
+import RegisterPage from './pages/register/Register';
 import PostDetail from './components/postDetail/PostDetail';
 
 function App() {

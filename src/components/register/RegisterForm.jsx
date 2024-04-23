@@ -18,7 +18,7 @@ const schema = yup
     })
 	.required();
 
-const MyRegisterForm = () => {
+const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -109,4 +109,4 @@ const MyRegisterForm = () => {
     </div>
   );
 };
-export default MyRegisterForm;
+export default RegisterForm;

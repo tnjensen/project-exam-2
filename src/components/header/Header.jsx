@@ -1,10 +1,12 @@
-import { PersonOutlineRounded, SearchOutlined } from "@mui/icons-material";
+import { PersonRounded, SearchOutlined } from "@mui/icons-material";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import './header.scss';
-import { useUserActions} from "../../stores/useUserStore";
+import { useAvatar, useName, useUserActions} from "../../stores/useUserStore";
 
 function Header(){
+    const avatar = useAvatar();
+    const name = useName();
     const [search,setSearch] = useState("");
     const {clearUser} = useUserActions();
     const [display,setDisplay] = useState('none');
@@ -32,7 +34,7 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                <PersonOutlineRounded className="profile-icon" onClick={handleClick} />
+                <PersonRounded className="profile-icon" onClick={handleClick} />
                 <ul style={{display:display}} className="profile-menu">
                     <li>
                         <Link to="/profile/:name">Profile</Link>
@@ -41,6 +43,10 @@ function Header(){
                     <Link to="#" onClick={handleLogout}>Logout</Link>
                     </li>
                 </ul>
+                <div className="user">
+                        <img src={avatar} alt='' />
+                        <span>{name}</span>
+                    </div>
             </div>
         </header>
     )
