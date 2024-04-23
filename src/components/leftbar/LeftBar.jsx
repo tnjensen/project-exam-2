@@ -8,17 +8,12 @@ import Image6 from '../../assets/person/6.jpeg';
 import { useAvatar, useName} from '../../stores/useUserStore';
 
 function LeftBar(){
-    const avatar = useAvatar();
-    const name = useName();
 
     return(
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
-                    <div className="user">
-                        <img src={avatar} alt='' />
-                        <span>{name}</span>
-                    </div>
+                    
                     <div className="item">
                         <img src={Image1} alt='user' />
                         <span>Michel Spaniard</span>

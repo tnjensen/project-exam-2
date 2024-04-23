@@ -37,23 +37,6 @@
                     
                 }
 
-                .user{
-                    display: flex;
-                    gap: 10px;
-                    align-items: center;
-                    
-                    span{
-                        font-size: 14px;
-                    }
-
-                    img{
-                        height: 30px;
-                        width: 30px;
-                        object-fit: cover;
-                        border-radius: 5px;
-                    }
-                }
-
                 .item{
                     display: flex;
                     gap: 10px;

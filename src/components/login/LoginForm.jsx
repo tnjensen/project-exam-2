@@ -1,14 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
 import ValidationMessage from "../shared/ValidationMessage";
 import { loginUrl } from "../../constants/api";
 import { useState } from "react";
 import { useUserActions } from "../../stores/useUserStore";
-
-console.log(useUserActions);
 
 const schema = yup
 	.object({
@@ -17,7 +15,7 @@ const schema = yup
 	})
 	.required();
 
-function LoginForm() {
+function MyLoginForm() {
 	// const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -25,8 +23,6 @@ function LoginForm() {
 	const { setUser } = useUserActions();
 
 	const navigate = useNavigate();
-
-	console.log(setUser);
 
 	const {
 		register,
@@ -36,10 +32,7 @@ function LoginForm() {
 		resolver: yupResolver(schema),
 	});
 
-	console.log(errors);
-
 	async function onSubmit(data) {
-		console.log(data);
 
 		const options = {
 			headers: { "Content-Type": "application/json" },
@@ -70,33 +63,39 @@ function LoginForm() {
 	}
 
 	return (
-		<div className="flex mt-4 justify-center">
-			<form className="bg-gray-800 p-8 w-full" onSubmit={handleSubmit(onSubmit)}>
-				<fieldset disabled={isLoading}>
-					{error && <ServerWarning>{error}</ServerWarning>}
-					<div className="form-control w-full max-w-md mx-auto">
-						<label className="label px-2">
-							<span className="label-text text-white">Email</span>
-						</label>
-						<input className="p-3" placeholder="email" {...register("email")} />
-						{errors.email && <ValidationMessage>{errors.email.message}</ValidationMessage>}
-					</div>
-					<div className="form-control w-full max-w-md mx-auto">
-						<label className="label px-2">
-							<span className="label-text text-white">Password</span>
-						</label>
-						<input className="p-3" placeholder="password" {...register("password")} type="password" />
-						{errors.password && <ValidationMessage>{errors.password.message}</ValidationMessage>}
-					</div>
-					<div className="form-control w-full max-w-md mx-auto">
-						<button className="bg-secondary hover:bg-primary mt-8 text-white font-bold py-4 px-4 rounded">
-							{isLoading ? "Logging in..." : "Login"}
-						</button>
-					</div>
-				</fieldset>
-			</form>
-		</div>
+		<div className='login'>
+        <div className='card'>
+            <div className='login-left'>
+            <h1>Sentire</h1>
+                    <p>Log in to connect and share with your friends.</p>
+                    <span>No account yet ?</span>
+                        <Link to="/register">
+                        <button>Register</button>
+                        </Link>
+            </div>
+            <div className='login-right'>
+                <h1>Sign in</h1>
+                {error && <ServerWarning>{error}</ServerWarning>}
+            <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+                type="email"
+                placeholder='Email'
+                {...register("email")}
+                required
+            />
+            <input
+                type="password"
+                placeholder='Password'
+                {...register("password")}
+                required
+                minLength={6}
+            />
+            <button type="submit">Login</button>
+            </form>
+        </div>
+      </div>
+    </div>
 	);
 }
 
-export default LoginForm;
+export default MyLoginForm;
