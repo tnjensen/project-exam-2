@@ -41,9 +41,16 @@
         align-items: center;
         gap: 10px;
 
-        a{
-            color: $secondary;
+        ul{
+            color: $darkTextColor;
+            background-color: $primary;
+            padding: 5px 10px;
+
+            a{
+                font-size: 18px;
+            }
         }
+        
 
         .profile-icon{
             cursor: pointer;

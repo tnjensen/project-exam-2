@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import './post.scss';
 import moment from 'moment';
-import { FavoriteBorderOutlined, FavoriteOutlined, MoreHoriz } from '@mui/icons-material';
+import { MoreHoriz } from '@mui/icons-material';
 import { useState } from 'react';
 import { useAvatar, useName } from '../../stores/useUserStore';
+import Comments from '../comments/Comments';
+import Likes from '../likes/Likes';
+import PostDetails from '../postDetails/PostDetails';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
+    const [liked,setLiked] = useState(false);
+    const [detail,setDetail] = useState(false);
     const user = useName();
     const avatar = useAvatar();
 
@@ -23,7 +28,11 @@ function Post({post}){
                             <span className='date'>{moment(post.created).fromNow()}</span>
                         </div>
                     </div>
-                    <MoreHoriz />
+                    <div className='details'>
+                    <MoreHoriz onClick={() => setDetail(!detail)} />
+                    {detail && <PostDetails postId={post.id} />}
+                    </div>
+                    
                 </div>
                 <div className='content'>
                     <h3>{post.title}</h3>
@@ -31,18 +40,15 @@ function Post({post}){
                     {post.media && <img src={post.media} alt='post'/>}
                 </div>
                 <div className='info'>
-                    {/* <div className='item'>
-                        {data.includes(currentUser.id) ? <FavoriteOutlined style={{color:"red"}} onClick={handleLike} /> : <FavoriteBorderOutlined onClick={handleLike} />}
-                            {data.length} likes
-                    </div> */}
-                    <div className='item' onClick={() =>setCommentOpen(!commentOpen)}>
-                            12 comments
+                    <div className='item' onClick={() => setLiked(!liked)}>
+                            {post._count.reactions} likes
                     </div>
-                    <div className='item'>
-                            Share
+                    <div className='item' onClick={() =>setCommentOpen(!commentOpen)}>
+                            {post._count.comments} comments
                     </div>
                 </div>
-                {/* {commentOpen && <Comments postId={post.id} />} */}
+                {liked && <Likes postId={post.id} />}
+                {commentOpen && <Comments postId={post.id} />}
             </div>
         </div>
     )

@@ -35,7 +35,7 @@ function Header(){
                 <PersonOutlineRounded className="profile-icon" onClick={handleClick} />
                 <ul style={{display:display}} className="profile-menu">
                     <li>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/profile/:name">Profile</Link>
                     </li>
                     <li>
                     <Link to="#" onClick={handleLogout}>Logout</Link>
