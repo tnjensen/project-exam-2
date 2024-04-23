@@ -1,13 +1,13 @@
 import {useNavigate} from 'react-router-dom';
-import { useToken } from '../../stores/useUserStore';
+import { useName } from '../../stores/useUserStore';
 import { useEffect } from 'react';
 
 export const ProtectedRoute = ({children}) => {
     const navigate = useNavigate();
-    const token = useToken();
+    const user = useName();
 
     useEffect(() =>{
-        if(!token){
+        if(!user){
             navigate("/login");
         }
     })

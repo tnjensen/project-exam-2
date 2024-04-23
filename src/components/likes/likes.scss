@@ -1,0 +1,33 @@
+@import '../../App.scss';
+
+.likes{
+
+    .container{
+
+        ul{
+            li{
+                font-size: 22px;
+            }
+        }
+        label{
+            font-size: 14px;
+            font-weight: 600;
+
+            select{
+                width: 30px;
+
+                option{
+                    
+                }
+            }
+        }
+        .like-button{
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: $secondary;
+            color: $darkTextColor;
+            margin-left: 10px;
+        }
+    }
+
+}

@@ -4,12 +4,22 @@ import moment from 'moment';
 import { FavoriteBorderOutlined, FavoriteOutlined, MoreHoriz } from '@mui/icons-material';
 import { useState } from 'react';
 import { useAvatar, useName } from '../../stores/useUserStore';
+import Comments from '../comments/Comments';
+import Likes from '../likes/Likes';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
+    const [liked,setLiked] = useState(false);
     const user = useName();
     const avatar = useAvatar();
 
+    const handleLike = () =>{
+        if(liked){
+            return true;
+        }else{
+            return false;
+        }
+    }
     return(
         <div className='post'>
             <div className='container'>
@@ -31,18 +41,19 @@ function Post({post}){
                     {post.media && <img src={post.media} alt='post'/>}
                 </div>
                 <div className='info'>
-                    {/* <div className='item'>
-                        {data.includes(currentUser.id) ? <FavoriteOutlined style={{color:"red"}} onClick={handleLike} /> : <FavoriteBorderOutlined onClick={handleLike} />}
-                            {data.length} likes
-                    </div> */}
+                    <div className='item' onClick={() => setLiked(!liked)}>
+                        {user ? <FavoriteOutlined style={{color:"red"}} onClick={handleLike} /> : <FavoriteBorderOutlined onClick={handleLike} />}
+                            {post._count.reactions} likes
+                    </div>
                     <div className='item' onClick={() =>setCommentOpen(!commentOpen)}>
-                            12 comments
+                            {post._count.comments} comments
                     </div>
                     <div className='item'>
                             Share
                     </div>
                 </div>
-                {/* {commentOpen && <Comments postId={post.id} />} */}
+                {liked && <Likes postId={post.id} />}
+                {commentOpen && <Comments postId={post.id} />}
             </div>
         </div>
     )

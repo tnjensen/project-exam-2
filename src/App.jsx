@@ -9,7 +9,6 @@ import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/register/RegisterPage';
 
 function App() {
-  const [token,setToken] = useState(null);
 
   return (
     <Routes>
