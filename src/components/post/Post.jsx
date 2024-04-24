@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useAvatar, useName } from '../../stores/useUserStore';
 import Comments from '../comments/Comments';
 import Likes from '../likes/Likes';
-import PostDetails from '../postDetails/PostDetails';
+import PostDetail from '../postDetail/PostDetail';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
@@ -30,7 +30,7 @@ function Post({post}){
                     </div>
                     <div className='details'>
                     <MoreHoriz onClick={() => setDetail(!detail)} />
-                    {detail && <PostDetails postId={post.id} />}
+                    {detail && <PostDetail post={post} />}
                     </div>
                     
                 </div>

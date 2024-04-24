@@ -15,7 +15,7 @@ const schema = yup
 	})
 	.required();
 
-function MyLoginForm() {
+function LoginForm() {
 	// const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -98,4 +98,4 @@ function MyLoginForm() {
 	);
 }
 
-export default MyLoginForm;
+export default LoginForm;
