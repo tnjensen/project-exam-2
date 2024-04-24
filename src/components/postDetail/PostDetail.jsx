@@ -4,7 +4,6 @@ import { apiUrl} from '../../constants/api';
 import { useToken } from '../../stores/useUserStore';
 
 function PostDetail({post}){
-    console.log(post.id);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -77,8 +76,8 @@ function PostDetail({post}){
                 {/* <input type{post.media && <img src={post.media} alt='post'/>} /> */}
             </div>
             <div className='right'>
-                <button className='edit-button' onClick={handleUpdate}>Update post</button>
-                <button className='delete-button' onClick={handleDelete}>Delete post</button>
+                <button className='edit-button' onClick={handleUpdate}>Update</button>
+                <button className='delete-button' onClick={handleDelete}>Delete</button>
             </div>
             
         </div>
