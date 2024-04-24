@@ -1,30 +1,50 @@
-import { useAvatar, useName } from '../../stores/useUserStore';
+import { useAvatar, useName, useToken } from '../../stores/useUserStore';
 import './share.scss';
 import Image2 from '../../assets/post/3.jpeg';
 import Image1 from '../../assets/person/4.jpeg';
 import Image3 from '../../assets/person/5.jpeg';
+import { useState } from 'react';
+import { apiUrl } from '../../constants/api';
+import { useNavigate } from 'react-router-dom';
+import NewPost from '../../hooks/usePost';
 
 export default function Share() { 
     const avatar = useAvatar();
+    const token = useToken();
     const name = useName();
+    const [title,setTitle] = useState("");
+    const [file,setFile] = useState(false);
+    const [error,setError] = useState(false);
+    const navigate = useNavigate();
     
-    /* const upload = async () =>{
-        try{
-            const formData = new FormData();
-            formData.append("file", file);
-            await makeRequest.post("/upload", formData);
+    const upload = async () =>{
+        const options = {
+			headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+			method: "POST",
+			body: JSON.stringify({title:title,media:file}),
+		};
+
+		try {
+			const response = await fetch(apiUrl, options);
+			const json = await response.json();
+
+			if (!response.ok) {
+				return setError(json.errors?.[0]?.message ?? "There was an error");
+			}
+            
+			navigate("/");
+
+		} catch (error) {
+			setError(error.toString());
         }
-        catch(err){
-            console.log(err);
-        }
-    } */
+    }
+    
+    
     const handleClick = async (e) =>{
         e.preventDefault();
-        /* if(file) await upload();
-        let imgUrl = Date.now() + file.name;
-        setDesc("");
-        setFile(null);
-        mutation.mutate({desc, img:imgUrl}) */
+        if(file) await upload();
+        /* let imgUrl = Date.now() + file.name; */
+        setFile(file);
     }
 
   return (
@@ -33,7 +53,7 @@ export default function Share() {
             <div className="top">
                 <div className="left">
                     <img src={avatar} alt='profile' className="shareImg" />
-                    <input placeholder={`What's on your mind, ${name} ?`} />
+                    <input placeholder={`What's on your mind, ${name} ?`} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="right">
                     {/* {file && <img className='file' alt='thumb' src={URL.createObjectURL(file)} />} */}
@@ -44,8 +64,9 @@ export default function Share() {
                 <div className='left'>
                     {/* <input type='file' id='file' style={{display:"none"}}
                         onChange={(e) => setFile(e.target.files[0])} /> */}
+                        {file && <input placeholder={`Image url ?`} onChange={(e) => setFile(e.target.value)} />}
                     <label htmlFor='file'>
-                        <div className='item'>
+                        <div className='item' onClick={() => setFile(!file)}>
                             <img src={Image2} alt='post' />
                             <span>Add Image</span>
                         </div>
