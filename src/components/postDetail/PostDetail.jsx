@@ -1,8 +1,14 @@
+import Header from '../header/Header';
+import Post from '../post/Post';
 import './postDetail.scss';
 
-function PostDetail(){
+function PostDetail({postId}){
+    console.log(postId);
     return(
-        <div className='post-detail'>Post detail</div>
+        <div className='detail'>
+            <Header />
+           {/*  <Post postId={post.id} /> */}
+        </div>
     )
 }
 export default PostDetail;
