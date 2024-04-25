@@ -84,7 +84,8 @@
                 .item{
                     display: flex;
                     flex-direction: column;
-
+                    cursor: pointer;
+                    
                     .cancel{
                         background-color: $primary;
                         color: $darkTextColor;
