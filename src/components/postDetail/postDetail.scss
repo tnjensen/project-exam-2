@@ -3,45 +3,39 @@
 .edit{
     position: absolute;
     right: 0;
-    background-color: $form-background;
+    background-color: #fffefe;
+    border: 2px solid $background;
+    border-radius: 5px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     z-index: 200;
-   /*  .left{ */
         
-        .edit-form{
-            display: flex;
-            flex-direction: column;
-            
-            gap: 5px;
-
-            label{
-                font-size: 15px;
-            }
-        }
-   /*  } */
-
-    /* .right{ */
-        /* display: flex;
-        justify-content: space-between;
-        gap: 10px; */
+    .edit-form{
+        display: flex;
+        flex-direction: column;
         
-        .edit-button, .delete-button{
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: $secondary;
-            color: $darkTextColor;
-            margin: 5px 0;
-        }
-        
-        .edit-button{
-            margin-top: 10px;
-        }
-        .delete-button{
-            background-color: $primary;
-            color: $darkTextColor;
-        }
+        gap: 5px;
 
-  /*   } */
+        label{
+            font-size: 15px;
+        }
+    }
+
+    .edit-button, .delete-button{
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid $secondary;
+        color: $secondary;
+        margin: 5px 0;
+    }
+    
+    .edit-button{
+        margin-top: 10px;
+    }
+    .delete-button{
+        border: 1px solid $primary;
+        color: $primary;
+    }
+
 }

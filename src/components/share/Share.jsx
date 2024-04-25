@@ -5,7 +5,6 @@ import Image1 from '../../assets/person/4.jpeg';
 import Image3 from '../../assets/person/5.jpeg';
 import { useState } from 'react';
 import { apiUrl } from '../../constants/api';
-import { useNavigate } from 'react-router-dom';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 
 export default function Share() { 
@@ -15,7 +14,6 @@ export default function Share() {
     const [title,setTitle] = useState("");
     const [file,setFile] = useState(false);
     const [error,setError] = useState(false);
-    const navigate = useNavigate();
     
     const upload = async () =>{
         const options = {
@@ -32,7 +30,7 @@ export default function Share() {
 				return setError(json.errors?.[0]?.message ?? "There was an error");
 			}
             
-			navigate("/");
+			window.location.reload();
 
 		} catch (error) {
 			setError(error.toString());

@@ -12,7 +12,6 @@ function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
     const [liked,setLiked] = useState(false);
     const [detail,setDetail] = useState(false);
-    const user = useName();
     const author = post.author.name;
     const avatar = post.author.avatar;
 
