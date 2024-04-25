@@ -13,7 +13,8 @@ function Post({post}){
     const [liked,setLiked] = useState(false);
     const [detail,setDetail] = useState(false);
     const user = useName();
-    const avatar = useAvatar();
+    const author = post.author.name;
+    const avatar = post.author.avatar;
 
     return(
         <div className='post'>
@@ -22,8 +23,8 @@ function Post({post}){
                     <div className='userInfo'>
                         <img src={avatar} alt='user'/>
                         <div className='details'>
-                            <Link to={`/profile/${user}`} style={{textDecoration: "none", color: "inherit"}}>
-                                <span className='name'>{user}</span>
+                            <Link to={`/profile/${author}`} style={{textDecoration: "none", color: "inherit"}}>
+                                <span className='name'>{author}</span>
                             </Link>
                             <span className='date'>{moment(post.created).fromNow()}</span>
                         </div>
