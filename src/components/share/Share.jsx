@@ -6,7 +6,7 @@ import Image3 from '../../assets/person/5.jpeg';
 import { useState } from 'react';
 import { apiUrl } from '../../constants/api';
 import { useNavigate } from 'react-router-dom';
-import NewPost from '../../hooks/usePost';
+import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 
 export default function Share() { 
     const avatar = useAvatar();
@@ -67,18 +67,18 @@ export default function Share() {
                         {file && <input placeholder={`Image url ?`} onChange={(e) => setFile(e.target.value)} />}
                     <label htmlFor='file'>
                         <div className='item' onClick={() => setFile(!file)}>
-                            <img src={Image2} alt='post' />
-                            <span>Add Image</span>
+                            {file ? <button className='cancel'>Cancel</button> : <><img src={Image2} alt='post' />
+                            <span>Add Image</span></>}
                         </div>
                     </label>
-                    <div className='item'>
+                    {/* <div className='item'>
                         <img src={Image1} alt='map' />
                         <span>Add Place</span>
                     </div>
                     <div className='item'>
                         <img src={Image3} alt='friend' />
                         <span>Tag Friends</span>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='right'>
                     <button onClick={handleClick}>Share</button>

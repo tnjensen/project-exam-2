@@ -1,4 +1,4 @@
-import { PersonRounded, SearchOutlined } from "@mui/icons-material";
+import { PersonOutlineRounded, SearchOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import { Link} from "react-router-dom";
 import './header.scss';
@@ -34,7 +34,7 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                <PersonRounded className="profile-icon" onClick={handleClick} />
+                <PersonOutlineRounded className="profile-icon" onClick={handleClick} />
                 <ul style={{display:display}} className="profile-menu">
                     <li>
                         <Link to="/profile/:name">Profile</Link>

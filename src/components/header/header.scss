@@ -40,30 +40,39 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
-
+        
+        .profile-icon{
+            cursor: pointer;
+            position: relative;
+            font-size: 2rem;
+            color: $secondary;
+        }
         ul{
-            color: $darkTextColor;
-            background-color: $primary;
+            color: $textColor;
+            background-color: $darkTextColor;
             padding: 5px 10px;
+            position: absolute;
+            border: 1px solid $primary;
+            border-radius: 10px;
+            top: 40px;
+            right: 5px;
+            width: 35%;
+            z-index: 99;
+
+            @include tablet{
+                width: 20%;
+                right: 15px;
+            }
+            @include desktop{
+                width: 15%;
+                right: 15px;
+            }
 
             a{
                 font-size: 18px;
             }
         }
         
-        .profile-icon{
-            cursor: pointer;
-            position: relative;
-            font-size: 2rem;
-            color: $primary;
-        }
-        ul{
-            position: absolute;
-            top: 40px;
-            width: 30%;
-            z-index: 99;
-
-        }
         .user{
             display: flex;
             gap: 10px;
