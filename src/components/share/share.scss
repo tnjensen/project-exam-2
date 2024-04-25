@@ -68,7 +68,6 @@
     
             .left{
                 display: flex;
-                align-items: center;
                 gap: 10px;
                 position: relative;
                 
@@ -79,18 +78,17 @@
                 }
                 
                 input{
-                    position: absolute;
-                    top: -25px;
+                    padding: 5px;
                 }
 
                 .item{
-                
+                    display: flex;
+                    flex-direction: column;
+
                     .cancel{
                         background-color: $primary;
                         color: $darkTextColor;
-                        position: absolute;
                         font-size: 14px;
-                        top: 0px;
                         padding: 0 7px;
                         
                     }

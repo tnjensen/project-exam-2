@@ -2,17 +2,30 @@
 
 .edit{
     position: absolute;
-    right: 30px;
-    top: 25px;
+    right: 0;
+    background-color: $form-background;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+   /*  .left{ */
+        
+        .edit-form{
+            display: flex;
+            flex-direction: column;
+            
+            gap: 5px;
 
-    .left{
+            label{
+                font-size: 15px;
+            }
+        }
+   /*  } */
 
-    }
-
-    .right{
-        display: flex;
+    /* .right{ */
+        /* display: flex;
         justify-content: space-between;
-        gap: 10px;
+        gap: 10px; */
         
         .edit-button, .delete-button{
             padding: 5px 10px;
@@ -21,11 +34,14 @@
             color: $darkTextColor;
             margin: 5px 0;
         }
-
+        
+        .edit-button{
+            margin-top: 10px;
+        }
         .delete-button{
             background-color: $primary;
             color: $darkTextColor;
         }
 
-    }
+  /*   } */
 }
