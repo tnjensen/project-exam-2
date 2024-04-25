@@ -65,12 +65,10 @@ export default function Share() {
                     {/* <input type='file' id='file' style={{display:"none"}}
                         onChange={(e) => setFile(e.target.files[0])} /> */}
                         {file && <input placeholder={`Image url ?`} onChange={(e) => setFile(e.target.value)} />}
-                    <label htmlFor='file'>
                         <div className='item' onClick={() => setFile(!file)}>
                             {file ? <button className='cancel'>Cancel</button> : <><img src={Image2} alt='post' />
                             <span>Add Image</span></>}
                         </div>
-                    </label>
                     {/* <div className='item'>
                         <img src={Image1} alt='map' />
                         <span>Add Place</span>

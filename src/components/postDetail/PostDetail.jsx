@@ -76,17 +76,23 @@ function PostDetail({post}){
     return(
         <div className='edit'>
             {error && <ServerWarning>{error}</ServerWarning>}
-            <div className='left'>
-                <input type="text" placeholder={post.title} onChange={e=>setTitle(e.target.value)} value={title} />
-                <input type="text" placeholder={post.body} onChange={e=>setBody(e.target.value)} value={body} />
+           {/*  <div className='left'> */}
+                <h3>Edit Post</h3>
+                <form className='edit-form'>
+                <label htmlFor="title">Title:</label>
+                <input id='title' type="text" placeholder={post.title} onChange={e=>setTitle(e.target.value)} value={title} />
+                <label htmlFor='content'>Content:</label>
+                <input id='content' type="text" placeholder={post.body} onChange={e=>setBody(e.target.value)} value={body} />
                 {/* <input type{post.media && <img src={post.media} alt='post'/>} /> */}
-            </div>
-            <div className='right'>
+                
+           {/*  </div> */}
+            {/* <div className='right'> */}
             {error ? <button style={{backgroundColor: "#1546E6", color:"white", padding:"10px"}} onClick={handleError}>OK</button> :
                 <><button className='edit-button' onClick={handleUpdate}>Update</button>
                 <button className='delete-button' onClick={handleDelete}>Delete</button></>}
             
-            </div>
+           {/*  </div> */}
+            </form>
             
         </div>
     )
