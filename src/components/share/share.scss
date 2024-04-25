@@ -70,11 +70,31 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
-    
+                position: relative;
+                
                 img{
                     width: 40px;
                     height: 40px;
                     border-radius: 5px;
+                }
+                
+                input{
+                    position: absolute;
+                    top: -25px;
+                }
+
+                .item{
+                
+                    .cancel{
+                        background-color: $primary;
+                        color: $darkTextColor;
+                        position: absolute;
+                        left: 100px;
+                        font-size: 14px;
+                        top: 0px;
+                        padding: 0 7px;
+                        
+                    }
                 }
                 
             }
