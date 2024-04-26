@@ -22,9 +22,9 @@ function Post({post}){
                     <div className='userInfo'>
                         <img src={avatar} alt='user'/>
                         <div className='details'>
-                            <Link to={`/profile/${author}`} style={{textDecoration: "none", color: "inherit"}}>
+                            {/* <Link to={`/profile/${author}`} style={{textDecoration: "none", color: "inherit"}}> */}
                                 <span className='name'>{author}</span>
-                            </Link>
+                            {/* </Link> */}
                             <span className='date'>{moment(post.created).fromNow()}</span>
                         </div>
                     </div>

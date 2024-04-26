@@ -10,6 +10,7 @@ function Header(){
     const [search,setSearch] = useState("");
     const {clearUser} = useUserActions();
     const [display,setDisplay] = useState('none');
+    const partUrl = window.location.href.split("/").pop();
 
     const handleLogout = () =>{
         clearUser();  
@@ -34,19 +35,23 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                <PersonOutlineRounded className="profile-icon" onClick={handleClick} />
-                <ul style={{display:display}} className="profile-menu">
-                    <li>
+                {partUrl !== `${name}` && <>
+                <button className="logout-button" onClick={handleLogout}>Logout</button>
+                {/* <PersonOutlineRounded className="profile-icon" onClick={handleClick} /> */}
+                {/* <ul style={{display:display}} className="profile-menu"> */}
+                    {/* <li>
                         <Link to="/profile/:name">Profile</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                     <Link to="#" onClick={handleLogout}>Logout</Link>
-                    </li>
-                </ul>
+                    </li> */}
+                {/* </ul> */}
                 <div className="user">
+                    <Link to={`/profile/${name}`} >
                         <img src={avatar} alt='' />
-                        <span>{name}</span>
-                    </div>
+                        {/* <span>{name}</span> */}
+                    </Link>
+                    </div></>}
             </div>
         </header>
     )
