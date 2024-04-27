@@ -41,7 +41,13 @@
         align-items: center;
         gap: 10px;
         
-        .profile-icon{
+        .logout-button{
+            background-color: $primary;
+            color: $darkTextColor;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        /* .profile-icon{
             cursor: pointer;
             position: relative;
             font-size: 2rem;
@@ -72,7 +78,7 @@
                 font-size: 18px;
             }
         }
-        
+         */
         .user{
             display: flex;
             gap: 10px;

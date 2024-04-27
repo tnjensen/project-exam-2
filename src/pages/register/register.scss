@@ -7,11 +7,11 @@
     .card{
         display: flex;
         flex-direction: column;
-        margin-top: 60px;
+        margin-top: 40px;
+        max-width: 75%;
 
         @include tablet{
             flex-direction: row;
-            width: 75%;
         }
 
         .register-left{
@@ -21,16 +21,13 @@
             flex-direction: column;
             background: $gradient-primary, url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
             background-size: cover;
-            width: 50vw;
            
             @include tablet{
                 justify-content: space-between;
                 flex: 1;
-                max-width: 35vw;
             }
             @include large{
-                max-width: 25vw;
-                
+                             
             }
             h1{
                 font-size: 50px;
@@ -82,7 +79,6 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            width: 50vw;
 
             @include tablet{
                 align-items: center;
@@ -102,7 +98,10 @@
                     border: none;
                     background-color: $darkTextColor;
                     padding: 20px 10px;
-                    width: 100%;
+
+                    @include tablet{
+                       
+                    }
                 }
 
                 button{
