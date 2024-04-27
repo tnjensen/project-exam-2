@@ -42,8 +42,9 @@
         gap: 10px;
         
         .logout-button{
-            background-color: $primary;
-            color: $darkTextColor;
+            border: 1px solid $primary;
+           /*  background-color: $primary; */
+            color: $textColor;
             padding: 5px 10px;
             border-radius: 5px;
         }
