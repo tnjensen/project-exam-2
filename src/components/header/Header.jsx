@@ -35,23 +35,25 @@ function Header(){
                 </div>
             </div>
             <div className="right">
-                {partUrl !== `${name}` && <>
-                <button className="logout-button" onClick={handleLogout}>Logout</button>
-                {/* <PersonOutlineRounded className="profile-icon" onClick={handleClick} /> */}
-                {/* <ul style={{display:display}} className="profile-menu"> */}
-                    {/* <li>
-                        <Link to="/profile/:name">Profile</Link>
-                    </li> */}
-                    {/* <li>
+            <div className="user">
+                <img src={avatar} alt='avatar' className="profile-icon"  onClick={handleClick} />
+                <ul style={{display:display}} className="profile-menu">
+                    <li>
+                    {partUrl !== `${name}` &&
+                        <Link to={`/profile/${name}`}>
+                            Profile
+                        </Link>
+                    }
+                    </li>
+                    <li>
                     <Link to="#" onClick={handleLogout}>Logout</Link>
-                    </li> */}
-                {/* </ul> */}
-                <div className="user">
-                    <Link to={`/profile/${name}`} >
-                        <img src={avatar} alt='' />
-                        {/* <span>{name}</span> */}
-                    </Link>
-                    </div></>}
+                    </li>
+                </ul>         
+            </div>
+            
+               {/*  <button className="logout-button" onClick={handleLogout}>Logout</button> */}
+                {/* <PersonOutlineRounded className="profile-icon" onClick={handleClick} /> */}
+                
             </div>
         </header>
     )

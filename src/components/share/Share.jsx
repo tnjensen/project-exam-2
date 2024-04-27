@@ -5,13 +5,13 @@ import Image1 from '../../assets/person/4.jpeg';
 import Image3 from '../../assets/person/5.jpeg';
 import { useState } from 'react';
 import { apiUrl } from '../../constants/api';
-import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 
 export default function Share() { 
     const avatar = useAvatar();
     const token = useToken();
     const name = useName();
     const [title,setTitle] = useState("");
+    const [body,setBody] = useState("");
     const [file,setFile] = useState(false);
     const [error,setError] = useState(false);
     
@@ -19,7 +19,7 @@ export default function Share() {
         const options = {
 			headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
 			method: "POST",
-			body: JSON.stringify({title:title,media:file}),
+			body: JSON.stringify({title:title,body:body,media:file}),
 		};
 
 		try {
@@ -51,7 +51,9 @@ export default function Share() {
             <div className="top">
                 <div className="left">
                     <img src={avatar} alt='profile' className="shareImg" />
-                    <input placeholder={`What's on your mind, ${name} ?`} onChange={(e) => setTitle(e.target.value)} />
+                    <p>{`What's on your mind, ${name} ?`}</p>
+                    <input placeholder={`Post title..`} onChange={(e) => setTitle(e.target.value)} />
+                    <input placeholder={`Your content..`} onChange={(e) => setBody(e.target.value)} />
                 </div>
                 <div className="right">
                     {/* {file && <img className='file' alt='thumb' src={URL.createObjectURL(file)} />} */}
@@ -62,7 +64,7 @@ export default function Share() {
                 <div className='left'>
                     {/* <input type='file' id='file' style={{display:"none"}}
                         onChange={(e) => setFile(e.target.files[0])} /> */}
-                        {file && <input placeholder={`Image url ?`} onChange={(e) => setFile(e.target.value)} />}
+                        {file && <input placeholder={`Enter image url..`} onChange={(e) => setFile(e.target.value)} />}
                         <div className='item' onClick={() => setFile(!file)}>
                             {file ? <button className='cancel'>Cancel</button> : <><img src={Image2} alt='post' />
                             <span>Add Image</span></>}
