@@ -17,6 +17,15 @@ a{
         text-decoration: underline;
     }
 }
+input{
+
+    &:focus{
+        outline: none;
+    }
+    &:focus::placeholder{
+        opacity: 0;
+    }
+}
 
 $primary: #d33891;
 $primary-hover: rgba(211,56,145,0.8);
@@ -74,7 +83,7 @@ $themes:(
 }
 
 @mixin mobile{
-    @media (min-width:600px){
+    @media (min-width:360px){
         @content;
     }
 }
