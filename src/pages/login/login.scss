@@ -8,8 +8,8 @@
     .card{
         display: flex;
         flex-direction: column-reverse;
-        margin-top: 60px;
-        max-width: 80%;
+        margin-top: 40px;
+        max-width: 75%;
 
         @include tablet{
             flex-direction: row-reverse;
@@ -23,10 +23,8 @@
             justify-content: space-between;
             background: $gradient-primary, url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
             background-size: cover;
-            display: none;
 
             @include tablet{
-                display: block;
                 flex: 1;
             }
            
@@ -103,11 +101,9 @@
                     border: none;
                     background-color: $darkTextColor;
                     padding: 20px 10px;
-                    width: 100%;
                 }
 
                 button{
-                    width: 50%;
                     border: none;
                     background-color: $secondary;
                     color: white;

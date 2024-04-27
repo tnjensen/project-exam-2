@@ -52,11 +52,8 @@ const RegisterForm = () => {
 				return setError(json.errors?.[0]?.message ?? "There was an error");
 			}
 
-			/* setUser(json); */
 			navigate("/login");
 
-			// store user in global state
-			/// redirect to dahsboard
 		} catch (error) {
 			setError(error.toString());
 		} finally {
