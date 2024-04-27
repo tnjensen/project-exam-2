@@ -20,7 +20,7 @@ function Post({post}){
             <div className='container'>
                 <div className='user'>
                     <div className='userInfo'>
-                        <img src={avatar} alt='user'/>
+                        {avatar ? <img src={avatar} alt='user'/> : <img src="/src/assets/person/noAvatar.png" />}
                         <div className='details'>
                             {/* <Link to={`/profile/${author}`} style={{textDecoration: "none", color: "inherit"}}> */}
                                 <span className='name'>{author}</span>
