@@ -1,0 +1,19 @@
+.comment{
+    margin-bottom: 10px;
+
+    .owner{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        span{
+            padding-left: 10px;
+        }
+    }
+}

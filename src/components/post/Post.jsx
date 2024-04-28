@@ -7,6 +7,8 @@ import { useAvatar, useName } from '../../stores/useUserStore';
 import Comments from '../comments/Comments';
 import Likes from '../likes/Likes';
 import PostDetail from '../postDetail/PostDetail';
+import Comment from '../comment/Comment';
+import Like from '../like/Like';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
@@ -14,6 +16,11 @@ function Post({post}){
     const [detail,setDetail] = useState(false);
     const author = post.author.name;
     const avatar = post.author.avatar;
+    const comments = post.comments;
+    const likes = post.reactions;
+    const symbol = likes.innerText;
+    console.log(comments);
+    console.log(symbol);
 
     return(
         <div className='post'>
@@ -37,7 +44,11 @@ function Post({post}){
                 <div className='content'>
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>
-                    {post.media && <img src={post.media} alt='post'/>}
+                    {post.media && <img src={post.media} alt='post'/>} 
+                    <div className='likes'>{likes.map((like) =>(
+                        <Like key={symbol} like={like} />
+                        ))}
+                    </div>
                 </div>
                 <div className='info'>
                     <div className='item' onClick={() => setLiked(!liked)}>
@@ -48,7 +59,11 @@ function Post({post}){
                     </div>
                 </div>
                 {liked && <Likes postId={post.id} />}
+                
                 {commentOpen && <Comments postId={post.id} />}
+                {commentOpen && comments.map((comment) => (
+                    comment && <Comment key={comment.id} comment={comment} />
+                ))}
             </div>
         </div>
     )
