@@ -6,7 +6,7 @@ import { useToken} from '../../stores/useUserStore.jsx';
 
 function Posts(){
     const token = useToken();
-    const {data:posts,isLoading,isError} = useApi(`${apiUrl}?_author=true`,token);
+    const {data:posts,isLoading,isError} = useApi(`${apiUrl}?_author=true&_comments=true&_reactions=true`,token);
     console.log(posts);
 
     if(isLoading){

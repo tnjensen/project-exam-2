@@ -52,8 +52,8 @@ export default function Share() {
                 <div className="left">
                     <img src={avatar} alt='profile' className="shareImg" />
                     <p>{`What's on your mind, ${name} ?`}</p>
-                    <input placeholder={`Post title..`} onChange={(e) => setTitle(e.target.value)} />
-                    <input placeholder={`Your content..`} onChange={(e) => setBody(e.target.value)} />
+                    <input placeholder={`Title`} onChange={(e) => setTitle(e.target.value)} />
+                    <input placeholder={`Content`} onChange={(e) => setBody(e.target.value)} />
                 </div>
                 <div className="right">
                     {/* {file && <img className='file' alt='thumb' src={URL.createObjectURL(file)} />} */}
