@@ -5,6 +5,7 @@ import Post from '../post/Post.jsx';
 import { useToken} from '../../stores/useUserStore.jsx';
 import Share from "../share/Share";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import { useState } from 'react';
 
 function Posts(){
@@ -22,8 +23,7 @@ function Posts(){
     return(
         
         <div className="posts">
-             <AddOutlinedIcon className="add-post" onClick={() => setShareOpen(!shareOpen)} />
-                {shareOpen && <Share />}
+            {shareOpen ? <AddOutlinedIcon className="add-post" onClick={() => setShareOpen(!shareOpen)} /> : <><RemoveOutlinedIcon className="add-post" onClick={() => setShareOpen(!shareOpen)} /><Share /></>} 
             {posts.map((post) => (
                 post.media && <Post key={post.id} post={post} />
             ))}
