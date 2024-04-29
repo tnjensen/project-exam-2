@@ -13,7 +13,6 @@ function LeftBar(){
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
-                    
                     <div className="item">
                         <img src={Image1} alt='user' />
                         <span>Michel Spaniard</span>

@@ -26,6 +26,10 @@
             text-transform: uppercase;
         }
 
+        .add-post{
+            cursor: pointer;
+        }
+        
         .search{
             display: flex;
             align-items: center;
@@ -33,7 +37,12 @@
             gap: 5px;
             
             input{
+                /* display: none; */
                 padding: 5px;
+
+                /* @include tablet{
+                    display: block;
+                } */
             }
         }
     }
@@ -43,6 +52,10 @@
         align-items: center;
         gap: 10px;
         
+        .notifications{
+            cursor: pointer;
+        }
+
         .logout-button{
             border: 1px solid $primary;
             color: $textColor;
