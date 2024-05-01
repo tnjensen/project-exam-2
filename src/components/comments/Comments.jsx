@@ -3,13 +3,11 @@ import './comments.scss';
 import moment from 'moment';
 import { useAvatar, useToken } from '../../stores/useUserStore';
 import { apiUrl } from '../../constants/api';
-import { useNavigate } from 'react-router-dom';
 
 function Comments({postId}){
     const avatar = useAvatar();
     const token = useToken();
     const [desc,setDesc] = useState("");
-    const navigate = useNavigate();
 
     const handleClick = async () =>{
         setDesc(desc);
@@ -27,7 +25,7 @@ function Comments({postId}){
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                navigate("/");
+                window.location.reload();
         }).catch(err =>{
             console.log(err);
         })

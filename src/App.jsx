@@ -5,6 +5,7 @@ import Profile from './pages/profile/Profile';
 import { Layout } from './main';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import PostDetail from './components/postDetail/PostDetail';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
       <Route path='profile/:name' element={<Profile />} />
+      <Route path='detail/:id' element={<PostDetail />} />
     </Routes>
     
   )

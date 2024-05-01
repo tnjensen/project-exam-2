@@ -3,20 +3,27 @@ import './postDetail.scss';
 import { apiUrl} from '../../constants/api';
 import { useToken } from '../../stores/useUserStore';
 import ServerWarning from '../shared/ServerWarning';
+import useApi from '../../hooks/useApi.js';
+import { useNavigate } from 'react-router-dom';
 
-function PostDetail({post}){
+function PostDetail(){
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
     const token = useToken();
+    const postId = window.location.href.split("/").pop();
+    const {data:post} = useApi(`${apiUrl}/${postId}`,token);
+    const navigate = useNavigate();
 
-    const handleError = () => {
+    console.log(postId);
+    const handleError = (e) => {
+        e.preventDefault();
         window.location.reload();
     }
 
-    async function handleUpdate() {
-
+    async function handleUpdate(e) {
+        e.preventDefault();
 		const options = {
 			headers: { 
                 "Content-Type": "application/json", 
@@ -29,14 +36,15 @@ function PostDetail({post}){
 		try {
 			setIsLoading(true);
 			setError(null);
-			const response = await fetch(`${apiUrl}/${post.id}`, options);
+			const response = await fetch(`${apiUrl}/${postId}`, options);
 			const json = await response.json();
+            console.log(response);
 
 			if (!response.ok) {
 				return setError(json.errors?.[0]?.message ?? "There was an error");
 			}
-
-			window.location.reload();
+            navigate("/");
+			/* window.location.reload(); */
 
 		} catch (error) {
 			setError(error.toString());
@@ -45,7 +53,9 @@ function PostDetail({post}){
 		}
 	}
 
-    const handleDelete = async () => {
+    const handleDelete = async (e) => {
+        e.preventDefault();
+
         const options = {
 			headers: { 
                 "Content-Type": "application/json",
@@ -57,14 +67,14 @@ function PostDetail({post}){
 		try {
 			setIsLoading(true);
 			setError(null);
-			const response = await fetch(`${apiUrl}/${post.id}`, options);
+			const response = await fetch(`${apiUrl}/${postId}`, options);
 			const json = await response.json();
 
 			if (!response.ok) {
 				return setError(json.errors?.[0]?.message ?? "There was an error");
 			}
-
-			window.location.reload();
+            navigate("/");
+			/* window.location.reload(); */
 
 		} catch (error) {
 			setError(error.toString());
