@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './likes.scss';
 import { useToken } from '../../stores/useUserStore';
 import { apiUrl } from '../../constants/api';
-import { useNavigate } from 'react-router-dom';
 
 const quickMenu = [
     {title: 1, path: "", Icon: "🙂"},
@@ -13,7 +12,6 @@ const quickMenu = [
 function Likes({postId}){
     const token = useToken();
     const [like,setLike] = useState("");
-    const navigate = useNavigate();
 
     const handleClick = async (e) =>{
         const emoji = e.target.innerText;
@@ -32,7 +30,7 @@ function Likes({postId}){
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                navigate("/");
+                window.location.reload();
         }).catch(err =>{
             console.log(err);
         })

@@ -9,6 +9,7 @@ import Likes from '../likes/Likes';
 import PostDetail from '../postDetail/PostDetail';
 import Comment from '../comment/Comment';
 import Like from '../like/Like';
+import PostDetails from '../postDetails/PostDetails';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
@@ -18,9 +19,9 @@ function Post({post}){
     const avatar = post.author.avatar;
     const comments = post.comments;
     const likes = post.reactions;
-    const symbol = likes.innerText;
+    const emoji = post.reactions.symbol;
     console.log(comments);
-    console.log(symbol);
+    console.log(emoji);
 
     return(
         <div className='post'>
@@ -37,16 +38,15 @@ function Post({post}){
                     </div>
                     <div className='details'>
                     <MoreHoriz onClick={() => setDetail(!detail)} />
-                    {detail && <PostDetail post={post} />}
-                    </div>
-                    
+                    {detail && <PostDetails postId={post.id} />}
+                    </div>             
                 </div>
                 <div className='content'>
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>
                     {post.media && <img src={post.media} alt='post'/>} 
                     <div className='likes'>{likes.map((like) =>(
-                        <Like key={symbol} like={like} />
+                        <Like key={emoji + new Date().getTime()} like={like} />
                         ))}
                     </div>
                 </div>
