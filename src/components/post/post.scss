@@ -33,7 +33,7 @@
                 .details{
                     display: flex;
                     flex-direction: column;
-                    
+
                     .name{
                         font-weight: 500;
         
@@ -47,6 +47,7 @@
 
             .details{
                 position: relative;
+                cursor: pointer;
             }
         }
         .content{

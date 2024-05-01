@@ -4,11 +4,13 @@ import { apiUrl} from '../../constants/api';
 import { useToken } from '../../stores/useUserStore';
 import ServerWarning from '../shared/ServerWarning';
 import useApi from '../../hooks/useApi.js';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 
 function PostDetail(){
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
+    const [file,setFile] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
     const token = useToken();
@@ -30,7 +32,7 @@ function PostDetail(){
                 Authorization: "Bearer " + token 
             },
 			method: "PUT",
-			body: JSON.stringify({title,body}),
+			body: JSON.stringify({title,body, media:file}),
 		};
 
 		try {
@@ -85,6 +87,7 @@ function PostDetail(){
 
     return(
         <div className='edit'>
+            <Link to="/" className='back-link'><ArrowBackOutlinedIcon />Back to posts</Link>
             {error && <ServerWarning>{error}</ServerWarning>}
            {/*  <div className='left'> */}
                 <h3>Edit Post</h3>
@@ -94,7 +97,12 @@ function PostDetail(){
                 <label htmlFor='content'>Content:</label>
                 <input id='content' type="text" placeholder={post.body} onChange={e=>setBody(e.target.value)} value={body} />
                 {/* <input type{post.media && <img src={post.media} alt='post'/>} /> */}
-                
+                {post.media && <img src={post.media} alt='post'/>}
+                <input placeholder={`New image url..`} onChange={(e) => setFile(e.target.value)} />
+                {/* <div className='item' onClick={() => setFile(!file)}>
+                    <button className='cancel'>Cancel</button>
+                    <button>Update Image</button>
+                </div> */}
            {/*  </div> */}
             {/* <div className='right'> */}
             {error ? <button style={{backgroundColor: "#1546E6", color:"white", padding:"10px"}} onClick={handleError}>OK</button> :
