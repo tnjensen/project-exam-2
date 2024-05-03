@@ -11,7 +11,7 @@ import { useState } from 'react';
 function Posts(){
     const [shareOpen,setShareOpen] = useState(false);
     const token = useToken();
-    const {data:posts,isLoading,isError} = useApi(`${apiUrl}?_author=true&_comments=true&_reactions=true`,token);
+    const {data:posts,isLoading,isError} = useApi(apiUrl + `?_author=true&_comments=true&_reactions=true`,token);
     console.log(posts);
 
     if(isLoading){

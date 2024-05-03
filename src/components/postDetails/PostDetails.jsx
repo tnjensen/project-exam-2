@@ -4,7 +4,7 @@ import './postDetails.scss';
 function PostDetails({postId}){
     return(
         <div className='more'>
-            <Link to={`/detail/${postId}`}>View and edit</Link>
+            <Link to={`/detail/${postId}`}>View details</Link>
         </div>
     )
 }

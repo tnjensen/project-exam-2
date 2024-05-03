@@ -1,4 +1,4 @@
-const baseUrl = "https://nf-api.onrender.com/api/v1/social";
+const baseUrl = "https://api.noroff.dev/api/v1/social";
 
 export const loginUrl = `${baseUrl}/auth/login`;
 
