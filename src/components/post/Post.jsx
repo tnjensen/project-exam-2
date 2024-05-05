@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import './post.scss';
 import moment from 'moment';
 import { MoreHoriz } from '@mui/icons-material';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useAvatar, useName } from '../../stores/useUserStore';
 import Comments from '../comments/Comments';
 import Likes from '../likes/Likes';
-import PostDetail from '../postDetail/PostDetail';
 import Comment from '../comment/Comment';
 import Like from '../like/Like';
-import PostDetails from '../postDetails/PostDetails';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 function Post({post}){
     const [commentOpen,setCommentOpen] = useState(false);
@@ -20,8 +19,12 @@ function Post({post}){
     const comments = post.comments;
     const likes = post.reactions;
     const emoji = post.reactions.symbol;
-    console.log(comments);
-    console.log(emoji);
+    const [display,setDisplay] = useState(false);
+    const ref = useRef();
+
+    useOutsideClick(ref, ()=> {
+        setDisplay(false);
+    })
 
     return(
         <div className='post'>
@@ -36,9 +39,9 @@ function Post({post}){
                             <span className='date'>{moment(post.created).fromNow()}</span>
                         </div>
                     </div>
-                    <div className='details'>
-                    <MoreHoriz onClick={() => setDetail(!detail)} />
-                    {detail && <div className='more'>
+                    <div className='details' ref={ref}>
+                    <MoreHoriz onClick={() => setDisplay(!display)} />
+                    {display && <div className='more'>
                             <Link to={`/detail/${post.id}`}>View details</Link>
                         </div>}
                     </div>         
