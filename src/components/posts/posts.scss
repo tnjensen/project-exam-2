@@ -10,12 +10,10 @@
     .add-post{
         cursor: pointer;
         position: absolute;
-        top: 0;
-        left: -30px;
+        top: -10px;
+        left: -10px;
         border: 1px solid $primary;
         border-radius: 5px;
-        color: $primary;
-        
-        
+        color: $primary; 
     }
 }

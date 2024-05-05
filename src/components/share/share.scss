@@ -45,10 +45,10 @@
             input{
                 margin-left: 10px;
                 border: none;
-                width: 80vw;
+                max-width: 80vw;
     
                 @include tablet{
-                    width: 40vw;
+                    max-width: 40vw;
                 }
     
             }

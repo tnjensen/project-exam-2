@@ -26,10 +26,6 @@
             text-transform: uppercase;
         }
 
-        .add-post{
-            cursor: pointer;
-        }
-        
         .search{
             display: flex;
             align-items: center;
@@ -74,6 +70,11 @@
                 position: absolute;
                 right: 10px;
                 top: 60px;
+                background-color: $primary;
+                color: $darkTextColor;
+                padding: 10px;
+                width: 100%;
+                text-align: right;
 
                 @include mobile{
                     top: 50px;

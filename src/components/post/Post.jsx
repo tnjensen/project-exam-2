@@ -38,8 +38,10 @@ function Post({post}){
                     </div>
                     <div className='details'>
                     <MoreHoriz onClick={() => setDetail(!detail)} />
-                    {detail && <PostDetails postId={post.id} />}
-                    </div>             
+                    {detail && <div className='more'>
+                            <Link to={`/detail/${post.id}`}>View details</Link>
+                        </div>}
+                    </div>         
                 </div>
                 <div className='content'>
                     <h3>{post.title}</h3>
