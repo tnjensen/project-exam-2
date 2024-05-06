@@ -33,12 +33,7 @@
             gap: 5px;
             
             input{
-                /* display: none; */
                 padding: 5px;
-
-                /* @include tablet{
-                    display: block;
-                } */
             }
         }
     }
@@ -68,7 +63,7 @@
             }
             ul{
                 position: absolute;
-                right: 10px;
+                right: 15px;
                 top: 60px;
                 background-color: $primary;
                 color: $darkTextColor;
@@ -86,6 +81,5 @@
                 border-radius: 50%;
             }
         }
-
     }
 }
