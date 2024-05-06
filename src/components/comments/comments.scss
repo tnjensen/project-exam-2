@@ -1,7 +1,6 @@
 @import '../../App.scss';
 
 .comments{
-    /* @include themify($themes){ */
         img{
             width: 40px;
             height: 40px;
@@ -19,9 +18,7 @@
             input{
                 flex: 5;
                 padding: 10px;
-               /*  border: 1px solid themed("border"); */
                 background-color: transparent;
-              /*   color: themed("textColor"); */
                 border-radius: 3px;
             }
             button{
@@ -49,10 +46,6 @@
                 span{
                     font-weight: 500;
                 }
-
-                p{
-                   /*  color: themed("textColor"); */
-                }
             }
 
             .date{
@@ -62,5 +55,4 @@
                 font-size: 12px;
             }
         }
-  /*   } */
 }

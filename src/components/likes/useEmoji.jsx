@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+/* import { useState, useEffect, useRef } from "react";
 
 export const EMOJI = ["😀", "👍", "😨", "💯", "😈"];
 
@@ -9,4 +9,4 @@ export const useEmoji = element => {
   const eventRef = useRef();
 
   return {};
-}
+} */

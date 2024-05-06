@@ -1,15 +1,12 @@
 @import '../../App.scss';
 
 .leftbar{
-    /* @include themify($themes){ */
         flex: 2;
         position: sticky;
         top: 50px;
         height: calc(100vh - 50px);//Needed to stay in postition for the scroll
         overflow: scroll;
         display: none;
-        /* background-color: themed("bg"); */
-       /*  color: themed("textColor"); */
 
         &::-webkit-scrollbar{
             display: none;
@@ -25,7 +22,6 @@
                 margin: 20px 0;
                 border: none;
                 height: 0.5px;
-                /* background-color: themed("border"); */
             }
             .menu{
                 display: flex;
@@ -55,5 +51,4 @@
                 }
             }
         }
-   /*  } */
 }
