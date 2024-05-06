@@ -46,24 +46,21 @@
             }
 
             .details{
-                /* position: relative; */
+                margin-right: 25px;   
                 cursor: pointer;
-
+                
                 .more{
                     position: relative;
                     
                     a{
                         position: absolute;
-                        width: auto;
-                        margin: 0 auto;
                         right: 0;
-                        
+                        width: 200px;
                         background-color: $primary;
                         color: $darkTextColor;
-                        padding: 5px 10px;
+                        padding: 10px;
                         font-weight: 600;
                         font-size: 18px;
-                        text-align: right;
                     }
                 }
             }
