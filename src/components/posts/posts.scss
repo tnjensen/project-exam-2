@@ -10,8 +10,8 @@
     .add-post{
         cursor: pointer;
         position: absolute;
-        top: -10px;
-        left: 0px;
+        top: 0;
+        right: 0;
         border: 1px solid $primary;
         border-radius: 5px;
         color: $primary; 
