@@ -5,14 +5,22 @@ import Image3 from '../../assets/person/3.jpeg';
 import Image4 from '../../assets/person/4.jpeg';
 import Image5 from '../../assets/person/5.jpeg';
 import Image6 from '../../assets/person/6.jpeg';
-import { useAvatar, useName} from '../../stores/useUserStore';
+import { useAvatar, useName, useToken} from '../../stores/useUserStore';
+import { profileUrl } from '../../constants/api';
+import useApi from '../../hooks/useApi';
+import Profile from '../../pages/profile/Profile';
 
 function LeftBar(){
+    const token = useToken();
+    const avatar = useAvatar();
+    const name = useName();
+    /* const {data:profiles} = useApi(profileUrl + `?_followers=true&_following=true`,token); */
 
     return(
         <div className='leftbar'>
             <div className="container">
                 <div className="menu">
+                <span>Suggestions</span>
                     <div className="item">
                         <img src={Image1} alt='user' />
                         <span>Michel Spaniard</span>
@@ -37,6 +45,9 @@ function LeftBar(){
                         <img src={Image6} alt='user' />
                         <span>Desdemona Allbright</span>
                     </div>
+                   {/*  {profiles && profiles.map((item) =>(
+                        <Profile item={name}/>
+                    ))} */}
                 </div>
                 <hr />
                 <div className="menu">

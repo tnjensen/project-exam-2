@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function GetPosts(url,token){
+export default function GetProfiles(url,token){
     const [data,setData] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
     const [isError,setIsError] = useState(false);
@@ -20,15 +20,7 @@ export default function GetPosts(url,token){
 
                 if(response.ok){
                     const json = await response.json();
-                    if(json.length > 1){
-                        const sortedData = json.sort((a,b) =>{
-                            return b.created < a.created
-                        })
-                        return setData(sortedData);
-                    } else{
-                        return setData(json);
-                    }
-                    
+                    return setData(json);
                 }
                 throw new Error();
             }
