@@ -17,7 +17,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { MoreHorizOutlined } from "@mui/icons-material";
 import { profileUrl } from "../../constants/api";
 import useApi from "../../hooks/useApi";
-import Post from "../../components/post/Post";
+import Post from "../../components/posts/post/Post";
 import { useParams } from "react-router-dom";
 
 function Profile() {
