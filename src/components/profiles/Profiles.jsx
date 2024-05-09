@@ -1,5 +1,5 @@
 import {apiUrl} from '../../constants/api.js';
-import './posts.scss';
+import '../posts/posts.scss';
 import useProfiles from '../../hooks/useApi.js';
 import Post from '../post/Post.jsx';
 import { useToken} from '../../stores/useUserStore.jsx';
