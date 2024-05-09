@@ -16,8 +16,7 @@ function Likes({postId}){
     const handleClick = async (e) =>{
         const emoji = e.target.innerText;
         setLike(like);
-        /* console.log(like);
-        console.log(token); */
+
         const options = {
             method: "PUT",
             body: JSON.stringify({symbol:emoji}),
