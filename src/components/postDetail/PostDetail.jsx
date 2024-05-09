@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './postDetail.scss';
 import useApi from '../../hooks/useApi.js';
 import { apiUrl} from '../../constants/api';
@@ -8,7 +8,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 
 function PostDetail(){
-    const ref = useRef();
     const currentUser = useName();
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
@@ -33,7 +32,7 @@ function PostDetail(){
                 Authorization: "Bearer " + token 
             },
 			method: "PUT",
-			body: JSON.stringify({title,body, media:file}),
+			body: JSON.stringify({title,body, media:file || ''}),
 		};
 
 		try {
@@ -87,8 +86,9 @@ function PostDetail(){
                 <input id='title' type="text" placeholder={post.title} onChange={e=>setTitle(e.target.value)} value={title} />
                 <label htmlFor='content'>Content:</label>
                 <input id='content' type="text" placeholder={post.body} onChange={e=>setBody(e.target.value)} value={body} />
-                {post.media && <img src={post.media} alt='post'/>}
-                {post && owner && currentUser === owner.name && <input placeholder={post.media} onChange={(e) => setFile(e.target.value)} />}
+                <label htmlFor='content'>Image:</label>
+                <img src={post.media} alt='post'/>
+                {post && owner && currentUser === owner.name && <input placeholder="New image url..." onChange={(e) => setFile(e.target.value)} />}
                 {error ? <button style={{backgroundColor: "#1546E6", color:"white", padding:"10px"}} onClick={handleError}>OK</button> :
                 post && owner && currentUser === owner.name && <><button className='edit-button' onClick={handleUpdate}>Update</button>
                 <button className='delete-button' onClick={handleDelete}>Delete</button></>}

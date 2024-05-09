@@ -19,7 +19,7 @@ export default function Share() {
         const options = {
 			headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
 			method: "POST",
-			body: JSON.stringify({title:title,body:body,media:file}),
+			body: JSON.stringify({title:title,body:body,media:file || ""}),
 		};
 
 		try {
@@ -40,8 +40,9 @@ export default function Share() {
     
     const handleClick = async (e) =>{
         e.preventDefault();
-        if(file) await upload();
-        /* let imgUrl = Date.now() + file.name; */
+        await upload();
+       /*  if (file) await upload();
+        let imgUrl = Date.now() + file.name; */
         setFile(file);
     }
 

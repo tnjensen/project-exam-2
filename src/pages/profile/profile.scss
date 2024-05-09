@@ -1,3 +1,5 @@
+@import '../../App.scss';
+
 .profile{
 
     .images{
@@ -11,7 +13,7 @@
             object-fit: cover;
         }
         .profile-image{
-            width: 100px;
+            width: 80px;
             border-radius: 50%;
             position: absolute;
             object-fit: cover;
@@ -19,8 +21,116 @@
             left: 0;
             right: 0;
             margin: auto;
-            top: 250px;
+            top: 260px;
             
+        }
+    }
+    .profile-content{
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-direction: column;
+        padding: 60px 20px;
+
+        @include tablet{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .left{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px; 
+           
+        }
+        .center{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            @include tablet{
+                position: absolute;
+                transform: translateX(-50%);
+                left: 50%;
+            }
+
+            .top{
+                display: flex;
+                position: relative;
+                gap: 5px;
+
+                .social-icon{
+                    cursor: pointer;
+                }
+            }
+            
+            .bottom{
+
+                .follow-button{
+                    position: relative;
+                    border-radius: 5px;
+                    background-color: $secondary;
+                    color: $darkTextColor;
+                    padding: 5px 20px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: .05rem;
+                }
+            }
+            
+        }
+        .right{
+            position: relative;
+            
+            .more{
+                cursor: pointer;
+            }
+            .profile-details{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                position: absolute;
+                background-color: $background;
+                padding: 20px;
+                right: 0;
+                top: 40px;
+
+                h3{
+                    text-align: center;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+                .avatar{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
+    
+                    img{
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+                input{
+                    border-radius: 5px;
+                    padding: 5px;
+                }
+                .edit-details-button{
+                    background-color: $tertiary;
+                    color: $textColor;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    margin-top: 20px;
+                }
+            }
         }
     }
 }
