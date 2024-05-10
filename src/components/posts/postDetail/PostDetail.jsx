@@ -42,7 +42,6 @@ function PostDetail() {
 
       if (!response.ok) {
         return setError(json.errors?.[0]?.message ?? "There was an error");
-        /* return setError("Please fill in all the fields.."); */
       }
       navigate("/");
     } catch (error) {

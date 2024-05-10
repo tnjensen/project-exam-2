@@ -5,24 +5,28 @@ import Image3 from "../../../assets/person/3.jpeg";
 import Image4 from "../../../assets/person/4.jpeg";
 import Image5 from "../../../assets/person/5.jpeg";
 import Image6 from "../../../assets/person/6.jpeg";
-import { useAvatar, useName, useToken } from "../../../stores/useUserStore";
+import { useToken } from "../../../stores/useUserStore";
 import { profileUrl } from "../../../constants/api";
-import useApi from "../../../hooks/useApi";
-import Profiles from "../../profiles/Profiles";
+import useProfile from "../../../hooks/useProfile";
+import Profile from "../../profile/Profile";
 
 function LeftBar() {
   const token = useToken();
-  const avatar = useAvatar();
-  const name = useName();
-  //const {data:profiles, isError, isLoading} = useApi(profileUrl + `?_followers=true&_following=true`,token);
-  /*  console.log(profiles); */
+  const {
+      data: profiles,
+      isError,
+      isLoading,
+    } = useProfile(profileUrl + `?_followers=true&_following=true&_posts=true`, token);
+  console.log(profiles);
 
-  /* if(isLoading){
-        return <div>Loading...</div>
-    }
-    if(isError){
-        return <div>Error loading profiles.</div>
-    } */
+  /* const posts = profiles.posts; */
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error loading profiles.</div>;
+  }
   return (
     <div className="leftbar">
       <div className="container">
@@ -52,9 +56,7 @@ function LeftBar() {
                         <img src={Image6} alt='user' />
                         <span>Desdemona Allbright</span>
                     </div> */}
-          {/* {profiles && profiles.map((item, index) =>(
-                        <Profiles key={index} item={name}/>
-                    ))} */}
+          {profiles.map((profile, index) => profile.posts.length && <Profile key={index} profile={profile} />)}
         </div>
         <hr />
         <div className="menu">

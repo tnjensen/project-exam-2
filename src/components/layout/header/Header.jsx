@@ -15,7 +15,6 @@ function Header() {
   const name = useName();
   const [search, setSearch] = useState("");
   const { clearUser } = useUserActions();
-  /* const [display,setDisplay] = useState('none'); */
   const [display, setDisplay] = useState(false);
   const partUrl = window.location.href.split("/").pop();
   const ref = useRef();
@@ -55,7 +54,7 @@ function Header() {
             onClick={() => setDisplay(!display)}
           />
           {display && (
-            <ul /* style={{display:display}} */ className="profile-menu">
+            <ul className="profile-menu">
               <li>
                 {partUrl !== `${name}` && (
                   <Link to={`/profile/${name}`}>Profile</Link>
