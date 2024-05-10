@@ -41,8 +41,7 @@ function Posts() {
         />
       )}
       {posts.map((post) => (
-        /* post.media && <Post key={post.id} post={post} /> */
-        <Post key={post.id} post={post} />
+        post.media && <Post key={post.id} post={post} />
       ))}
     </div>
   );

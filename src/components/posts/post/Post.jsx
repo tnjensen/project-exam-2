@@ -53,8 +53,8 @@ function Post({ post }) {
         <div className="content">
           <h3>{post.title}</h3>
           <p>{post.body}</p>
-          {/* {post.media && <img src={post.media} alt='post'/>}  */}
-          <img src={post.media} alt="post" />
+          {post.media && <img src={post.media} alt='post'/>} 
+          {/* <img src={post.media} alt="post" /> */}
           <div className="likes">
             {likes.map((like, index) => (
               <Like key={index} like={like} />

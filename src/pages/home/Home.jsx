@@ -5,7 +5,6 @@ import './home.scss';
 function Home(){
     return(
         <div className='home'>
-            {/* <Share /> */}
             <Posts />
         </div>
         
