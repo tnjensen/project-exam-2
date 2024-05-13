@@ -4,19 +4,11 @@ import useProfile from "../../../hooks/useProfile";
 import { useName, useToken } from '../../../stores/useUserStore';
 import Following from '../../following/Following';
 import './rightbar.scss';
-import { useParams } from 'react-router-dom';
 import Followers from '../../followers/Followers';
 
 function RightBar(){
     const currentUser = useName();
     const token = useToken();
-    const {name} = useParams();
-    const partUrl = window.location.href.split("/").pop();
-    /* const {
-        data: profiles,
-        isError,
-        isLoading,
-        } = useApi(apiUrl + `/following?_author=true`, token); */
     const {
         data: profile,
         isError,
@@ -35,7 +27,6 @@ function RightBar(){
         setFollowing(filteredFollowingProfiles);
 
     },[profile]);
- /*  console.log(following);  */
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -46,7 +37,6 @@ function RightBar(){
     return(
         <div className='rightbar'>
             <div className="container">
-            {/* {partUrl !== `${name}` && */} 
                 <div className="item">
                     <span>Friends</span>
                     {following.map((profile, index) =>(
@@ -54,15 +44,12 @@ function RightBar(){
                     ))}
                 </div>
                 
-           {/*  } */}
-            {/* {partUrl !== `${name}` && 
                 <div className="item">
                     <span>Followers</span>
                     {followers.map((profile, index) =>(
                         <Followers key={index} profile={profile} />
                     ))}
                 </div>
-                } */}
                 <div className="item">
                     <span>Latest activities</span>
                     <div className="user">

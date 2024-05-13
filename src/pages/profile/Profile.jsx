@@ -20,22 +20,30 @@ function Profile() {
   const { name } = useParams();
   const [display, setDisplay] = useState(false);
   const [error, setError] = useState(false);
+  const [followed, setFollowed] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const { data: userProfile } = useApi(
+    profileUrl +
+      `/${currentUser}` +
+      `?_follower=true&_following=true`,
+    token
+  );
   const { data: profile } = useApi(
     profileUrl +
       `/${name}` +
       `?_follower=true&_following=true`,
     token
   );
-  const [followed, setFollowed] = useState();
   
   useEffect(() => {
-    if(profile.following){
-      setFollowed(true);
-    }
-  },[profile])
-  console.log(followed);
-  console.log(profile);
+      const followingProfiles = userProfile.following;
+      setFollowers(followingProfiles);
+      const uniqueNames = [...new Set(followingProfiles)];
+      const currentProfile = uniqueNames.filter(item => item.name === name);
+      setFollowed(currentProfile);
 
+  },[userProfile,name]);
+  console.log(followers);
 
   const { data: posts } = useApi(
     profileUrl +
@@ -52,13 +60,13 @@ function Profile() {
         Authorization: "Bearer " + token,
       },
       method: "PUT",
-      body: JSON.stringify({ name: name })
     }
     try {
-      const response = await fetch(profileUrl + `/${name}` + `/follow`, options);
+      const response = await fetch(profileUrl + `/${name}/follow`, options);
       const json = await response.json();
       console.log(response);
       setFollowed(true);
+      window.location.reload();
 
       if (!response.ok) {
         return setError(json.errors?.[0]?.message ?? "There was an error");
@@ -75,13 +83,13 @@ function Profile() {
         Authorization: "Bearer " + token,
       },
       method: "PUT",
-      body: JSON.stringify({ name: name })
     }
     try {
-      const response = await fetch(profileUrl + `/${name}` + `/unfollow`, options);
+      const response = await fetch(profileUrl + `/${name}/unfollow`, options);
       const json = await response.json();
       console.log(response);
       setFollowed(false);
+      window.location.reload();
 
       if (!response.ok) {
         return setError(json.errors?.[0]?.message ?? "There was an error");
@@ -141,8 +149,8 @@ function Profile() {
           <p>Email: {profile.email}</p>
           {name !== currentUser && (
             <div className="bottom">
-              {!followed ? <button className="follow-button" onClick={handleFollow}>Follow</button> 
-              : <button className="follow-button" onClick={handleUnFollow}>UnFollow</button>
+              {followed.length ? <button className="follow-button" onClick={handleUnFollow}>Unfollow</button> 
+              : <button className="follow-button" onClick={handleFollow}>Follow</button>
               }
             </div>
           )}
