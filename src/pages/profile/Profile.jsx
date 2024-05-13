@@ -3,7 +3,7 @@ import {
   useName,
   useToken,
 } from "../../stores/useUserStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -20,24 +20,76 @@ function Profile() {
   const { name } = useParams();
   const [display, setDisplay] = useState(false);
   const [error, setError] = useState(false);
-  /* const avatar = useAvatar();
-  const banner = useBanner(); */
-  /* const { user } = useContext(AuthContext); */
   const { data: profile } = useApi(
     profileUrl +
       `/${name}` +
       `?_follower=true&_following=true`,
     token
   );
+  const [followed, setFollowed] = useState();
+  
+  useEffect(() => {
+    if(profile.following){
+      setFollowed(true);
+    }
+  },[profile])
+  console.log(followed);
+  console.log(profile);
+
+
   const { data: posts } = useApi(
     profileUrl +
       `/${name}` +
       `/posts?_author=true&_comments=true&_reactions=true`,
     token
   );
- /*  console.log(avatar);
-  console.log(banner); */
-  console.log(posts);
+
+  async function handleFollow(e){
+    e.preventDefault();
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      method: "PUT",
+      body: JSON.stringify({ name: name })
+    }
+    try {
+      const response = await fetch(profileUrl + `/${name}` + `/follow`, options);
+      const json = await response.json();
+      console.log(response);
+      setFollowed(true);
+
+      if (!response.ok) {
+        return setError(json.errors?.[0]?.message ?? "There was an error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleUnFollow(e){
+    e.preventDefault();
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      method: "PUT",
+      body: JSON.stringify({ name: name })
+    }
+    try {
+      const response = await fetch(profileUrl + `/${name}` + `/unfollow`, options);
+      const json = await response.json();
+      console.log(response);
+      setFollowed(false);
+
+      if (!response.ok) {
+        return setError(json.errors?.[0]?.message ?? "There was an error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function handleUpdate(e) {
     e.preventDefault();
@@ -89,7 +141,9 @@ function Profile() {
           <p>Email: {profile.email}</p>
           {name !== currentUser && (
             <div className="bottom">
-              <button className="follow-button">Follow</button>
+              {!followed ? <button className="follow-button" onClick={handleFollow}>Follow</button> 
+              : <button className="follow-button" onClick={handleUnFollow}>UnFollow</button>
+              }
             </div>
           )}
         </div>

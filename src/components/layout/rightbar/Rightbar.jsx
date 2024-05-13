@@ -1,32 +1,68 @@
+import { useEffect, useState } from 'react';
+import { profileUrl } from "../../../constants/api";
+import useProfile from "../../../hooks/useProfile";
+import { useName, useToken } from '../../../stores/useUserStore';
+import Following from '../../following/Following';
 import './rightbar.scss';
+import { useParams } from 'react-router-dom';
+import Followers from '../../followers/Followers';
 
 function RightBar(){
+    const currentUser = useName();
+    const token = useToken();
+    const {name} = useParams();
+    const partUrl = window.location.href.split("/").pop();
+    /* const {
+        data: profiles,
+        isError,
+        isLoading,
+        } = useApi(apiUrl + `/following?_author=true`, token); */
+    const {
+        data: profile,
+        isError,
+        isLoading,
+        } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true&_posts=true`, token);
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
+
+    useEffect(() => {
+        const followerProfiles = profile.followers;
+        const filteredFollowerProfiles = [...new Set(followerProfiles)];
+        setFollowers(filteredFollowerProfiles);
+        
+        const followingProfiles = profile.following;
+        const filteredFollowingProfiles = [...new Set(followingProfiles)];
+        setFollowing(filteredFollowingProfiles);
+
+    },[profile]);
+ /*  console.log(following);  */
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error loading profiles.</div>;
+  }
     return(
         <div className='rightbar'>
             <div className="container">
+            {/* {partUrl !== `${name}` && */} 
                 <div className="item">
-                    <span>Suggestions for you</span>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <span>Jane Doe</span>
-                        </div>
-                        <div className="buttons">
-                            <button>Follow</button>
-                            <button>Unfollow</button>
-                        </div>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <span>Jane Doe</span>
-                        </div>
-                        <div className="buttons">
-                            <button>Follow</button>
-                            <button>Unfollow</button>
-                        </div>
-                    </div>
+                    <span>Friends</span>
+                    {following.map((profile, index) =>(
+                        <Following key={index} profile={profile} />
+                    ))}
                 </div>
+                
+           {/*  } */}
+            {/* {partUrl !== `${name}` && 
+                <div className="item">
+                    <span>Followers</span>
+                    {followers.map((profile, index) =>(
+                        <Followers key={index} profile={profile} />
+                    ))}
+                </div>
+                } */}
                 <div className="item">
                     <span>Latest activities</span>
                     <div className="user">
@@ -64,37 +100,6 @@ function RightBar(){
                         <span className="date">
                             1 min ago
                         </span>
-                    </div>
-                </div>
-                <div className="item">
-                    <span>Online friends</span>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <div className='online'></div>
-                            <span>Jane Doe</span>
-                        </div>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <div className='online'></div>
-                            <span>Jane Doe</span>
-                        </div>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <div className='online'></div>
-                            <span>Jane Doe</span>
-                        </div>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <div className='online'></div>
-                            <span>Jane Doe</span>
-                        </div>
                     </div>
                 </div>
             </div>

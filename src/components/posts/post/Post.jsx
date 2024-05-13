@@ -36,9 +36,11 @@ function Post({ post }) {
             ) : (
               <img src="/assets/person/noAvatar.png" />
             )}
-            <div className="details">
-              <span className="name">{author}</span>
-              <span className="date">{moment(post.created).fromNow()}</span>
+            <div className="user-details">
+              <Link to={`/profile/${author}`}>
+                <span className="name">{author}</span>
+                <span className="date">{moment(post.created).fromNow()}</span>
+              </Link>
             </div>
           </div>
           <div className="details" ref={ref}>
@@ -70,14 +72,14 @@ function Post({ post }) {
             {post._count.comments} comments
           </div>
         </div>
-        {liked && <Likes postId={post.id} />}
+          {liked && <Likes postId={post.id} />}
 
-        {commentOpen && <Comments postId={post.id} />}
-        {commentOpen &&
-          comments.map(
-            (comment) =>
-              comment && <Comment key={comment.id} comment={comment} />
-          )}
+          {commentOpen && <Comments postId={post.id} />}
+          {commentOpen &&
+            comments.map(
+              (comment) =>
+                comment && <Comment key={comment.id} comment={comment} />
+            )}
       </div>
     </div>
   );

@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import "./profile.scss";
+import "./profiles.scss";
 
-function Profile({profile}) {
+function Profiles({profile}) {
+/*   console.log(profile); */
 
   return (
     <div className="profile">
         <div className="userInfo">
         <Link to={`/profile/${profile.name}`}>
-          {profile.avatar ? (
+          {profile.avatar ? 
             <img src={profile.avatar} alt="" />
-          ) : (
+           : 
             <img src="/assets/person/noAvatar.png" />
-          )}
+          }
           <div className="details">
               {profile && <span className="name">{profile.name}</span>}
             </div>
@@ -20,4 +21,4 @@ function Profile({profile}) {
     </div>
   );
 }
-export default Profile;
+export default Profiles;
