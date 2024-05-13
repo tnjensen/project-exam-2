@@ -8,18 +8,22 @@ import Image6 from "../../../assets/person/6.jpeg";
 import { useToken } from "../../../stores/useUserStore";
 import { profileUrl } from "../../../constants/api";
 import useProfile from "../../../hooks/useProfile";
-import Profile from "../../profile/Profile";
-
+import Profiles from "../../profiles/Profiles";
+import {
+  useAvatar,
+  useName
+} from "../../../stores/useUserStore";
+import { Link } from "react-router-dom";
 function LeftBar() {
+  const currentUser = useName();
+  const avatar = useAvatar();
   const token = useToken();
   const {
       data: profiles,
       isError,
       isLoading,
-    } = useProfile(profileUrl + `?_followers=true&_following=true&_posts=true`, token);
-  console.log(profiles);
-
-  /* const posts = profiles.posts; */
+    } = useProfile(profileUrl + `?offset=300_followers=true&_following=true&_posts=true`, token);
+  /* console.log(profiles); */
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -31,6 +35,13 @@ function LeftBar() {
     <div className="leftbar">
       <div className="container">
         <div className="menu">
+          <div className="item">
+            <Link to={`/profile/${currentUser}`}>
+                <img src={avatar} alt='user' />
+                <span>{currentUser}</span>
+            </Link>
+          </div>
+                    
           <span>Suggestions</span>
           {/* <div className="item">
                         <img src={Image1} alt='user' />
@@ -56,7 +67,7 @@ function LeftBar() {
                         <img src={Image6} alt='user' />
                         <span>Desdemona Allbright</span>
                     </div> */}
-          {profiles.map((profile, index) => profile.posts.length && <Profile key={index} profile={profile} />)}
+          {profiles.map((profile, index) => profile.posts.length && <Profiles key={index} profile={profile} />)}
         </div>
         <hr />
         <div className="menu">

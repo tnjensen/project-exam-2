@@ -1,11 +1,14 @@
 .profile{
     
-    .userInfo{
+    .userInfo a{
+        text-decoration: none;
         display: flex;
+        align-items: center;
         gap: 5px;
 
         img{
             width: 30px;
+            height: 30px;
             border-radius: 5px;
         }
     }

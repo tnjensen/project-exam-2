@@ -27,9 +27,13 @@
                 object-fit: cover;
             }
     
-            .details{
+            .user-details a{
                 display: flex;
                 flex-direction: column;
+
+                a{
+                    text-decoration: none;
+                }
 
                 .name{
                     font-weight: 500;

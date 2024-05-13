@@ -1,0 +1,17 @@
+.follower{
+    padding: 10px 0;   
+
+   .followerInfo a{
+       text-decoration: none;
+       display: flex;
+       flex-wrap: wrap;
+       align-items: center;
+       gap: 5px;
+
+       img{
+           width: 40px;
+           height: 40px;
+           border-radius: 50%;
+       }
+   }
+}
