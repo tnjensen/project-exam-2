@@ -1,5 +1,6 @@
 import './following.scss';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function Following({profile}){
     
@@ -19,5 +20,8 @@ function Following({profile}){
             </div>
         </div>
     )
+}
+Following.propTypes = {
+    profile: PropTypes.object
 }
 export default Following;

@@ -3,10 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
-import ValidationMessage from "../shared/ValidationMessage";
 import { registerUrl } from "../../constants/api";
 import { useState } from "react";
-import { useUserActions } from "../../stores/useUserStore";
 
 const schema = yup
 	.object({
@@ -21,8 +19,6 @@ const schema = yup
 const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	/* const { setUser } = useUserActions(); */
 
 	const navigate = useNavigate();
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./profiles.scss";
+import PropTypes from 'prop-types';
 
 function Profiles({profile}) {
 
@@ -19,5 +20,8 @@ function Profiles({profile}) {
         </div>
     </div>
   );
+}
+Profiles.propTypes = {
+  profile: PropTypes.object
 }
 export default Profiles;

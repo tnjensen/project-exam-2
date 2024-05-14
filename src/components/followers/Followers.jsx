@@ -1,5 +1,6 @@
 import './followers.scss';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function Followers({profile}){
 
@@ -19,5 +20,9 @@ function Followers({profile}){
             </div>
         </div>
     )
+
+}
+Followers.propTypes = {
+    profile: PropTypes.object
 }
 export default Followers;

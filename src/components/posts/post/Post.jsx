@@ -3,22 +3,20 @@ import "./post.scss";
 import moment from "moment";
 import { MoreHoriz } from "@mui/icons-material";
 import { useRef, useState } from "react";
-import { useAvatar, useName } from "../../../stores/useUserStore";
 import Comments from "../../comments/Comments";
 import Likes from "../../likes/Likes";
 import Comment from "../../comment/Comment";
 import Like from "../../like/Like";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
+import PropTypes from 'prop-types';
 
 function Post({ post }) {
   const [commentOpen, setCommentOpen] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [detail, setDetail] = useState(false);
   const author = post.author.name;
   const avatar = post.author.avatar;
   const comments = post.comments;
   const likes = post.reactions;
-  const emoji = post.reactions.symbol;
   const [display, setDisplay] = useState(false);
   const ref = useRef();
 
@@ -56,7 +54,6 @@ function Post({ post }) {
           <h3>{post.title}</h3>
           <p>{post.body}</p>
           {post.media && <img src={post.media} alt='post'/>} 
-          {/* <img src={post.media} alt="post" /> */}
           <div className="likes">
             {likes.map((like, index) => (
               <Like key={index} like={like} />
@@ -83,5 +80,8 @@ function Post({ post }) {
       </div>
     </div>
   );
+}
+Post.propTypes = {
+  post: PropTypes.object
 }
 export default Post;

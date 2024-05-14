@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './comments.scss';
-import moment from 'moment';
 import { useAvatar, useToken } from '../../stores/useUserStore';
 import { apiUrl } from '../../constants/api';
+import PropTypes from 'prop-types';
 
 function Comments({postId}){
     const avatar = useAvatar();
@@ -41,5 +41,8 @@ function Comments({postId}){
             </div>
         </div>
     )
+}
+Comments.propTypes = {
+    postId: PropTypes.number
 }
 export default Comments;
