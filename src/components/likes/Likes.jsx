@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './likes.scss';
 import { useToken } from '../../stores/useUserStore';
 import { apiUrl } from '../../constants/api';
+import PropTypes from 'prop-types';
 
 const quickMenu = [
     {title: 1, path: "", Icon: "🙂"},
@@ -52,5 +53,8 @@ function Likes({postId}){
             </div>
         </div>
     )
+}
+Likes.propTypes = {
+    postId: PropTypes.number
 }
 export default Likes;
