@@ -2,8 +2,7 @@ import './following.scss';
 import { Link } from "react-router-dom";
 
 function Following({profile}){
-    console.log(profile);
-
+    
     return(
         <div className="friend">
             <div className="friendInfo">

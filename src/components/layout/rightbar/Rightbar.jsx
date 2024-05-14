@@ -38,20 +38,20 @@ function RightBar(){
         <div className='rightbar'>
             <div className="container">
                 <div className="item">
-                    <span>Friends</span>
+                    <span className='header'>Friends</span>
                     {following.map((profile, index) =>(
                         <Following key={index} profile={profile} />
                     ))}
                 </div>
                 
                 <div className="item">
-                    <span>Followers</span>
+                    <span className='header'>Followers</span>
                     {followers.map((profile, index) =>(
                         <Followers key={index} profile={profile} />
                     ))}
                 </div>
                 <div className="item">
-                    <span>Latest activities</span>
+                    <span className='header'>Latest activities</span>
                     <div className="user">
                         <div className="userInfo">
                             <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />

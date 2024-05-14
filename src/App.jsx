@@ -20,10 +20,12 @@ function App() {
         }
       >
         <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
         <Route path="profile/:name" element={<Profile />} />
         <Route path="detail/:id" element={<PostDetail />} />
+      </Route>
+      <Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
     </Routes>
   );

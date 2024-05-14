@@ -2,7 +2,6 @@ import './followers.scss';
 import { Link } from "react-router-dom";
 
 function Followers({profile}){
-    console.log(profile);
 
     return(
         <div className="follower">

@@ -41,33 +41,11 @@ function LeftBar() {
                 <span>{currentUser}</span>
             </Link>
           </div>
-                    
-          <span>Suggestions</span>
-          {/* <div className="item">
-                        <img src={Image1} alt='user' />
-                        <span>Michel Spaniard</span>
-                    </div>
-                    <div className="item">
-                        <img src={Image2} alt='user' />
-                        <span>Austin Sprall</span>
-                    </div>
-                    <div className="item">
-                        <img src={Image3} alt='user' />
-                        <span>Izzy Wong</span>
-                    </div>
-                    <div className="item">
-                        <img src={Image4} alt='user' />
-                        <span>Ilsa Weng</span>
-                    </div>
-                    <div className="item">
-                        <img src={Image5} alt='user' />
-                        <span>Jacob Hall</span>
-                    </div>
-                    <div className="item">
-                        <img src={Image6} alt='user' />
-                        <span>Desdemona Allbright</span>
-                    </div> */}
-          {profiles.map((profile, index) => profile.posts.length && <Profiles key={index} profile={profile} />)}
+          <hr />
+          <span className="header">Suggestions</span>
+          {profiles.map((profile, index) =>
+            profile.posts.length && <Profiles key={index} profile={profile} />
+          )}
         </div>
         <hr />
         <div className="menu">

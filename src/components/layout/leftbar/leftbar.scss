@@ -19,17 +19,18 @@
             padding: 10px 20px;
 
             hr{
-                margin: 20px 0;
+                margin: 10px 0;
                 border: none;
                 height: 0.5px;
+                background-color: $background;
             }
             .menu{
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
 
-                span{
-                    font-size: 13px;
+                .header{
+                    font-weight: 600;
                     
                 }
 

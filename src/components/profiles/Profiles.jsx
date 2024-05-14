@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./profiles.scss";
 
 function Profiles({profile}) {
-/*   console.log(profile); */
 
   return (
     <div className="profile">

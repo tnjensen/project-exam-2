@@ -43,7 +43,6 @@ function Profile() {
       setFollowed(currentProfile);
 
   },[userProfile,name]);
-  console.log(followers);
 
   const { data: posts } = useApi(
     profileUrl +
