@@ -23,7 +23,7 @@ function LeftBar() {
       isError,
       isLoading,
     } = useProfile(profileUrl + `?offset=300_followers=true&_following=true&_posts=true`, token);
-  /* console.log(profiles); */
+  console.log(profiles);
 
   if (isLoading) {
     return <div>Loading...</div>;
