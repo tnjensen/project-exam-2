@@ -6,8 +6,8 @@ import { AuthProvider } from './hooks/useAuth.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-    <AuthProvider>
-    <App />
-    </AuthProvider>
+        <AuthProvider>
+            <App />
+        </AuthProvider>
     </BrowserRouter>
 )
