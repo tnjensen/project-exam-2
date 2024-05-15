@@ -4,11 +4,16 @@ import LeftBar from "./leftbar/LeftBar";
 import RightBar from "./rightbar/Rightbar";
 
 const Layout = () => {
+  const partUrl = window.location.href.split("/").pop();
+  console.log(partUrl);
+  
   return (
     <div className="wrapper">
       <Header />
       <div style={{ display: "flex" }}>
-        <LeftBar />
+          {/* {partUrl !== 'navigation' &&  */}
+            <LeftBar />
+         {/*  } */}
         <div style={{ flex: 6 }}>
           <Outlet />
         </div>

@@ -4,7 +4,7 @@
         flex: 2;
         position: sticky;
         top: 50px;
-        height: calc(100vh - 50px);//Needed to stay in postition for the scroll
+        height: calc(100vh - 50px);//Needed to stay in position for the scroll
         overflow: scroll;
         display: none;
 
@@ -31,7 +31,7 @@
 
                 .header{
                     font-weight: 600;
-                    
+                    padding: 0;
                 }
 
                 .item{

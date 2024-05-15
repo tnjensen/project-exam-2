@@ -1,8 +1,6 @@
 import { useAvatar, useName, useToken } from '../../stores/useUserStore';
 import './share.scss';
 import Image2 from '../../assets/post/3.jpeg';
-import Image1 from '../../assets/person/4.jpeg';
-import Image3 from '../../assets/person/5.jpeg';
 import { useState } from 'react';
 import { apiUrl } from '../../constants/api';
 
@@ -37,7 +35,6 @@ export default function Share() {
         }
     }
     
-    
     const handleClick = async (e) =>{
         e.preventDefault();
         await upload();
@@ -70,14 +67,6 @@ export default function Share() {
                             {file ? <button className='cancel'>Cancel</button> : <><img src={Image2} alt='post' />
                             <span>Add Image</span></>}
                         </div>
-                    {/* <div className='item'>
-                        <img src={Image1} alt='map' />
-                        <span>Add Place</span>
-                    </div>
-                    <div className='item'>
-                        <img src={Image3} alt='friend' />
-                        <span>Tag Friends</span>
-                    </div> */}
                 </div>
                 <div className='right'>
                     <button onClick={handleClick}>Share</button>

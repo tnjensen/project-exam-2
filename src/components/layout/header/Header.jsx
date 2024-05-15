@@ -9,6 +9,9 @@ import {
 } from "../../../stores/useUserStore";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
+import MenuIcon from '@mui/icons-material/Menu';
+import LeftBar from "../leftbar/LeftBar";
+import Sidebar from "../../sidebar/Sidebar";
 
 function Header() {
   const avatar = useAvatar();
@@ -16,6 +19,7 @@ function Header() {
   const [search, setSearch] = useState("");
   const { clearUser } = useUserActions();
   const [display, setDisplay] = useState(false);
+  const [menu, setMenu] = useState(false);
   const partUrl = window.location.href.split("/").pop();
   const ref = useRef();
 
@@ -33,7 +37,14 @@ function Header() {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        {partUrl !== `${name}` && (
+        {/* <div className="navigation"> */}
+       {/*  <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} /> */}
+        <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link>
+            {/* {menu && (
+                <Sidebar />
+          )} */}
+          {/* </div> */}
+          {partUrl !== `${name}` && (
           <div className="search">
             <SearchOutlined />
             <input
@@ -57,7 +68,7 @@ function Header() {
             <ul className="profile-menu">
               <li>
                 {partUrl !== `${name}` && (
-                  <Link to={`/profile/${name}`}>Profile</Link>
+                  <Link to={`/profile/${name}`} onClick={() => setDisplay(!display)}>Profile</Link>
                 )}
               </li>
               <li>

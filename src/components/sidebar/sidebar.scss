@@ -1,0 +1,54 @@
+@import '../../App.scss';
+
+.sidebar{
+        flex: 2;
+        position: sticky;
+        top: 50px;
+        height: calc(100vh - 50px);//Needed to stay in position for the scroll
+        overflow: scroll;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        
+        .container{
+            padding: 10px 20px;
+
+            hr{
+                margin: 10px 0;
+                border: none;
+                height: 0.5px;
+                background-color: $background;
+            }
+            .menu{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .header{
+                    font-weight: 600;
+                    padding: 0;
+                }
+
+                .item{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    
+                    a{
+                        text-decoration: none;
+                    }
+                    span{
+                        font-size: 14px;
+                    }
+
+                    img{
+                        height: 30px;
+                        width: 30px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+}
