@@ -14,6 +14,7 @@ import {
   useName
 } from "../../../stores/useUserStore";
 import { Link } from "react-router-dom";
+
 function LeftBar() {
   const currentUser = useName();
   const avatar = useAvatar();
@@ -42,7 +43,7 @@ function LeftBar() {
             </Link>
           </div>
           <hr />
-          <span className="header">Suggestions</span>
+          <span className="header">Suggestions for you</span>
           {profiles.map((profile, index) =>
             profile.posts.length > 0 && <Profiles key={index} profile={profile} />
           )}

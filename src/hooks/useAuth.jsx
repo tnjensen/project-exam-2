@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={{login, logout, user}}>{children}</AuthContext.Provider>;
 };
 AuthProvider.propTypes = {
-  children: PropTypes.props
+  children: PropTypes.children
 }
 export const useAuth = () => {
   return useContext(AuthContext);
