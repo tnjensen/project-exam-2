@@ -3,6 +3,7 @@
     .userInfo a{
         text-decoration: none;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 5px;
         padding: 5px 0;
