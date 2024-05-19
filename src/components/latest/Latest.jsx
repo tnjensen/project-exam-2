@@ -25,7 +25,7 @@ function Latest({profile}){
                 : 
                     <img src="/assets/person/noAvatar.png" />
                 }
-                <p>{profile.name}&apos;s latest updated post: </p>
+                <p>{profile.name}&apos;s latest update was  </p>
             </div>
             <span className="date">
             { posts[0] && moment(posts[0].updated).fromNow()}
