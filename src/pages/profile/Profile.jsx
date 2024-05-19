@@ -3,18 +3,20 @@ import {
   useName,
   useToken,
 } from "../../stores/useUserStore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { MoreHorizOutlined } from "@mui/icons-material";
 import { profileUrl } from "../../constants/api";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 import useApi from "../../hooks/useApi";
 import Post from "../../components/posts/post/Post";
 import { useParams } from "react-router-dom";
 
 function Profile() {
+  const ref = useRef();
   const currentUser = useName();
   const token = useToken();
   const { name } = useParams();
@@ -34,7 +36,11 @@ function Profile() {
       `?_follower=true&_following=true`,
     token
   );
-  
+
+  useOutsideClick(ref, () => {
+    setDisplay(false);
+  });
+
   useEffect(() => {
       const followingProfiles = userProfile.following;
       setFollowers(followingProfiles);
@@ -146,6 +152,7 @@ function Profile() {
         <div className="center">
           <h3>Name: {profile.name}</h3>
           <p>Email: {profile.email}</p>
+          <p>Website: {profile.banner}</p>
           {name !== currentUser && (
             <div className="bottom">
               {followed.length ? <button className="follow-button" onClick={handleUnFollow}>Unfollow</button> 
@@ -155,8 +162,10 @@ function Profile() {
           )}
         </div>
         <div className="right">
-          <div className="more">
+          <div className="more" ref={ref}>
+          {name === currentUser &&
             <MoreHorizOutlined onClick={() => setDisplay(!display)} />
+          }
           </div>
           {display && name === currentUser && (
             <div className="profile-details">
