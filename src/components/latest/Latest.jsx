@@ -28,10 +28,10 @@ function Latest({profile}){
                 {/* <div className="details">
                     {profile && <span className="name">{profile.name}</span>}
                 </div> */}
-                <p><span>{profile.name}</span> updated a post </p>
+                <p>{profile.name}&apos;s last updated post </p>
             </div>
             <span className="date">
-            {/* {moment(posts.updated).fromNow()} */}
+            {moment(posts[0].updated).fromNow()}
             {posts.updated}
             </span>
         </div>
