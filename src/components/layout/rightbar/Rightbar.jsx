@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 function RightBar(){
     const currentUser = useName();
     const user = useParams();
+    const partUrl = window.location.href.split("/").pop();
     const token = useToken();
     const {
         data: profile,
@@ -55,8 +56,8 @@ function RightBar(){
                 </div>
                 <div className="item">
                     <span className='header'>Latest activities</span>
-                    {/* {following.map((profile, index) =>( */}
-                        <Latest key={user} profile={user} />
+                    {/* {partUrl === user.name && ) */}
+                    {partUrl === user.name && <Latest key={user} profile={user} />}
                     {/* ))} */}
                 </div>
             </div>
