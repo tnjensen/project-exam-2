@@ -56,9 +56,8 @@ function RightBar(){
                 </div>
                 <div className="item">
                     <span className='header'>Activities</span>
-                    {/* {partUrl === user.name && ) */}
-                    {partUrl === user.name && <Latest key={user} profile={user} />}
-                    {/* ))} */}
+                    {partUrl === user.name ? <Latest key={user} profile={user} />
+                    : "Please choose a profile"}
                 </div>
             </div>
         </div>
