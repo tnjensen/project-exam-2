@@ -6,15 +6,17 @@ import Following from '../../following/Following';
 import './rightbar.scss';
 import Followers from '../../followers/Followers';
 import Latest from '../../latest/Latest';
+import { useParams } from 'react-router-dom';
 
 function RightBar(){
     const currentUser = useName();
+    const user = useParams();
     const token = useToken();
     const {
         data: profile,
         isError,
         isLoading,
-        } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true`, token);
+        } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true&_posts=true`, token);
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
 
@@ -53,9 +55,9 @@ function RightBar(){
                 </div>
                 <div className="item">
                     <span className='header'>Latest activities</span>
-                    {following.map((profile, index) =>(
-                        <Latest key={index} profile={profile} />
-                    ))}
+                    {/* {following.map((profile, index) =>( */}
+                        <Latest key={user} profile={user} />
+                    {/* ))} */}
                 </div>
             </div>
         </div>

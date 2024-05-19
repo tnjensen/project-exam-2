@@ -5,7 +5,6 @@ import RightBar from "./rightbar/Rightbar";
 
 const Layout = () => {
   const partUrl = window.location.href.split("/").pop();
-  console.log(partUrl);
   
   return (
     <div className="wrapper">
