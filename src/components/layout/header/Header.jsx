@@ -10,8 +10,6 @@ import {
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
-import LeftBar from "../leftbar/LeftBar";
-import Sidebar from "../../sidebar/Sidebar";
 
 function Header() {
   const avatar = useAvatar();

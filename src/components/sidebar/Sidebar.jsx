@@ -48,7 +48,7 @@ function Sidebar() {
             profile.posts.length > 0 && <Profiles key={index} profile={profile} />
           )}
         </div>
-        <hr />
+       {/*  <hr />
         <div className="menu">
           <span>Your shortcuts</span>
           <div className="item">
@@ -103,7 +103,7 @@ function Sidebar() {
             <img src={Image6} alt="user" />
             <span>Jane Doe</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ function Posts() {
   console.log(posts);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
   if (isError) {
     return <div>Error loading posts.</div>;

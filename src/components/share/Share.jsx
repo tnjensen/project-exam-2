@@ -49,7 +49,7 @@ export default function Share() {
             <div className="top">
                 <div className="left">
                     <img src={avatar} alt='profile' className="shareImg" />
-                    <p>{`What's on your mind, ${name} ?`}</p>
+                    <p>{`Share if you dare, ${name} ?`}</p>
                     <input placeholder={`Title`} onChange={(e) => setTitle(e.target.value)} />
                     <input placeholder={`Content`} onChange={(e) => setBody(e.target.value)} />
                 </div>

@@ -3,7 +3,6 @@ import "./profiles.scss";
 import PropTypes from 'prop-types';
 
 function Profiles({profile}) {
-
   return (
     <div className="profile">
         <div className="userInfo">

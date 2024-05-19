@@ -7,7 +7,6 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import PostDetail from "./components/posts/postDetail/PostDetail";
-import LeftBar from "./components/layout/leftbar/LeftBar";
 import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {

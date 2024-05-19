@@ -5,6 +5,7 @@ import { useName, useToken } from '../../../stores/useUserStore';
 import Following from '../../following/Following';
 import './rightbar.scss';
 import Followers from '../../followers/Followers';
+import Latest from '../../latest/Latest';
 
 function RightBar(){
     const currentUser = useName();
@@ -13,7 +14,7 @@ function RightBar(){
         data: profile,
         isError,
         isLoading,
-        } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true&_posts=true`, token);
+        } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true`, token);
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
 
@@ -52,42 +53,9 @@ function RightBar(){
                 </div>
                 <div className="item">
                     <span className='header'>Latest activities</span>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <p><span>Jane Doe</span> changed their cover picture</p>
-                        </div>
-                        <span className="date">
-                            1 min ago
-                        </span>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <p><span>Jane Doe</span> changed their cover picture</p>
-                        </div>
-                        <span className="date">
-                            1 min ago
-                        </span>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <p><span>Jane Doe</span> changed their cover picture</p>
-                        </div>
-                        <span className="date">
-                            1 min ago
-                        </span>
-                    </div>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src='https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600' alt='user' />
-                            <p><span>Jane Doe</span> changed their cover picture</p>
-                        </div>
-                        <span className="date">
-                            1 min ago
-                        </span>
-                    </div>
+                    {following.map((profile, index) =>(
+                        <Latest key={index} profile={profile} />
+                    ))}
                 </div>
             </div>
         </div>
