@@ -35,13 +35,7 @@ function Header() {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        {/* <div className="navigation"> */}
-       {/*  <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} /> */}
         <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link>
-            {/* {menu && (
-                <Sidebar />
-          )} */}
-          {/* </div> */}
           {partUrl !== `${name}` && (
           <div className="search">
             <SearchOutlined />
