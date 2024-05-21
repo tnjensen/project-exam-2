@@ -79,26 +79,41 @@ function PostDetail() {
         <ArrowBackOutlinedIcon />
         Back to posts
       </Link>
-      <h3>Edit Post</h3>
+      { post && owner && currentUser === owner.name ? 
+        <h3>Edit Post</h3> :
+        <h3>Post Details</h3>
+      }
       {error && <ServerWarning>{error}</ServerWarning>}
       <form className="edit-form">
+      {post && owner && currentUser === owner.name ?
+      <>
         <label htmlFor="title">Title:</label>
-        <input
+         <input
           id="title"
           type="text"
           placeholder={post.title}
           onChange={(e) => setTitle(e.target.value)}
           value={title}
-        />
+         />
+        </>
+        : 
+        <span>{post.title}</span>}
+        {post && owner && currentUser === owner.name ?
+        <>
         <label htmlFor="content">Content:</label>
-        <input
+         <input
           id="content"
           type="text"
           placeholder={post.body}
           onChange={(e) => setBody(e.target.value)}
           value={body}
-        />
-        <label htmlFor="content">Image:</label>
+        /> 
+        </>
+        : 
+        <span>{post.body}</span>}
+        {post && owner && currentUser === owner.name &&
+          <label htmlFor="content">Image:</label>
+        }
         <img src={post.media} alt="post" />
         {post && owner && currentUser === owner.name && (
           <input

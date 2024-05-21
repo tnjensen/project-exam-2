@@ -20,9 +20,17 @@
     
             .left{
                 display: flex;
-                align-items: center;
-                flex-wrap: wrap;
+                flex-direction: column;
                 gap: 10px;
+
+                .user{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                input{
+                    margin-left: 0;
+                }
             }
 
             .right{

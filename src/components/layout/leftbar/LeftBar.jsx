@@ -48,62 +48,6 @@ function LeftBar() {
             profile.posts.length > 0 && <Profiles key={index} profile={profile} />
           )}
         </div>
-       {/*  <hr />
-        <div className="menu">
-          <span>Your shortcuts</span>
-          <div className="item">
-            <img src={Image1} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image2} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image3} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image4} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image5} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image6} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <hr />
-        <div className="menu">
-          <span>Others</span>
-          <div className="item">
-            <img src={Image1} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image2} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image3} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image4} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image5} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image6} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-        </div> */}
       </div>
     </div>
   );
