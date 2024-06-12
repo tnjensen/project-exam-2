@@ -152,7 +152,7 @@ function Profile() {
         <div className="center">
           <h3>Name: {profile.name}</h3>
           <p>Email: {profile.email}</p>
-          <p>Website: {profile.banner}</p>
+          <p className="web">Website: {profile.banner}</p>
           {name !== currentUser && (
             <div className="bottom">
               {followed.length ? <button className="follow-button" onClick={handleUnFollow}>Unfollow</button> 
