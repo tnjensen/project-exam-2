@@ -10,6 +10,7 @@ import {
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
+import Sidebar from "../../sidebar/Sidebar";
 
 function Header() {
   const avatar = useAvatar();
@@ -35,7 +36,9 @@ function Header() {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link>
+        {/* <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link> */}
+        <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} ref={ref} />
+          {menu && <Sidebar />}
           {partUrl !== `${name}` && (
           <div className="search">
             <SearchOutlined />

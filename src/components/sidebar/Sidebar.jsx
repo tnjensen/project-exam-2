@@ -1,21 +1,23 @@
 import './sidebar.scss';
-import Image1 from "../../assets/person/1.jpeg";
-import Image2 from "../../assets/person/2.jpeg";
-import Image3 from "../../assets/person/3.jpeg";
-import Image4 from "../../assets/person/4.jpeg";
-import Image5 from "../../assets/person/5.jpeg";
-import Image6 from "../../assets/person/6.jpeg";
 import { useToken } from "../../stores/useUserStore";
 import { profileUrl } from "../../constants/api";
 import useProfile from "../../hooks/useProfile";
 import Profiles from "../profiles/Profiles";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 import {
   useAvatar,
   useName
 } from "../../stores/useUserStore";
 import { Link } from "react-router-dom";
+import { useRef, useState } from 'react';
 
 function Sidebar() {
+  const ref = useRef();
+  const [menu, setMenu] = useState(false);
+
+  useOutsideClick(ref, () => {
+    setMenu(false);
+  });
   const currentUser = useName();
   const avatar = useAvatar();
   const token = useToken();
@@ -48,62 +50,6 @@ function Sidebar() {
             profile.posts.length > 0 && <Profiles key={index} profile={profile} />
           )}
         </div>
-       {/*  <hr />
-        <div className="menu">
-          <span>Your shortcuts</span>
-          <div className="item">
-            <img src={Image1} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image2} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image3} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image4} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image5} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image6} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <hr />
-        <div className="menu">
-          <span>Others</span>
-          <div className="item">
-            <img src={Image1} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image2} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image3} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image4} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image5} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-          <div className="item">
-            <img src={Image6} alt="user" />
-            <span>Jane Doe</span>
-          </div>
-        </div> */}
       </div>
     </div>
   );
