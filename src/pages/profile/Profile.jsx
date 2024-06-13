@@ -14,6 +14,7 @@ import { useOutsideClick } from "../../hooks/useOutsideClick";
 import useApi from "../../hooks/useApi";
 import Post from "../../components/posts/post/Post";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function Profile() {
   const ref = useRef();
@@ -130,6 +131,9 @@ function Profile() {
 
   return (
     <div className="profile">
+      <Helmet>
+      <title>Profile</title>
+      </Helmet>
       <div className="images">
         <img
           className="cover"
@@ -163,24 +167,24 @@ function Profile() {
         </div>
         <div className="right">
           <div className="more" ref={ref}>
-          {name === currentUser &&
-            <MoreHorizOutlined onClick={() => setDisplay(!display)} />
-          }
+            {name === currentUser && (
+              <MoreHorizOutlined onClick={() => setDisplay(!display)} />
+            )}  
+            {display && name === currentUser && (
+              <div className="profile-details">
+                <h3>Edit profile</h3>
+                <p className="avatar">
+                  Avatar: <img src={profile.avatar} />
+                </p>
+                <input type="text" placeholder="New avatar url.." />
+                <p>Website: {profile.banner}</p>
+                <input type="text" placeholder="New site url.." />
+                <button className="edit-details-button" onClick={handleUpdate}>
+                  Update details
+                </button>
+              </div>
+            )}
           </div>
-          {display && name === currentUser && (
-            <div className="profile-details">
-              <h3>Edit profile</h3>
-              <p className="avatar">
-                Avatar: <img src={profile.avatar} />
-              </p>
-              <input type="text" placeholder="New avatar url.." />
-              <p>Website: {profile.banner}</p>
-              <input type="text" placeholder="New site url.." />
-              <button className="edit-details-button" onClick={handleUpdate}>
-                Update details
-              </button>
-            </div>
-          )}
         </div>
       </div>
       <div className="profile-posts">

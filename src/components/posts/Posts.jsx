@@ -26,7 +26,7 @@ function Posts() {
   }
   return (
     <div className="posts">
-      {shareOpen ? (
+      {/* {shareOpen ? (
         <>
           <RemoveOutlinedIcon
             className="add-post"
@@ -39,7 +39,8 @@ function Posts() {
           className="add-post"
           onClick={() => setShareOpen(!shareOpen)}
         />
-      )}
+      )} */}
+      <Share />
       {posts.map((post) => (
         post.media && <Post key={post.id} post={post} />
       ))}

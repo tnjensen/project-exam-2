@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import "./profiles.scss";
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
 function Profiles({profile}) {
+  const [menu, setMenu] = useState(false);
+
   return (
     <div className="profiles">
         <div className="userInfo">

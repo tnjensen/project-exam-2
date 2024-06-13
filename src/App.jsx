@@ -23,7 +23,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="profile/:name" element={<Profile />} />
         <Route path="detail/:id" element={<PostDetail />} />
-        <Route path="navigation" element={<Sidebar />} />
+        {/* <Route path="navigation" element={<Sidebar />} /> */}
       </Route>
       <Route>
         <Route path="login" element={<Login />} />
