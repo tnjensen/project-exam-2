@@ -7,7 +7,6 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import PostDetail from "./components/posts/postDetail/PostDetail";
-import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
         <Route index element={<Home />} />
         <Route path="profile/:name" element={<Profile />} />
         <Route path="detail/:id" element={<PostDetail />} />
-        {/* <Route path="navigation" element={<Sidebar />} /> */}
       </Route>
       <Route>
         <Route path="login" element={<Login />} />
