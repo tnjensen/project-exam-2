@@ -12,6 +12,7 @@ import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
 import LeftBar from "../leftbar/LeftBar";
+import Notifications from "../../notifications/Notifications";
 
 function Header() {
   const avatar = useAvatar();
@@ -24,12 +25,16 @@ function Header() {
   const partUrl = window.location.href.split("/").pop();
   const ref1 = useRef();
   const ref2 = useRef();
+  const ref3 = useRef();
 
   useOutsideClick(ref1, () => {
     setDisplay(false);
   });
   useOutsideClick(ref2, () => {
     setMenu(false)
+  });
+  useOutsideClick(ref3, () => {
+    setNotify(false)
   });
 
   const handleLogout = () => {
@@ -61,7 +66,10 @@ function Header() {
           </div>
       </div>
       <div className="right">
-        <NotificationsOutlinedIcon className="notifications" onClick={() => setNotify(!notify)} />
+        <div className="notifications" ref={ref3}>
+          <NotificationsOutlinedIcon onClick={() => setNotify(!notify)} />
+          {notify && <Notifications />}
+        </div>
         <div className="user" ref={ref1}>
           <img
             src={avatar}

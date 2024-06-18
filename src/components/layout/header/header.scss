@@ -73,16 +73,6 @@ header{
             cursor: pointer;
         }
 
-        .logout-button{
-            border: 1px solid $primary;
-            color: $textColor;
-            padding: 3px 7px;
-            border-radius: 5px;
-        }
-       
-        .sidebar-list{
-             
-        }
         .user{
             
             .profile-icon{
@@ -94,7 +84,7 @@ header{
                 position: absolute;
                 right: 15px;
                 top: 60px;
-                background-color: $primary;
+                background-color: $secondary;
                 color: $darkTextColor;
                 padding: 10px;
 

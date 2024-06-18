@@ -1,0 +1,26 @@
+@import '../../App.scss';
+
+.notifications{ 
+    position: relative;
+    
+
+    .notifications-content{
+        width: 30vw;
+        position: absolute;
+        background-color: $secondary;
+        color: $darkTextColor;
+        right: 0;
+
+        h3{
+            padding: 10px 20px;
+        }
+        .message-list{
+            position: absolute;
+            right: 0;
+            padding: 10px 20px;
+            width: 30vw;
+            background-color: $form-background;
+            color: $textColor;
+        }
+    }
+}
