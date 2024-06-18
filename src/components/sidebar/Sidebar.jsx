@@ -15,9 +15,6 @@ function Sidebar() {
   const ref = useRef();
   const [menu, setMenu] = useState(false);
 
-  useOutsideClick(ref, () => {
-    setMenu(false);
-  });
   const currentUser = useName();
   const avatar = useAvatar();
   const token = useToken();
@@ -28,9 +25,9 @@ function Sidebar() {
     } = useProfile(profileUrl + `?offset=300_followers=true&_following=true&_posts=true`, token);
   console.log(profiles);
 
-  if (isLoading) {
+  /* if (isLoading) {
     return <div>Loading...</div>;
-  }
+  } */
   if (isError) {
     return <div>Error loading profiles.</div>;
   }
@@ -39,7 +36,7 @@ function Sidebar() {
       <div className="container">
         <div className="menu">
           <div className="item">
-            <Link to={`/profile/${currentUser}`}>
+            <Link to={`/profile/${currentUser}`} onClick={window.location.reload}>
                 <img src={avatar} alt='user' />
                 <span>{currentUser}</span>
             </Link>

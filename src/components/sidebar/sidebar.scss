@@ -5,10 +5,13 @@
         position: absolute;
         top: 50px;
         left: -15px;
-        background-color: $form-background;
+        background-color: white;
+        border: 1px solid $background;
+        border-radius: 20px 20px 0 0;
         height: calc(100vh - 50px);
         overflow: scroll;
         padding: 10px;
+        z-index: 1000;
 
         &::-webkit-scrollbar{
             display: none;

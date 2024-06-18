@@ -11,6 +11,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
+import LeftBar from "../leftbar/LeftBar";
 
 function Header() {
   const avatar = useAvatar();
@@ -19,11 +20,16 @@ function Header() {
   const { clearUser } = useUserActions();
   const [display, setDisplay] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [notify, setNotify] = useState(false);
   const partUrl = window.location.href.split("/").pop();
-  const ref = useRef();
+  const ref1 = useRef();
+  const ref2 = useRef();
 
-  useOutsideClick(ref, () => {
+  useOutsideClick(ref1, () => {
     setDisplay(false);
+  });
+  useOutsideClick(ref2, () => {
+    setMenu(false)
   });
 
   const handleLogout = () => {
@@ -37,22 +43,26 @@ function Header() {
           <div className="logo">Sentire</div>
         </Link>
         {/* <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link> */}
-        <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} ref={ref} />
-          {menu && <Sidebar />}
-          {partUrl !== `${name}` && (
-          <div className="search">
-            <SearchOutlined />
-            <input
-              type="text"
-              placeholder="Search.."
-              onChange={(e) => setSearch(e.target.value)}
-            />
+        <div className="sidebar-container" ref={ref2}>
+          <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} />
+            {menu && 
+              <Sidebar />
+            }
+            {/* {partUrl !== `${name}` && ( */}
+            <div className="search">
+              <SearchOutlined />
+              <input
+                type="text"
+                placeholder="Search.."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+          {/* )} */}
           </div>
-        )}
       </div>
       <div className="right">
-        <NotificationsOutlinedIcon className="notifications" />
-        <div className="user" ref={ref}>
+        <NotificationsOutlinedIcon className="notifications" onClick={() => setNotify(!notify)} />
+        <div className="user" ref={ref1}>
           <img
             src={avatar}
             alt="avatar"

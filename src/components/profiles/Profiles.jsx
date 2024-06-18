@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import "./profiles.scss";
 import PropTypes from 'prop-types';
-import { useState } from "react";
 
 function Profiles({profile}) {
-  const [menu, setMenu] = useState(false);
 
   return (
     <div className="profiles">
         <div className="userInfo">
-        <Link to={`/profile/${profile.name}`}>
+        <Link to={`/profile/${profile.name}`} onClick={window.location.reload}>
           {profile.avatar ? 
             <img src={profile.avatar} alt="" />
            : 

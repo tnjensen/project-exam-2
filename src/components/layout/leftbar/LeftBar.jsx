@@ -1,10 +1,4 @@
 import "./leftbar.scss";
-import Image1 from "../../../assets/person/1.jpeg";
-import Image2 from "../../../assets/person/2.jpeg";
-import Image3 from "../../../assets/person/3.jpeg";
-import Image4 from "../../../assets/person/4.jpeg";
-import Image5 from "../../../assets/person/5.jpeg";
-import Image6 from "../../../assets/person/6.jpeg";
 import { useToken } from "../../../stores/useUserStore";
 import { profileUrl } from "../../../constants/api";
 import useProfile from "../../../hooks/useProfile";
