@@ -51,6 +51,7 @@ header{
                 justify-content: center;
                 gap: 5px;
                 display: none;
+                
     
                 @include mobile{
                     display: block;
@@ -59,6 +60,7 @@ header{
         }
         input{
             padding: 5px;
+            border-radius: 0 0 10px 10px;
             margin-left: 5px;
         }
     
