@@ -5,7 +5,7 @@ function Notifications(){
         <div className="notifications-content">
             <h3>Your latest messages</h3>
            <ul className='message-list'>
-            <li>Message from friend</li>
+            <li>Friend message</li>
            </ul>
 
         </div>
