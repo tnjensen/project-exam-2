@@ -44,19 +44,18 @@ header{
         .sidebar-container{
             display: flex;
             gap: 10px;
+        }
+        .search{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            display: none;
+            
 
-            .search{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                display: none;
-                
-    
-                @include mobile{
-                    display: block;
-                }  
-            }
+            @include mobile{
+                display: block;
+            }  
         }
         input{
             padding: 5px;

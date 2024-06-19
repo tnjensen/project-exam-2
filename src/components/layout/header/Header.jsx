@@ -11,10 +11,9 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
-import LeftBar from "../leftbar/LeftBar";
 import Notifications from "../../notifications/Notifications";
 
-function Header() {
+function Header({profiles}) {
   const avatar = useAvatar();
   const name = useName();
   const [search, setSearch] = useState("");
@@ -26,6 +25,8 @@ function Header() {
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
+
+  console.log(name);
 
   useOutsideClick(ref1, () => {
     setDisplay(false);
@@ -53,17 +54,17 @@ function Header() {
             {menu && 
               <Sidebar />
             }
-            {/* {partUrl !== `${name}` && ( */}
-            <div className="search">
-              <SearchOutlined />
-              <input
-                type="text"
-                placeholder="Search.."
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-          {/* )} */}
+        </div>
+        {/* {partUrl === "" && (
+          <div className="search">
+            <SearchOutlined />
+            <input
+              type="text"
+              placeholder="Search.."
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
+        )} */}
       </div>
       <div className="right">
         <div className="notifications" ref={ref3}>
