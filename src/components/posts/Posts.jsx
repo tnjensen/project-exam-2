@@ -33,7 +33,7 @@ function Posts() {
   }
 
   
-  const searchItems = (searchValue) => {
+  /* const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchInput !== '') {
         const filteredData = posts.filter((item) => {
@@ -45,7 +45,7 @@ function Posts() {
     else{
         setFilteredResults(posts)
     }
-  }
+  } */
   return (
     <div className="posts">
       {/* {shareOpen ? (
