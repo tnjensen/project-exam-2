@@ -5,10 +5,17 @@
     
 
     .notifications-content{
-        width: 30vw;
+        width: 55vw;
         position: absolute;
-        
-        right: 0;
+        right: 5px;
+        top: 44px;
+
+        @include mobile{
+            width: 50vw;
+        }
+        @include tablet{
+            width: 30vw;
+        }
 
         h3{
             background-color: $secondary;

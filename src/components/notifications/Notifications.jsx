@@ -3,7 +3,7 @@ import './notifications.scss';
 function Notifications(){
     return(
         <div className="notifications-content">
-            <h3>Your latest messages</h3>
+            <h3>Latest messages</h3>
             {/* <div className='messages'> */}
                 <ul className='messages'>
                     <li>Friend message</li>

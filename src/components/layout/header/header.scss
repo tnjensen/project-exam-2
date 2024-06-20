@@ -79,24 +79,19 @@ header{
         }
 
         .user{
+            position: relative;
             
-            .profile-icon{
-                position: relative;
+            .profile-icon{ 
                 cursor: pointer;
-
             }
             ul{
                 position: absolute;
-                right: 15px;
-                top: 60px;
+                right: 5px;
+                top: 45px;
                 background-color: $secondary;
                 color: $darkTextColor;
                 padding: 10px;
                 border-radius: 0 0 10px 10px;
-
-                @include mobile{
-                    top: 50px;
-                }
             }
             img{
                 height: 30px;
