@@ -7,25 +7,26 @@
     .notifications-content{
         width: 30vw;
         position: absolute;
-        background-color: $secondary;
-        color: $darkTextColor;
+        
         right: 0;
 
         h3{
+            background-color: $secondary;
+            color: $darkTextColor;
             padding: 10px 20px;
         }
-        .messages{
+        ul{
             background-color: $background;
-            padding: 10px 8px;
+            padding: 5px;
+            border-radius: 0 0 10px 10px;
+          
+            li{
+                background-color: $darkTextColor;
+                color: $textColor;
+                margin: 8px;
+                padding: 5px;
+            }
         }
-        .message-list{
-            /* position: absolute;
-            right: 0; */
-            padding: 10px 20px;
-            /* width: 30vw; */
-            color: $textColor;
-            background-color: $darkTextColor;
-           
-        }
+        
     }
 }
