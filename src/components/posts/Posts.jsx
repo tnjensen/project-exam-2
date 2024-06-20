@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
 
 function Posts() {
-  const [shareOpen, setShareOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const token = useToken();
@@ -33,19 +32,18 @@ function Posts() {
   }
 
   
-  /* const searchItems = (searchValue) => {
+  const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchInput !== '') {
         const filteredData = posts.filter((item) => {
-            return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+            return Object.values(item.title).join('').toLowerCase().includes(searchInput.toLowerCase())
         })
         setFilteredResults(filteredData)
-        console.log(filteredData)
     }
     else{
         setFilteredResults(posts)
     }
-  } */
+  }
   return (
     <div className="posts">
       {/* {shareOpen ? (
@@ -62,16 +60,16 @@ function Posts() {
           onClick={() => setShareOpen(!shareOpen)}
         />
       )} */}
-      {/* <div className="search">
-          <SearchOutlined />
-          <input
-            type="text"
-            placeholder="Search.."
-            onChange={(e) => searchItems(e.target.value)}
-          />
-      </div> */}
       <Share />
-      {searchInput.length > 1 ? (
+      <div className="search">
+              <SearchOutlined />
+              <input
+                type="text"
+                placeholder="Enter post title"
+                onChange={(e) => searchItems(e.target.value)}
+              />
+            </div>
+      {searchInput.length > 0 ? (
                 filteredResults.map((post) => (
                   post.media && <Post key={post.id} post={post} />
                 ))
