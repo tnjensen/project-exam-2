@@ -42,20 +42,20 @@ function RightBar(){
         <div className='rightbar'>
             <div className="container">
                 <div className="item">
-                    <span className='header'>Friends</span>
+                    <h3 className='header'>Friends</h3>
                     {following.map((profile, index) =>(
                         <Following key={index} profile={profile} />
                     ))}
                 </div>
                 
                 <div className="item">
-                    <span className='header'>Followers</span>
+                    <h3 className='header'>Followers</h3>
                     {followers.map((profile, index) =>(
                         <Followers key={index} profile={profile} />
                     ))}
                 </div>
                 <div className="item">
-                    <span className='header'>Activities</span>
+                    <h3 className='header'>Activities</h3>
                     {partUrl === user.name ? <Latest key={user} profile={user} />
                     : "Please choose a profile"}
                 </div>
