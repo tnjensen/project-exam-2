@@ -89,6 +89,9 @@ header{
                 @include tablet{
                     width: 20vw;
                 }
+                @include desktop{
+                    width: 15vw;
+                }
             }
             img{
                 height: 30px;
