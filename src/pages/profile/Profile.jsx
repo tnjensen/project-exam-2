@@ -25,6 +25,8 @@ function Profile() {
   const [error, setError] = useState(false);
   const [followed, setFollowed] = useState([]);
   const [followers, setFollowers] = useState([]);
+  const [avatar,setAvatar] = useState("");
+  const [banner,setBanner] = useState("");
   const { data: userProfile } = useApi(
     profileUrl +
       `/${currentUser}` +
@@ -113,13 +115,14 @@ function Profile() {
         Authorization: "Bearer " + token,
       },
       method: "PUT",
-      body: JSON.stringify({ avatar: profile.avatar, banner: profile.banner }),
+      body: JSON.stringify({ avatar, banner}),
     };
 
     try {
-      const response = await fetch(profileUrl + `/${name}` + `/media`, options);
+      const response = await fetch(profileUrl + `/${currentUser}` + `/media`, options);
       const json = await response.json();
-      console.log(response);
+      window.location.reload();
+      console.log(json);
 
       if (!response.ok) {
         return setError(json.errors?.[0]?.message ?? "There was an error");
@@ -174,11 +177,11 @@ function Profile() {
               <div className="profile-details">
                 <h3>Edit profile</h3>
                 <p className="avatar">
-                  Avatar: <img src={profile.avatar} />
+                  Avatar: {profile.avatar}
                 </p>
-                <input type="text" placeholder="New avatar url.." />
+                <input type="text" placeholder="New avatar url.." onChange={e => setAvatar(e.target.value)} />
                 <p>Website: {profile.banner}</p>
-                <input type="text" placeholder="New site url.." />
+                <input type="text" placeholder="New site url.." onChange={e => setBanner(e.target.value)} />
                 <button className="edit-details-button" onClick={handleUpdate}>
                   Update details
                 </button>
