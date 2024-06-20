@@ -14,13 +14,18 @@
         h3{
             padding: 10px 20px;
         }
+        .messages{
+            background-color: $background;
+            padding: 10px 8px;
+        }
         .message-list{
-            position: absolute;
-            right: 0;
+            /* position: absolute;
+            right: 0; */
             padding: 10px 20px;
-            width: 30vw;
-            background-color: $textColor;
-            color: $darkTextColor;
+            /* width: 30vw; */
+            color: $textColor;
+            background-color: $darkTextColor;
+           
         }
     }
 }

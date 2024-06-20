@@ -62,14 +62,14 @@ function Posts() {
           onClick={() => setShareOpen(!shareOpen)}
         />
       )} */}
-      <div className="search">
-              <SearchOutlined />
-              <input
-                type="text"
-                placeholder="Search.."
-                onChange={(e) => searchItems(e.target.value)}
-              />
-            </div>
+      {/* <div className="search">
+          <SearchOutlined />
+          <input
+            type="text"
+            placeholder="Search.."
+            onChange={(e) => searchItems(e.target.value)}
+          />
+      </div> */}
       <Share />
       {searchInput.length > 1 ? (
                 filteredResults.map((post) => (
