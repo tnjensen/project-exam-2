@@ -92,6 +92,7 @@ header{
                 background-color: $secondary;
                 color: $darkTextColor;
                 padding: 10px;
+                border-radius: 0 0 10px 10px;
 
                 @include mobile{
                     top: 50px;
