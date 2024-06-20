@@ -53,12 +53,23 @@
                 a{
                     position: absolute;
                     right: 0;
+                    width: 40vw;
                     background-color: $secondary;
                     color: $darkTextColor;
                     padding: 10px;
                     font-weight: 600;
                     font-size: 18px;
                     border-radius: 0 0 10px 10px;
+
+                    @include mobile{
+                        width: 27vw;
+                    }
+                    @include tablet{
+                        width: 20vw;
+                    }
+                    @include desktop{
+                        width: 15vw;
+                    }
                 }
             }
         }
