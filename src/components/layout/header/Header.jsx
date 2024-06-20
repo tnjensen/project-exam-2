@@ -13,10 +13,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
 import Notifications from "../../notifications/Notifications";
 
-function Header({profiles}) {
+function Header() {
   const avatar = useAvatar();
   const name = useName();
-  const [search, setSearch] = useState("");
   const { clearUser } = useUserActions();
   const [display, setDisplay] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -48,23 +47,12 @@ function Header({profiles}) {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        {/* <Link to={`/navigation`}><MenuIcon className="menu-icon" /></Link> */}
         <div className="sidebar-container" ref={ref2}>
           <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} />
             {menu && 
               <Sidebar />
             }
         </div>
-        {/* {partUrl === "" && (
-          <div className="search">
-            <SearchOutlined />
-            <input
-              type="text"
-              placeholder="Search.."
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        )} */}
       </div>
       <div className="right">
         <div className="notifications" ref={ref3}>

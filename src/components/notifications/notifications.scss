@@ -3,16 +3,12 @@
 .notifications{ 
     position: relative;
     
-
     .notifications-content{
         width: 55vw;
         position: absolute;
         right: 5px;
         top: 43px;
 
-        @include mobile{
-            width: 50vw;
-        }
         @include tablet{
             width: 30vw;
         }

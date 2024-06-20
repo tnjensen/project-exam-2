@@ -49,18 +49,7 @@ header{
             display: flex;
             gap: 10px;
         }
-        .search{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            display: none;
-            
-
-            @include mobile{
-                display: block;
-            }  
-        }
+        
         input{
             padding: 5px;
             border-radius: 0 0 10px 10px;
@@ -85,6 +74,7 @@ header{
                 cursor: pointer;
             }
             ul{
+                width: 40vw;
                 position: absolute;
                 right: 5px;
                 top: 45px;
@@ -92,6 +82,13 @@ header{
                 color: $darkTextColor;
                 padding: 10px;
                 border-radius: 0 0 10px 10px;
+
+                @include mobile{
+                    width: 30vw;
+                }
+                @include tablet{
+                    width: 20vw;
+                }
             }
             img{
                 height: 30px;
