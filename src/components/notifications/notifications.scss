@@ -9,8 +9,14 @@
         right: 5px;
         top: 43px;
 
+        @include mobile{
+            width: 35vw;
+        }
         @include tablet{
-            width: 30vw;
+            width: 25vw;
+        }
+        @include desktop{
+            width: 15vw;
         }
 
         h3{
