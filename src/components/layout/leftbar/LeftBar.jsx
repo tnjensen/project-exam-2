@@ -32,9 +32,16 @@ function LeftBar() {
         <div className="menu">
           <div className="item">
             <Link to={`/profile/${currentUser}`}>
-                <img src={avatar} alt='user' />
-                <span>{currentUser}</span>
-            </Link>
+            {avatar ? (
+              <><img src={avatar} alt='user' />
+              <span>{currentUser}</span>
+              </>
+            ) : (
+              <><img src='/assets/person/noAvatar.png' alt='user' />
+              <span>{currentUser}</span>
+              </>
+            )}
+          </Link>
           </div>
           <hr />
           <h3 className="header">Suggestions for you</h3>
