@@ -15,7 +15,10 @@ export default function Share() {
     
     const upload = async () =>{
         const options = {
-			headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+			headers: { 
+                "Content-Type": "application/json", 
+                Authorization: "Bearer " + token 
+            },
 			method: "POST",
 			body: JSON.stringify({title:title,body:body,media:file || ""}),
 		};
@@ -49,7 +52,12 @@ export default function Share() {
             <div className="top">
                 <div className="left">
                     <div className='user'>
-                        <img src={avatar} alt='profile' className="shareImg" />
+                        {avatar ? (
+                            <img src={avatar} alt='profile' className="shareImg" />
+                        ) : (
+                            <img src="/assets/person/noAvatar.png" alt='profile' className="shareImg" />
+                        )}
+                       
                         <p>{`Share your thoughts, ${name} ?`}</p>
                     </div>
                     <input placeholder={`Title`} onChange={(e) => setTitle(e.target.value)} />

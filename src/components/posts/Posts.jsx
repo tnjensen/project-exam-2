@@ -8,6 +8,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import { useEffect, useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
+import ShareForm from "../share/ShareForm.jsx";
 
 function Posts() {
   const [searchInput, setSearchInput] = useState("");

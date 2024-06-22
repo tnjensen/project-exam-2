@@ -1,4 +1,4 @@
-import { SearchOutlined } from "@mui/icons-material";
+import FaceOutlinedIcon from '@mui/icons-material/FaceOutlined';
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
@@ -60,12 +60,19 @@ function Header() {
           {notify && <Notifications />}
         </div>
         <div className="user" ref={ref1}>
-          <img
-            src={avatar}
+          {avatar ? (
+            <img src={avatar}
             alt="avatar"
             className="profile-icon"
             onClick={() => setDisplay(!display)}
           />
+          ) : (
+          <FaceOutlinedIcon
+            className="profile-icon"
+            onClick={() => setDisplay(!display)}
+          />
+          )}
+          
           {display && (
             <ul className="profile-menu">
               <li>
