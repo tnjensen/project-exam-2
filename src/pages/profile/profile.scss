@@ -100,8 +100,14 @@
                 padding: 20px;
                 left: 50%;
                 transform: translateX(-50%);
-                bottom: 0;
-                width: 50vw; 
+                bottom: 30px;
+
+                @include tablet{
+                    transform: translateX(-100%);
+                }
+                @include desktop{
+                    width: 30vw;
+                }
 
                 h3{
                     text-align: center;
