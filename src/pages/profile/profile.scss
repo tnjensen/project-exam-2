@@ -98,10 +98,10 @@
                 background-color: $background;
                 z-index: 10;
                 padding: 20px;
-                /* left: -250px; */
-                right: 0;
-                top: -320px;
-                width: 50vw;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                width: 50vw; 
 
                 h3{
                     text-align: center;
