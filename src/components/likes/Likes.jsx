@@ -5,10 +5,11 @@ import { apiUrl } from '../../constants/api';
 import PropTypes from 'prop-types';
 
 const quickMenu = [
-    {title: 1, path: "", Icon: "🙂"},
-    {title: 2, path: "", Icon: "😍"},
-    {title: 3, path: "", Icon: "🙁"},
-    {title: 4, path: "", Icon: "😠"},
+    {title: 1, path: "", Icon: "👍"},
+    {title: 2, path: "", Icon: "🙂"},
+    {title: 3, path: "", Icon: "😍"},
+    {title: 4, path: "", Icon: "🙁"},
+    {title: 5, path: "", Icon: "😂"}
 ]
 function Likes({postId}){
     const token = useToken();
