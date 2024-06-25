@@ -4,7 +4,7 @@ import LeftBar from "./leftbar/LeftBar";
 import RightBar from "./rightbar/Rightbar";
 
 const Layout = () => {
-  
+
   return (
     <div className="wrapper">
       <Header />

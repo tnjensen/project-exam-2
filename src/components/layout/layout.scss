@@ -1,0 +1,12 @@
+@import '../../App.scss';
+
+.leftbar{
+    position: relative;
+
+    .leftbar{
+        display: none;
+    }
+    .leftbar.expanded{
+        display: block;
+    }
+}

@@ -3,19 +3,19 @@
 .leftbar{
         flex: 2;
         position: sticky;
-        top: 50px;
+        top: 10px;
         height: calc(100vh - 50px);//Needed to stay in position for the scroll
         overflow: scroll;
-        display: none;
+        /* display: none; */
 
         &::-webkit-scrollbar{
             display: none;
         }
-        @include tablet{
+       /*  @include tablet{
             display: block;
-        }
+        } */
 
-        .container{
+        .wrapper{
             padding: 10px 20px;
 
             hr{
