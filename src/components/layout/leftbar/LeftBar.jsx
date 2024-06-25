@@ -28,7 +28,7 @@ function LeftBar() {
   }
   return (
     <div className="leftbar">
-      <div className="container">
+      <div className="wrapper">
         <div className="menu">
           <div className="item">
             <Link to={`/profile/${currentUser}`}>
