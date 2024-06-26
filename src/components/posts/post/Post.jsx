@@ -54,7 +54,12 @@ function Post({ post }) {
           <h3>{post.title}</h3>
           <p>{post.body}</p>
           {post.media ? (
-            <img src={post.media} alt='post img'/>
+            <img src={post.media} alt='post img' 
+              onError={({currentTarget}) => {
+                currentTarget.onerror = 'null';
+                currentTarget.src='/assets/post/noCover.png'
+              }} 
+              />
             ) : (
             <img src="/assets/post/noCover.png" />
           )} 
