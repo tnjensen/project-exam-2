@@ -21,20 +21,14 @@ function Header() {
   const [menu, setMenu] = useState(false);
   const [notify, setNotify] = useState(false);
   const partUrl = window.location.href.split("/").pop();
-  const ref1 = useRef();
-  const ref2 = useRef();
-  const ref3 = useRef();
+  const ref = useRef();
 
   console.log(name);
 
-  useOutsideClick(ref1, () => {
+  useOutsideClick(ref, () => {
+    setMenu(false);
     setDisplay(false);
-  });
-  useOutsideClick(ref2, () => {
-    setMenu(false)
-  });
-  useOutsideClick(ref3, () => {
-    setNotify(false)
+    setNotify(false);
   });
 
   const handleLogout = () => {
@@ -47,19 +41,21 @@ function Header() {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        <div className="sidebar-container" ref={ref2}>
+        <div className="sidebar-container" ref={ref}>
           <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} />
             {menu && 
               <Sidebar />
             }
         </div>
       </div>
-      <div className="right">
-        <div className="notifications" ref={ref3}>
+      <div className='center'>
+      <div className="notifications" ref={ref}>
           <NotificationsOutlinedIcon onClick={() => setNotify(!notify)} />
           {notify && <Notifications />}
         </div>
-        <div className="user" ref={ref1}>
+      </div>
+      <div className="right">
+        <div className="user" ref={ref}>
           {avatar ? (
             <img src={avatar}
             alt="avatar"
