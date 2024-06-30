@@ -15,6 +15,7 @@ header{
     .left{
         display: flex;
         flex-wrap: wrap;
+        flex: 6;
         align-items: center;
         position: relative;
         
@@ -62,6 +63,7 @@ header{
 
         .notifications{
             cursor: pointer;
+            margin-right: 10px;
 
             .notifications-icon{
                 font-size: 30px;
