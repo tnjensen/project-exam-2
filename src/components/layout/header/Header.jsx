@@ -50,7 +50,7 @@ function Header() {
       </div>
       <div className='center'>
       <div className="notifications" ref={ref}>
-          <NotificationsOutlinedIcon onClick={() => setNotify(!notify)} />
+          <NotificationsOutlinedIcon className='notifications-icon' onClick={() => setNotify(!notify)} />
           {notify && <Notifications />}
         </div>
       </div>
