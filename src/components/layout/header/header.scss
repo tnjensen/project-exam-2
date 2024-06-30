@@ -63,6 +63,9 @@ header{
         .notifications{
             cursor: pointer;
 
+            .notifications-icon{
+                font-size: 30px;
+            }
             .notifications-content{
                 position: absolute;
             }
