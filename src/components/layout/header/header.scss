@@ -56,23 +56,6 @@ header{
             border-radius: 0 0 10px 10px;
             margin-left: 5px;
         }
-    
-    }
-    .center{
-        position: relative;
-
-        .notifications{
-            cursor: pointer;
-            margin-right: 10px;
-
-            .notifications-icon{
-                font-size: 30px;
-            }
-            .notifications-content{
-                position: absolute;
-            }
-        }
-
     }
     .right{
         display: flex;
