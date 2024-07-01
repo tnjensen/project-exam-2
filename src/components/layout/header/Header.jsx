@@ -7,11 +7,9 @@ import {
   useName,
   useUserActions,
 } from "../../../stores/useUserStore";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
-import Notifications from "../../notifications/Notifications";
 
 function Header() {
   const avatar = useAvatar();
@@ -19,16 +17,17 @@ function Header() {
   const { clearUser } = useUserActions();
   const [display, setDisplay] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [notify, setNotify] = useState(false);
   const partUrl = window.location.href.split("/").pop();
-  const ref = useRef();
+  const menuRef = useRef();
+  const userRef = useRef();
 
   console.log(name);
 
-  useOutsideClick(ref, () => {
+  useOutsideClick(menuRef, () => {
     setMenu(false);
+  });
+  useOutsideClick(userRef, () => {
     setDisplay(false);
-    setNotify(false);
   });
 
   const handleLogout = () => {
@@ -41,21 +40,15 @@ function Header() {
         <Link to="/">
           <div className="logo">Sentire</div>
         </Link>
-        <div className="sidebar-container" ref={ref}>
+        <div className="sidebar-container" ref={menuRef}>
           <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} />
             {menu && 
               <Sidebar />
             }
         </div>
       </div>
-      <div className='center'>
-      <div className="notifications" ref={ref}>
-          <NotificationsOutlinedIcon className='notifications-icon' onClick={() => setNotify(!notify)} />
-          {notify && <Notifications />}
-        </div>
-      </div>
       <div className="right">
-        <div className="user" ref={ref}>
+        <div className="user" ref={userRef}>
           {avatar ? (
             <img src={avatar}
             alt="avatar"

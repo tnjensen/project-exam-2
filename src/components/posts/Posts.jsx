@@ -4,8 +4,6 @@ import useApi from "../../hooks/useApi.js";
 import Post from "./post/Post.jsx";
 import { useToken } from "../../stores/useUserStore.jsx";
 import Share from "../share/Share";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import { useEffect, useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
 
