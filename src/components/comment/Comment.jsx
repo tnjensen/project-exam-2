@@ -1,4 +1,5 @@
 import './comment.scss';
+import PropTypes from 'prop-types';
 
 function Comment({comment}){
     const author = comment.author.name;
@@ -15,5 +16,9 @@ function Comment({comment}){
             
         </div>
     )
+    
+}
+Comment.propTypes = {
+    comment: PropTypes.object
 }
 export default Comment;

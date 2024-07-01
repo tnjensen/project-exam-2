@@ -29,6 +29,6 @@ export default function PostComments(url,token,desc){
             } 
         }
         postData();
-    }, [url, token, desc])
+    })
     return {data, isError};
 }

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 
 export const DarkModeContext = createContext();
 
@@ -18,4 +19,7 @@ export const DarkModeContextProvider = ({children}) => {
         return(
             <DarkModeContext.Provider value={{darkMode, toggle}}>{children}</DarkModeContext.Provider>
         )
+}
+DarkModeContextProvider.propTypes = {
+    children: PropTypes.array
 }
