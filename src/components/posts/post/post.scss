@@ -77,8 +77,20 @@
 
         img{
             width: 100%;
-            height: auto;
-            object-fit: cover;
+            margin: 0 auto;
+            max-height: 600px;
+            object-fit:cover;
+            padding: 10px 0;
+           /*  height: 400px;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center; */
+
+            @include desktop{
+                width: 90%;
+                max-height: 800px;
+            }
         }
         .likes{
             display: flex;
