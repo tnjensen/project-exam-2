@@ -53,16 +53,6 @@ function Post({ post }) {
         <div className="content">
           <h3>{post.title}</h3>
           <p>{post.body}</p>
-      {/*     {post.media ? ( 
-            <div className="img" style={{backgroundImage: `url(${post.media})`}} alt='post img'></div>
-          ) : (
-            <img src={post.media} alt='post img' 
-              onError={({currentTarget}) => {
-                currentTarget.onerror = 'null';
-                currentTarget.src='/assets/post/noCover.png'
-              }} 
-              />
-          )} */}
           {post.media && 
             <img src={post.media} alt='post img' 
               onError={({currentTarget}) => {

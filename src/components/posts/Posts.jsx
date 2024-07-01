@@ -44,20 +44,6 @@ function Posts() {
   }
   return (
     <div className="posts">
-      {/* {shareOpen ? (
-        <>
-          <RemoveOutlinedIcon
-            className="add-post"
-            onClick={() => setShareOpen(!shareOpen)}
-          />
-          <Share />
-        </>
-      ) : (
-        <AddOutlinedIcon
-          className="add-post"
-          onClick={() => setShareOpen(!shareOpen)}
-        />
-      )} */}
       <Share />
       <div className="search">
               <SearchOutlined />

@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 export default function EditPost(url,token,title,desc){
     const [data,setData] = useState([]);
     const [isError,setIsError] = useState(false);
-    const options = {
-        method: "PUT",
-        body: {title:title,body:desc},
-        headers : {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        }
-    };
+    
     useEffect(() => {
+        const options = {
+            method: "PUT",
+            body: {title:title,body:desc},
+            headers : {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            }
+        };
         async function postData(){
             try{
                 setIsError(false);

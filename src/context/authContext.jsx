@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { loginUrl } from "../constants/api";
+import PropTypes from 'prop-types';
 
 export const AuthContext = createContext();
 
@@ -24,4 +25,7 @@ export const AuthContextProvider = ({children}) => {
         return(
             <AuthContext.Provider value={{currentUser, login}}>{children}</AuthContext.Provider>
         )
+}
+AuthContextProvider.propTypes = {
+    children: PropTypes.array
 }
