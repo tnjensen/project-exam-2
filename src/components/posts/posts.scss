@@ -6,4 +6,8 @@
     gap: 20px;
     margin: 10px 0 0 10px;
     position: relative;
+
+    @include desktop{
+        margin: 10px 0 0 0;
+    }
 }

@@ -1,9 +1,15 @@
-#root {
-  box-sizing: border-box;
-  max-width: 1440px;
-  margin: 0 auto;
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
 }
-
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
 body{
   font-family: "Nunito Sans", Verdana, Geneva, Tahoma, sans-serif;
 }
