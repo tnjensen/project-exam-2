@@ -7,7 +7,7 @@ function Followers({profile}){
     return(
         <div className="follower">
             <div className="followerInfo">
-                <Link to={`/profile/${profile.name}`}>
+                <Link to={`/profile/${profile.name}`} onClick={window.location.reload}>
                 {profile.avatar ? 
                     <img src={profile.avatar} alt="" />
                 : 

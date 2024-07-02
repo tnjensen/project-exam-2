@@ -56,6 +56,24 @@ header{
             border-radius: 0 0 10px 10px;
             margin-left: 5px;
         }
+    
+    }
+    .center{
+        position: relative;
+
+        .person{
+            
+            margin-right: 10px;
+
+            .person-icon{
+                cursor: pointer;
+                font-size: 30px;
+
+                @include tablet{
+                    display: none;
+                }
+            }
+        }
     }
     .right{
         display: flex;

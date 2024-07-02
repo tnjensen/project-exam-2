@@ -7,9 +7,11 @@ import {
   useName,
   useUserActions,
 } from "../../../stores/useUserStore";
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "../../sidebar/Sidebar";
+import Friends from '../../friends/Friends';
 
 function Header() {
   const avatar = useAvatar();
@@ -17,9 +19,11 @@ function Header() {
   const { clearUser } = useUserActions();
   const [display, setDisplay] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [person, setPerson] = useState(false);
   const partUrl = window.location.href.split("/").pop();
   const menuRef = useRef();
   const userRef = useRef();
+  const personRef = useRef();
 
   console.log(name);
 
@@ -28,6 +32,9 @@ function Header() {
   });
   useOutsideClick(userRef, () => {
     setDisplay(false);
+  });
+  useOutsideClick(personRef, () => {
+    setPerson(false);
   });
 
   const handleLogout = () => {
@@ -45,6 +52,12 @@ function Header() {
             {menu && 
               <Sidebar />
             }
+        </div>
+      </div>
+      <div className='center'>
+      <div className="person" ref={personRef}>
+          <Person2OutlinedIcon className='person-icon' onClick={() => setPerson(!person)} />
+          {person && <Friends />}
         </div>
       </div>
       <div className="right">
