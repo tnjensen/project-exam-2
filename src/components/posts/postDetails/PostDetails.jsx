@@ -3,6 +3,7 @@ import './postDetails.scss';
 import PropTypes from 'prop-types';
 
 function PostDetails({postId}){
+    
     return(
         <div className='more'>
             <Link to={`/detail/${postId}`}>View details</Link>

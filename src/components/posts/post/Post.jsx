@@ -19,6 +19,9 @@ function Post({ post }) {
   const likes = post.reactions;
   const [display, setDisplay] = useState(false);
   const ref = useRef();
+  const partUrl = window.location.href.split("/").pop();
+
+  console.log(author);
 
   useOutsideClick(ref, () => {
     setDisplay(false);
@@ -42,7 +45,8 @@ function Post({ post }) {
             </div>
           </div>
           <div className="details" ref={ref}>
-            <MoreHoriz onClick={() => setDisplay(!display)} />
+            {partUrl === `${author}` &&
+            <MoreHoriz onClick={() => setDisplay(!display)} />}
             {display && (
               <div className="more">
                 <Link to={`/detail/${post.id}`}>View details</Link>

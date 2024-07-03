@@ -8,17 +8,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 function PostDetail() {
+  const { id } = useParams();
+  const token = useToken();
+  const { data: post } = useApi(apiUrl + `/${id}?_author=true`, token);
   const currentUser = useName();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [error, setError] = useState(false);
   const [file, setFile] = useState(false);
-  const token = useToken();
-  const { id } = useParams();
-  const { data: post } = useApi(apiUrl + `/${id}?_author=true`, token);
   const navigate = useNavigate();
   const owner = post.author;
 
+  console.log(owner);
   const handleError = (e) => {
     e.preventDefault();
     window.location.reload();
@@ -75,10 +76,11 @@ function PostDetail() {
 
   return (
     <div className="edit">
-      <Link to="/" className="back-link">
+      {owner && 
+      <Link to={`/profile/${owner.name}`} className="back-link">
         <ArrowBackOutlinedIcon />
-        Back to posts
-      </Link>
+        Back to {owner.name}&apos;s profile
+      </Link>}
       { post && owner && currentUser === owner.name ? 
         <h3>Edit Post</h3> :
         <h3>Post Details</h3>
