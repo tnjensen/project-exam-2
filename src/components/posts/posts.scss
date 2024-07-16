@@ -10,4 +10,12 @@
     @include desktop{
         margin: 10px 0 0 0;
     }
+
+    .search{
+        display: flex;
+
+        input{
+            border: none;
+        }
+    }
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './likes.scss';
 import { useToken } from '../../stores/useUserStore';
-import { apiUrl } from '../../constants/api';
 import PropTypes from 'prop-types';
 
 const quickMenu = [
@@ -12,6 +11,7 @@ const quickMenu = [
     {title: 5, path: "", Icon: "😂"}
 ]
 function Likes({postId}){
+    const apiUrl = import.meta.env.VITE_API_URL;
     const token = useToken();
     const [like,setLike] = useState("");
 

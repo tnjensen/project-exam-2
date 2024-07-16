@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
-import { registerUrl } from "../../constants/api";
 import { useState } from "react";
 
 const schema = yup
@@ -17,6 +16,7 @@ const schema = yup
 	.required();
 
 const RegisterForm = () => {
+    const registerUrl = import.meta.env.VITE_REGISTER_URL;
     const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 

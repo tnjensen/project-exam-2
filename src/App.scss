@@ -1,38 +1,8 @@
 html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     max-width: 1440px;
     margin: 0 auto;
 }
-*, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-body{
-  font-family: "Nunito Sans", Verdana, Geneva, Tahoma, sans-serif;
-}
-h1,h2,h3,h4,h5,h6{
-  font-family: Lora, 'Times New Roman', Times, serif;
-}
-a{
-    text-decoration: none;
-
-    &:hover{
-        text-decoration: underline;
-    }
-}
-input{
-
-    &:focus{
-        outline: none;
-    }
-    &:focus::placeholder{
-        opacity: 0;
-    }
-}
-
 $primary: #d33891;
 $primary-hover: rgba(211,56,145,0.8);
 $secondary: #1546E6;
@@ -46,6 +16,62 @@ $form-background: #f3f3f3;
 $textColor: #000000;
 $gradient-primary: linear-gradient(rgba(211,56,145,0.3),rgba(211,56,145,0.1));
 $gradient-secondary: linear-gradient(rgba(98,230,54,0.3),rgba(98,230,54,0.1));
+
+@mixin mobile{
+    @media (min-width:425px){
+        @content;
+    }
+}
+@mixin tablet{
+    @media (min-width:768px){
+        @content;
+    }
+}
+@mixin desktop{
+    @media (min-width:992px){
+        @content;
+    }
+}
+@mixin large{
+    @media (min-width:1280px){
+        @content;
+    }
+}
+
+body{
+  font-family: "Nunito Sans", Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: Lora, 'Times New Roman', Times, serif;
+}
+a{
+    color: $textColor;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+input{
+    font-size: .9rem;
+    border: none;
+    opacity: .9;
+
+    @include tablet{
+        font-size: 1rem;
+    }
+
+    &:focus{
+        outline: none;
+    }
+    &:focus::placeholder{
+        opacity: 0;
+    }
+}
+ul{
+    list-style: none;
+}
 
 $themes:(
     light: (
@@ -86,25 +112,4 @@ $themes:(
 }
 @function themed($key){
     @return map-get($theme-map, $key);
-}
-
-@mixin mobile{
-    @media (min-width:425px){
-        @content;
-    }
-}
-@mixin tablet{
-    @media (min-width:768px){
-        @content;
-    }
-}
-@mixin desktop{
-    @media (min-width:992px){
-        @content;
-    }
-}
-@mixin large{
-    @media (min-width:1280px){
-        @content;
-    }
 }

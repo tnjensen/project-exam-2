@@ -4,7 +4,6 @@ import * as yup from "yup";
 import './shareForm.scss';
 import { useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
-import { apiUrl } from "../../constants/api";
 import { useState } from "react";
 import Image2 from '../../assets/post/3.jpeg';
 import { useAvatar, useName, useToken } from "../../stores/useUserStore";
@@ -17,6 +16,7 @@ const schema = yup
 	.required();
 
 const ShareForm = () => {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const avatar = useAvatar();
     const token = useToken();
     const name = useName();

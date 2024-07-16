@@ -2,9 +2,9 @@ import { useAvatar, useName, useToken } from '../../stores/useUserStore';
 import './share.scss';
 import Image2 from '../../assets/post/3.jpeg';
 import { useState } from 'react';
-import { apiUrl } from '../../constants/api';
 
 export default function Share() { 
+    const apiUrl = import.meta.env.VITE_API_URL;
     const avatar = useAvatar();
     const token = useToken();
     const name = useName();

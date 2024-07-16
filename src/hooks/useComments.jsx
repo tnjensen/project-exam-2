@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function PostComments(url,token,desc){
+export default function usePostComments(url,token,desc){
     const [data,setData] = useState([]);
     const [isError,setIsError] = useState(false);
     const options = {

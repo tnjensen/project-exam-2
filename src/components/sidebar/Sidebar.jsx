@@ -1,6 +1,5 @@
 import './sidebar.scss';
 import { useToken } from "../../stores/useUserStore";
-import { profileUrl } from "../../constants/api";
 import useProfile from "../../hooks/useProfile";
 import Profiles from "../profiles/Profiles";
 import {
@@ -10,15 +9,21 @@ import {
 import { Link } from "react-router-dom";
 
 function Sidebar() {
+  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const currentUser = useName();
   const avatar = useAvatar();
   const token = useToken();
   const {
       data: profiles,
+      isLoading,
       isError
     } = useProfile(profileUrl + `?offset=300_followers=true&_following=true&_posts=true`, token);
   console.log(profiles);
 
+  
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   if (isError) {
     return <div>Error loading profiles.</div>;
   }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { profileUrl } from "../../constants/api";
+/* import { profileUrl } from "../../constants/api"; */
 import useProfile from "../../hooks/useProfile";
 import { useName, useToken } from '../../stores/useUserStore';
 import Following from '../following/Following';
@@ -9,6 +9,7 @@ import Latest from '../latest/Latest';
 import { useParams } from 'react-router-dom';
 
 function Friends(){
+    const profileUrl = import.meta.env.VITE_PROFILE_URL;
     const currentUser = useName();
     const user = useParams();
     const partUrl = window.location.href.split("/").pop();
@@ -16,6 +17,7 @@ function Friends(){
     const {
         data: profile,
         isError,
+        isLoading,
         } = useProfile(profileUrl + `/${currentUser}?_followers=true&_following=true&_posts=true`, token);
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
@@ -31,6 +33,9 @@ function Friends(){
 
     },[profile]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   if (isError) {
     return <div>Error loading profiles.</div>;
   }

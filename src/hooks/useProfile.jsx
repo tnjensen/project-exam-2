@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function GetProfiles(url,token){
+export default function useGetProfiles(url,token){
     const [data,setData] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
     const [isError,setIsError] = useState(false);

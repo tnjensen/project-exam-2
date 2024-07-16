@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function EditPost(url,token,title,desc){
+export default function useEditPost(url,token,title,desc){
     const [data,setData] = useState([]);
     const [isError,setIsError] = useState(false);
     

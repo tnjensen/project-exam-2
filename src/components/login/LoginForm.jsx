@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
-import { loginUrl } from "../../constants/api";
 import { useState } from "react";
 import { useUserActions } from "../../stores/useUserStore";
 
@@ -15,7 +14,7 @@ const schema = yup
 	.required();
 
 function LoginForm() {
-	// const [data, setData] = useState([]);
+	const loginUrl = import.meta.env.VITE_LOGIN_URL;
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -63,37 +62,37 @@ function LoginForm() {
 
 	return (
 		<div className='login'>
-        <div className='card'>
-            <div className='login-left'>
-            <h1>Sentire</h1>
+        	<div className='card'>
+            	<div className='login-left'>
+            		<h1>Sentire</h1>
                     <p>Log in to connect and share with your friends.</p>
                     <span>No account yet ?</span>
                         <Link to="/register">
                         <button>Register</button>
                         </Link>
-            </div>
-            <div className='login-right'>
-                <h1>Sign in</h1>
-                {error && <ServerWarning>{error}</ServerWarning>}
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-                type="email"
-                placeholder='Email'
-                {...register("email")}
-                required
-            />
-            <input
-                type="password"
-                placeholder='Password'
-                {...register("password")}
-                required
-                minLength={6}
-            />
-            <button type="submit">Login</button>
-            </form>
-        </div>
-      </div>
-    </div>
+            	</div>
+            	<div className='login-right'>
+                	<h1>Sign in</h1>
+                	{error && <ServerWarning>{error}</ServerWarning>}
+            		<form onSubmit={handleSubmit(onSubmit)}>
+						<input
+							type="email"
+							placeholder='Email'
+							{...register("email")}
+							required
+						/>
+						<input
+							type="password"
+							placeholder='Password'
+							{...register("password")}
+							required
+							minLength={6}
+						/>
+						<button type="submit">Login</button>
+            		</form>
+        		</div>
+      		</div>
+    	</div>
 	);
 }
 
