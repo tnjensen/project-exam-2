@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { profileUrl } from "../../../constants/api";
 import useProfile from "../../../hooks/useProfile";
 import { useName, useToken } from '../../../stores/useUserStore';
 import Following from '../../following/Following';
@@ -9,6 +8,7 @@ import Latest from '../../latest/Latest';
 import { useParams } from 'react-router-dom';
 
 function RightBar(){
+    const profileUrl = import.meta.env.VITE_PROFILE_URL;
     const currentUser = useName();
     const user = useParams();
     const partUrl = window.location.href.split("/").pop();

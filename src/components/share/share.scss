@@ -11,6 +11,7 @@
     padding: 20px;
 
     .container{
+        width: 100%;
         
         .top{
             display: flex;
@@ -57,7 +58,6 @@
 
             input{
                 margin-left: 10px;
-                border: none;
                 max-width: 80vw;
     
                 @include tablet{

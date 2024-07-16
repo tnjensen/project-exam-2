@@ -9,7 +9,7 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { MoreHorizOutlined } from "@mui/icons-material";
-import { profileUrl } from "../../constants/api";
+/* import { profileUrl } from "../../constants/api"; */
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import useApi from "../../hooks/useApi";
 import Post from "../../components/posts/post/Post";
@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 function Profile() {
+  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const ref = useRef();
   const currentUser = useName();
   const token = useToken();

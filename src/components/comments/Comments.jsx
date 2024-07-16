@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './comments.scss';
 import { useAvatar, useToken } from '../../stores/useUserStore';
-import { apiUrl } from '../../constants/api';
+/* import { apiUrl } from '../../constants/api'; */
 import PropTypes from 'prop-types';
 
 function Comments({postId}){
+    const apiUrl = import.meta.env.VITE_API_URL;
     const avatar = useAvatar();
     const token = useToken();
     const [desc,setDesc] = useState("");

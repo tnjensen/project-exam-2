@@ -1,6 +1,5 @@
-import { apiUrl } from "../../constants/api.js";
 import "./posts.scss";
-import useApi from "../../hooks/useApi.js";
+import useApi from "../../hooks/useApi.js"; 
 import Post from "./post/Post.jsx";
 import { useToken } from "../../stores/useUserStore.jsx";
 import Share from "../share/Share";
@@ -8,6 +7,7 @@ import { useEffect, useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
 
 function Posts() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const token = useToken();
@@ -49,7 +49,7 @@ function Posts() {
               <SearchOutlined />
               <input
                 type="text"
-                placeholder="Enter post title"
+                placeholder="Search post title"
                 onChange={(e) => searchItems(e.target.value)}
               />
             </div>

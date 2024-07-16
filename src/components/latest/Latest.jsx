@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { useToken } from '../../stores/useUserStore';
 import useApi from "../../hooks/useApi";
-import { profileUrl } from '../../constants/api';
 import { useParams } from 'react-router-dom';
 
 function Latest({profile}){
+    const profileUrl = import.meta.env.VITE_PROFILE_URL;
     const token = useToken();
     const { name } = useParams();
     const { data: posts } = useApi(

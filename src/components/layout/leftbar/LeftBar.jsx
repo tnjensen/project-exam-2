@@ -1,6 +1,5 @@
 import "./leftbar.scss";
 import { useToken } from "../../../stores/useUserStore";
-import { profileUrl } from "../../../constants/api";
 import useProfile from "../../../hooks/useProfile";
 import Profiles from "../../profiles/Profiles";
 import {
@@ -10,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 
 function LeftBar() {
+  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const currentUser = useName();
   const avatar = useAvatar();
   const token = useToken();

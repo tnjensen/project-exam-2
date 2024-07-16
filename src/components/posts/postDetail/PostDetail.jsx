@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./postDetail.scss";
 import useApi from "../../../hooks/useApi.js";
-import { apiUrl } from "../../../constants/api.js";
 import { useName, useToken } from "../../../stores/useUserStore.jsx";
 import ServerWarning from "../../shared/ServerWarning.jsx";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 function PostDetail() {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const token = useToken();
   const { data: post } = useApi(apiUrl + `/${id}?_author=true`, token);
