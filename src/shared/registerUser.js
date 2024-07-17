@@ -1,6 +1,8 @@
-import { registerUrl } from "../constants/api"
 
 export async function registerUser(credentials){
+
+    const registerUrl = import.meta.env.VITE_REGISTER_URL;
+    
     return fetch(registerUrl, {
         method:"POST",
         headers: {

@@ -25,7 +25,7 @@ function Header() {
   const userRef = useRef();
   const personRef = useRef();
 
-  console.log(name);
+  console.log(avatar);
 
   useOutsideClick(menuRef, () => {
     setMenu(false);
@@ -48,7 +48,12 @@ function Header() {
           <div className="logo">Sentire</div>
         </Link>
         <div className="sidebar-container" ref={menuRef}>
-          <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)} />
+          <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)}
+           tabIndex={0} onKeyDown={(e) => {
+            if(e.key === "Enter" || e.key === "Escape"){
+              setMenu(!menu);
+            }
+           }}/>
             {menu && 
               <Sidebar />
             }
@@ -56,7 +61,12 @@ function Header() {
       </div>
       <div className='center'>
       <div className="person" ref={personRef}>
-          <Person2OutlinedIcon className='person-icon' onClick={() => setPerson(!person)} />
+          <Person2OutlinedIcon className='person-icon' onClick={() => setPerson(!person)} 
+            tabIndex={0} onKeyDown={(e) => {
+              if(e.key === "Enter" || e.key === "Escape"){
+                setPerson(!person);
+              }
+             }}/>
           {person && <Friends />}
         </div>
       </div>
@@ -67,10 +77,14 @@ function Header() {
             alt="avatar"
             className="profile-icon"
             onClick={() => setDisplay(!display)}
-          />
+            tabIndex={0} onKeyDown={(e) => {
+              if(e.key === "Enter" || e.key === "Escape"){
+                setDisplay(!display);
+              }
+             }}/>
           ) : (
           <FaceOutlinedIcon
-            className="profile-icon"
+            className="face-icon"
             onClick={() => setDisplay(!display)}
           />
           )}

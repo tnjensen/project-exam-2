@@ -9,7 +9,6 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { MoreHorizOutlined } from "@mui/icons-material";
-/* import { profileUrl } from "../../constants/api"; */
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import useApi from "../../hooks/useApi";
 import Post from "../../components/posts/post/Post";
@@ -40,6 +39,7 @@ function Profile() {
       `?_follower=true&_following=true`,
     token
   );
+  console.log(userProfile);
 
   useOutsideClick(ref, () => {
     setDisplay(false);
@@ -143,24 +143,27 @@ function Profile() {
           className="cover"
           src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=600"
         />
-        {profile.avatar ? (
+        {userProfile.avatar ? (
+          <img className="profile-image" src={userProfile.avatar} />
+        ) : (
+        profile.avatar ? (
             <img className="profile-image" src={profile.avatar} />
           ) : (
             <img className="profile-image" src="/assets/person/noAvatar.png" />
-          )}
-        
+          )
+        )}
       </div>
       <div className="profile-content">
-        <div className="left">
-            <FacebookOutlinedIcon className="social-icon" />
-            <PinterestIcon className="social-icon" />
-            <LinkedInIcon className="social-icon" />
-            <InstagramIcon className="social-icon" />  
+        <div className="left"> 
+            <FacebookOutlinedIcon className="social-icon" tabIndex={0} />
+            <PinterestIcon className="social-icon" tabIndex={0} />
+            <LinkedInIcon className="social-icon" tabIndex={0} />
+            <InstagramIcon className="social-icon" tabIndex={0} />  
         </div>
         <div className="center">
           <h3>Name: {profile.name}</h3>
-          <p>Email: {profile.email}</p>
-          <p className="web">Website: {profile.banner}</p>
+          <p>Email: <a href="mailto:{profile.email}">{profile.email}</a></p>
+          <p className="web">Website: <a href={profile.banner} tabIndex={0}>{profile.banner}</a></p>
           {name !== currentUser && (
             <div className="bottom">
               {followed.length ? <button className="follow-button" onClick={handleUnFollow}>Unfollow</button> 
@@ -172,7 +175,12 @@ function Profile() {
         <div className="right">
           <div className="more" ref={ref}>
             {name === currentUser && (
-              <MoreHorizOutlined onClick={() => setDisplay(!display)} />
+              <MoreHorizOutlined onClick={() => setDisplay(!display)} 
+              tabIndex={0}  onKeyDown={(e) => {
+                if(e.key === "Enter" || e.key === "Escape"){
+                  setDisplay(!display);
+                }
+               }}  />
             )}  
             {display && name === currentUser && (
               <div className="profile-details">
@@ -180,12 +188,12 @@ function Profile() {
                 <p className="avatar">
                   Avatar: {profile.avatar}
                 </p>
-                <input type="text" placeholder="New avatar url.." onChange={e => setAvatar(e.target.value)} />
-                <p>Website: {profile.banner}</p>
-                <input type="text" placeholder="New site url.." onChange={e => setBanner(e.target.value)} />
-                <button className="edit-details-button" onClick={handleUpdate}>
-                  Update details
-                </button>
+                <form onSubmit={handleUpdate}>
+                  <input type="text" placeholder="New avatar url.." onChange={e => setAvatar(e.target.value)} required />
+                  <p>Website: {profile.banner}</p>
+                  <input type="text" placeholder="New site url.." onChange={e => setBanner(e.target.value)} required />
+                  <input type="submit" className="edit-details-button" value="Update details" />
+                </form>
               </div>
             )}
           </div>

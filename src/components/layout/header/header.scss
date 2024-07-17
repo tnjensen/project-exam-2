@@ -50,12 +50,6 @@ header{
             display: flex;
             gap: 10px;
         }
-        
-       /*  input{
-            padding: 5px;
-            border-radius: 0 0 10px 10px;
-            margin-left: 5px;
-        } */
     
     }
     .center{
@@ -85,6 +79,9 @@ header{
             
             .profile-icon{ 
                 cursor: pointer;
+            }
+            .face-icon{
+                font-size: 26px;
             }
             ul{
                 width: 45vw;
