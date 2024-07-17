@@ -76,10 +76,8 @@
                     text-transform: uppercase;
                     font-weight: 600;
                     letter-spacing: .05rem;
+                    cursor: pointer;
 
-                    @include tablet{
-                        /* top: 30px; */
-                    }
                 }
             }
             
@@ -131,17 +129,25 @@
                         border-radius: 50%;
                     }
                 }
-                input{
-                    border-radius: 5px;
-                    padding: 5px;
+                form{
+                    display: flex;
+                    flex-direction: column;
+
+                    input{
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+                    .edit-details-button{
+                        background-color: $tertiary;
+                        color: $textColor;
+                        padding: 7px 10px;
+                        width: 100%;
+                        border-radius: 5px;
+                        margin-top: 30px;
+                        cursor: pointer;
+                    }
                 }
-                .edit-details-button{
-                    background-color: $tertiary;
-                    color: $textColor;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    margin-top: 20px;
-                }
+                
             }
         }
     }
