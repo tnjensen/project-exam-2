@@ -38,6 +38,7 @@
 
         @include tablet{
             flex-direction: row;
+            gap: 30px;
             justify-content: space-between;
             align-items: flex-start;
         }
@@ -89,6 +90,7 @@
                 cursor: pointer;
             }
             .profile-details{
+                width: 50vw;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -97,13 +99,12 @@
                 background-color: $background;
                 z-index: 10;
                 padding: 20px;
-                bottom: 0;
-                right: -120px;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
 
                 @include tablet{
-                   top: -150px; 
-                   bottom: auto;
-                   right: 0;
+                  width: 40vw;
                 }
                 @include desktop{
                     width: 30vw;
