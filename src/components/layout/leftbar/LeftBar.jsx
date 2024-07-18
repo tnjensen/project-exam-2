@@ -44,7 +44,7 @@ function LeftBar() {
           </Link>
           </div>
           <hr />
-          <h3 className="header">Suggestions for you</h3>
+          <h3 className="header">Profiles</h3>
           {profiles.map((profile, index) =>
             profile.posts.length > 0 && <Profiles key={index} profile={profile} />
           )}
