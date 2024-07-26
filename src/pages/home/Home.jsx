@@ -10,7 +10,6 @@ function Home(){
             </Helmet>
             <Posts />
         </div>
-        
     )
 }
 export default Home;
