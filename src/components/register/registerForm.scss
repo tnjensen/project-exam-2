@@ -1,0 +1,126 @@
+@import "../../App.scss";
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0;
+    max-width: 75%;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    .register-left {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      background: $gradient-primary,
+        url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600")
+          center;
+      background-size: cover;
+
+      @include tablet {
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      h1 {
+        font-size: 50px;
+        font-weight: 600;
+        color: $darkTextColor;
+        margin: 20px 0 10px 0;
+
+        @include tablet {
+          margin: 60px 0 20px 0;
+        }
+      }
+      p {
+        font-size: 22px;
+        color: $darkTextColor;
+        margin-bottom: 10px;
+      }
+      span {
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: $darkTextColor;
+      }
+      button {
+        border-radius: 5px;
+        border: none;
+        background-color: $secondary;
+        color: $darkTextColor;
+        padding: 15px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: $secondary-hover;
+        }
+        &:focus,
+        &:active {
+          outline: none;
+        }
+        &:disabled {
+          cursor: not-allowed;
+        }
+      }
+    }
+    .register-right {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      background-color: $form-background;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+
+      @include tablet {
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      form {
+        fieldset {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          border: none;
+        }
+        input {
+          border: none;
+          background-color: $darkTextColor;
+          padding: 20px 10px;
+
+          @include tablet {
+          }
+        }
+
+        button {
+          border: none;
+          background-color: $tertiary;
+          color: $textColor;
+          padding: 15px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          text-transform: uppercase;
+
+          &:hover {
+            background-color: $tertiary-hover;
+          }
+        }
+      }
+    }
+  }
+}

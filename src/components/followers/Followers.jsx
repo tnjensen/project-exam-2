@@ -1,28 +1,26 @@
-import './followers.scss';
+import "./followers.scss";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function Followers({profile}){
-
-    return(
-        <div className="follower">
-            <div className="followerInfo">
-                <Link to={`/profile/${profile.name}`} onClick={window.location.reload}>
-                {profile.avatar ? 
-                    <img src={profile.avatar} alt="" />
-                : 
-                    <img src="/assets/person/noAvatar.png" />
-                }
-                <div className="details">
-                    {profile && <span className="name">{profile.name}</span>}
-                </div>
-                </Link>
-            </div>
-        </div>
-    )
-
+function Followers({ profile }) {
+  return (
+    <div className="follower">
+      <div className="followerInfo">
+        <Link to={`/profile/${profile.name}`} onClick={window.location.reload}>
+          {profile.avatar ? (
+            <img src={profile.avatar} alt="" />
+          ) : (
+            <img src="/assets/person/noAvatar.png" />
+          )}
+          <div className="details">
+            {profile && <span className="name">{profile.name}</span>}
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
 }
 Followers.propTypes = {
-    profile: PropTypes.object
-}
+  profile: PropTypes.object,
+};
 export default Followers;

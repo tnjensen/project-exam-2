@@ -3,20 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { useUserActions } from "../../../stores/useUserStore";
 
 function LogoutButton() {
-	const { clearUser } = useUserActions();
+  const { clearUser } = useUserActions();
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	function handleLogout() {
-		clearUser();
-		navigate("/");
-	}
+  function handleLogout() {
+    clearUser();
+    navigate("/");
+  }
 
-	return (
-		<Button tag="a" onClick={handleLogout}>
-			Logout
-		</Button>
-	);
+  return (
+    <Button tag="a" onClick={handleLogout}>
+      Logout
+    </Button>
+  );
 }
 
 export default LogoutButton;

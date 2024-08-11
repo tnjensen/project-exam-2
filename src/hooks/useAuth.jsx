@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage("user");
   const navigate = useNavigate();
 
-   const login = async (data) => {
+  const login = async (data) => {
     setUser(data);
     navigate("/");
   };
@@ -19,14 +19,16 @@ export const AuthProvider = ({ children }) => {
     navigate("/", { replace: true });
   };
 
-  const value = useMemo(
-    () => ({
-      user,
-      login,
-      logout,
-    })
+  const value = useMemo(() => ({
+    user,
+    login,
+    logout,
+  }));
+  return (
+    <AuthContext.Provider value={{ login, logout, user }}>
+      {children}
+    </AuthContext.Provider>
   );
-  return <AuthContext.Provider value={{login, logout, user}}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {

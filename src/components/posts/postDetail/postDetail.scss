@@ -1,93 +1,89 @@
-@import '../../../App.scss';
+@import "../../../App.scss";
 
-.edit{
-    max-width: 80vw;
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 10px;
-    background-color: #fffefe;
-    border: 2px solid $background;
-    border-radius: 5px;
-    padding: 20px;
+.edit {
+  max-width: 80vw;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #fffefe;
+  border: 2px solid $background;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @include mobile {
+    width: 70vw;
+  }
+  @include tablet {
+    width: 45vw;
+  }
+
+  .back-link {
+    display: flex;
+    gap: 5px;
+    color: $secondary;
+  }
+  .edit-form {
+    max-width: 45vw;
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 5px;
 
-    @include mobile{
-        width: 70vw;
+    label {
+      font-size: 14px;
     }
-    @include tablet{
-        width: 45vw;
+
+    input {
+      border-radius: 5px;
+      padding: 5px;
+      border: 1px solid $background;
     }
-        
-    .back-link{
+    img {
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    .item {
+      display: flex;
+      margin-top: 5px;
+      gap: 10px;
+      cursor: pointer;
+
+      .cancel {
+        background-color: $primary;
+        color: $darkTextColor;
+        font-size: 14px;
+        padding: 0 7px;
+      }
+      button {
         display: flex;
-        gap: 5px;
-        color: $secondary;
-    }
-    .edit-form{
-        max-width: 45vw;
-        padding: 10px 0;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-
-        label{
-            font-size: 14px;
-        }
-
-        input{
-            border-radius: 5px;
-            padding: 5px;
-            border: 1px solid $background;
-        }
-        img{
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .item{
-            display: flex;
-            margin-top: 5px;
-            gap: 10px;
-            cursor: pointer;
-            
-            .cancel{
-                background-color: $primary;
-                color: $darkTextColor;
-                font-size: 14px;
-                padding: 0 7px;
-                
-            }
-            button{
-                display: flex;
-                align-items: center;
-                height: 32px;
-                border: none;
-                border-radius: 5px;
-                padding: 15px 10px;
-                background-color: $secondary;
-                color: $darkTextColor;
-                font-weight: 600;
-                cursor: pointer;
-            }
-        }
-        
-    }
-
-    .edit-button, .delete-button{
-        padding: 5px 10px;
+        align-items: center;
+        height: 32px;
+        border: none;
         border-radius: 5px;
-        border: 1px solid $secondary;
-        color: $secondary;
-        margin: 5px 0;
+        padding: 15px 10px;
+        background-color: $secondary;
+        color: $darkTextColor;
+        font-weight: 600;
+        cursor: pointer;
+      }
     }
-    
-    .edit-button{
-        margin-top: 10px;
-    }
-    .delete-button{
-        border: 1px solid $primary;
-        color: $primary;
-    }
-
+  }
+  .edit-button,
+  .delete-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid $secondary;
+    color: $secondary;
+    margin: 5px 0;
+  }
+  .edit-button {
+    margin-top: 10px;
+  }
+  .delete-button {
+    border: 1px solid $primary;
+    color: $primary;
+  }
 }

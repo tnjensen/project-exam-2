@@ -1,161 +1,155 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.profile{
+.profile {
+  .images {
+    width: 100%;
+    height: 300px;
+    position: relative;
 
-    .images{
-        width: 100%;
-        height: 300px;
-        position: relative;
+    .cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      padding: 10px;
+      border-radius: 20px;
+    }
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: calc(100% - 30px);
+    }
+  }
+  .profile-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    padding: 60px 15px;
 
-        .cover{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            padding: 10px;
-            border-radius: 20px;
+    @include tablet {
+      flex-direction: row;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .left {
+      display: flex;
+      gap: 5px;
+
+      .social-icon {
+        cursor: pointer;
+      }
+    }
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      .web {
+        word-break: break-word;
+      }
+
+      @include tablet {
+        align-items: flex-start;
+      }
+
+      .bottom {
+        .follow-button {
+          position: relative;
+          top: 5px;
+          border-radius: 5px;
+          background-color: $secondary;
+          color: $darkTextColor;
+          padding: 5px 20px;
+          text-transform: uppercase;
+          font-weight: 600;
+          letter-spacing: 0.05rem;
+          cursor: pointer;
         }
-        .profile-image{
-            width: 80px;
-            height: 80px;
+      }
+    }
+    .right {
+      position: relative;
+
+      .more {
+        cursor: pointer;
+      }
+      .profile-details {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        position: absolute;
+        background-color: $background;
+        z-index: 10;
+        padding: 20px;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include tablet {
+          width: 40vw;
+        }
+        @include desktop {
+          width: 30vw;
+        }
+
+        h3 {
+          text-align: center;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+        .avatar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          word-break: break-word;
+
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
             border-radius: 50%;
-            position: absolute;
-            object-fit: cover;
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            top: calc(100% - 30px);
-            
+          }
         }
+        form {
+          display: flex;
+          flex-direction: column;
+
+          input {
+            border-radius: 5px;
+            padding: 5px;
+          }
+          .edit-details-button {
+            background-color: $tertiary;
+            color: $textColor;
+            padding: 7px 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 30px;
+            cursor: pointer;
+          }
+        }
+      }
     }
-    .profile-content{
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex-direction: column;
-        padding: 60px 15px;
+  }
 
-        @include tablet{
-            flex-direction: row;
-            gap: 30px;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .left{
-            display: flex;
-            gap: 5px; 
-           
-            .social-icon{
-                cursor: pointer;
-            }
-        }
-        .center{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-
-            .web{
-                word-break: break-word;
-            }
-
-            @include tablet{
-                align-items: flex-start;
-            }
-            
-            .bottom{
-
-                .follow-button{
-                    position: relative;
-                    top: 5px;
-                    border-radius: 5px;
-                    background-color: $secondary;
-                    color: $darkTextColor;
-                    padding: 5px 20px;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    letter-spacing: .05rem;
-                    cursor: pointer;
-
-                }
-            }
-            
-        }
-        .right{
-            position: relative;
-            
-            .more{
-                cursor: pointer;
-            }
-            .profile-details{
-                width: 50vw;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 5px;
-                position: absolute;
-                background-color: $background;
-                z-index: 10;
-                padding: 20px;
-                bottom: 40px;
-                left: 50%;
-                transform: translateX(-50%);
-
-                @include tablet{
-                  width: 40vw;
-                }
-                @include desktop{
-                    width: 30vw;
-                }
-
-                h3{
-                    text-align: center;
-                    margin-bottom: 5px;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                }
-                .avatar{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 10px;
-                    word-break: break-word;
-    
-                    img{
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                    }
-                }
-                form{
-                    display: flex;
-                    flex-direction: column;
-
-                    input{
-                        border-radius: 5px;
-                        padding: 5px;
-                    }
-                    .edit-details-button{
-                        background-color: $tertiary;
-                         color: $textColor;
-                        padding: 7px 10px;
-                        width: 100%;
-                        border-radius: 5px;
-                        margin-top: 30px;
-                        cursor: pointer;
-                    }
-                }
-                
-            }
-        }
-    }
-
-    .profile-posts{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+  .profile-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
