@@ -1,52 +1,52 @@
-@import '../../../App.scss';
+@import "../../../App.scss";
 
-.rightbar{
-    flex: 3;
-    position: sticky;
-    top: 10px;
-    height: calc(100vh - 50px);
-    overflow: scroll;
+.rightbar {
+  flex: 3;
+  position: sticky;
+  top: 10px;
+  height: calc(100vh - 50px);
+  overflow: scroll;
+  display: none;
+
+  &::-webkit-scrollbar {
     display: none;
+  }
+  @include tablet {
+    display: block;
+  }
+  .container {
+    padding: 10px 20px;
 
-    &::-webkit-scrollbar{
-        display: none;
-    }
-    @include tablet{
-        display: block;
-    }
-    .container{
-        padding: 10px 20px;
+    .item {
+      box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+      -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+      -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
 
-        .item{
-            box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
-            -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
-            -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
+      .header {
+        font-weight: 600;
+        padding: 0;
+        text-transform: uppercase;
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0;
 
-            .header{
-                font-weight: 600;
-                padding: 0;
-                text-transform: uppercase;
-            }
-            .user{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin: 20px 0;
+        .userInfo {
+          position: relative;
 
-                .userInfo{
-                    position: relative;
-                    
-                    img{
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
-                }
-            }
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
         }
+      }
     }
+  }
 }

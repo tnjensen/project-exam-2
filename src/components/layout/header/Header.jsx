@@ -1,4 +1,4 @@
-import FaceOutlinedIcon from '@mui/icons-material/FaceOutlined';
+import FaceOutlinedIcon from "@mui/icons-material/FaceOutlined";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
@@ -7,11 +7,11 @@ import {
   useName,
   useUserActions,
 } from "../../../stores/useUserStore";
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../../sidebar/Sidebar";
-import Friends from '../../friends/Friends';
+import Friends from "../../friends/Friends";
 
 function Header() {
   const avatar = useAvatar();
@@ -48,52 +48,66 @@ function Header() {
           <div className="logo">Sentire</div>
         </Link>
         <div className="sidebar-container" ref={menuRef}>
-          <MenuIcon className="menu-icon" onClick={() => setMenu(!menu)}
-           tabIndex={0} onKeyDown={(e) => {
-            if(e.key === "Enter" || e.key === "Escape"){
-              setMenu(!menu);
-            }
-           }}/>
-            {menu && 
-              <Sidebar />
-            }
+          <MenuIcon
+            className="menu-icon"
+            onClick={() => setMenu(!menu)}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === "Escape") {
+                setMenu(!menu);
+              }
+            }}
+          />
+          {menu && <Sidebar />}
         </div>
       </div>
-      <div className='center'>
-      <div className="person" ref={personRef}>
-          <Person2OutlinedIcon className='person-icon' onClick={() => setPerson(!person)} 
-            tabIndex={0} onKeyDown={(e) => {
-              if(e.key === "Enter" || e.key === "Escape"){
+      <div className="center">
+        <div className="person" ref={personRef}>
+          <Person2OutlinedIcon
+            className="person-icon"
+            onClick={() => setPerson(!person)}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === "Escape") {
                 setPerson(!person);
               }
-             }}/>
+            }}
+          />
           {person && <Friends />}
         </div>
       </div>
       <div className="right">
         <div className="user" ref={userRef}>
           {avatar ? (
-            <img src={avatar}
-            alt="avatar"
-            className="profile-icon"
-            onClick={() => setDisplay(!display)}
-            tabIndex={0} onKeyDown={(e) => {
-              if(e.key === "Enter" || e.key === "Escape"){
-                setDisplay(!display);
-              }
-             }}/>
+            <img
+              src={avatar}
+              alt="avatar"
+              className="profile-icon"
+              onClick={() => setDisplay(!display)}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === "Escape") {
+                  setDisplay(!display);
+                }
+              }}
+            />
           ) : (
-          <FaceOutlinedIcon
-            className="face-icon"
-            onClick={() => setDisplay(!display)}
-          />
+            <FaceOutlinedIcon
+              className="face-icon"
+              onClick={() => setDisplay(!display)}
+            />
           )}
-          
+
           {display && (
             <ul className="profile-menu">
               <li>
                 {partUrl !== `${name}` && (
-                  <Link to={`/profile/${name}`} onClick={() => setDisplay(!display)}>Profile</Link>
+                  <Link
+                    to={`/profile/${name}`}
+                    onClick={() => setDisplay(!display)}
+                  >
+                    Profile
+                  </Link>
                 )}
               </li>
               <li>

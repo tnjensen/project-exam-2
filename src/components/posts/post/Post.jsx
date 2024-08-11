@@ -8,7 +8,7 @@ import Likes from "../../likes/Likes";
 import Comment from "../../comment/Comment";
 import Like from "../../like/Like";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function Post({ post }) {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -45,8 +45,9 @@ function Post({ post }) {
             </div>
           </div>
           <div className="details" ref={ref}>
-            {partUrl === `${author}` &&
-            <MoreHoriz onClick={() => setDisplay(!display)} />}
+            {partUrl === `${author}` && (
+              <MoreHoriz onClick={() => setDisplay(!display)} />
+            )}
             {display && (
               <div className="more">
                 <Link to={`/detail/${post.id}`}>View details</Link>
@@ -57,14 +58,16 @@ function Post({ post }) {
         <div className="content">
           <h3>{post.title}</h3>
           <p>{post.body}</p>
-          {post.media && 
-            <img src={post.media} alt='post img' 
-              onError={({currentTarget}) => {
-                currentTarget.onerror = 'null';
-                currentTarget.src='/assets/post/noCover.png'
-              }} 
-              />
-          } 
+          {post.media && (
+            <img
+              src={post.media}
+              alt="post img"
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = "null";
+                currentTarget.src = "/assets/post/noCover.png";
+              }}
+            />
+          )}
           <div className="likes">
             {likes.map((like, index) => (
               <Like key={index} like={like} />
@@ -80,19 +83,19 @@ function Post({ post }) {
             {post._count.comments} comments
           </div>
         </div>
-          {liked && <Likes postId={post.id} />}
+        {liked && <Likes postId={post.id} />}
 
-          {commentOpen && <Comments postId={post.id} />}
-          {commentOpen &&
-            comments.map(
-              (comment) =>
-                comment && <Comment key={comment.id} comment={comment} />
-            )}
+        {commentOpen && <Comments postId={post.id} />}
+        {commentOpen &&
+          comments.map(
+            (comment) =>
+              comment && <Comment key={comment.id} comment={comment} />
+          )}
       </div>
     </div>
   );
 }
 Post.propTypes = {
-  post: PropTypes.object
-}
+  post: PropTypes.object,
+};
 export default Post;

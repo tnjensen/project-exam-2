@@ -1,34 +1,30 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.likes{
+.likes {
+  .container {
+    ul {
+      display: flex;
+      gap: 10px;
 
-    .container{
-
-        ul{
-            li{
-                font-size: 22px;
-                cursor: pointer;
-            }
-        }
-        label{
-            font-size: 14px;
-            font-weight: 600;
-
-            select{
-                width: 30px;
-
-                option{
-                    
-                }
-            }
-        }
-        .like-button{
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: $secondary;
-            color: $darkTextColor;
-            margin-left: 10px;
-        }
+      li {
+        font-size: 22px;
+        cursor: pointer;
+      }
     }
+    label {
+      font-size: 14px;
+      font-weight: 600;
 
+      select {
+        width: 30px;
+      }
+    }
+    .like-button {
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: $secondary;
+      color: $darkTextColor;
+      margin-left: 10px;
+    }
+  }
 }

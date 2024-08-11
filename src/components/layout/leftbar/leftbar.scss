@@ -1,60 +1,58 @@
-@import '../../../App.scss';
+@import "../../../App.scss";
 
-.leftbar{
-        flex: 2;
-        position: sticky;
-        top: 10px;
-        height: calc(100vh - 50px);//Needed to stay in position for the scroll
-        overflow: scroll;
-        display: none;
+.leftbar {
+  flex: 2;
+  position: sticky;
+  top: 10px;
+  height: calc(100vh - 50px); //Needed to stay in position for the scroll
+  overflow: scroll;
+  display: none;
+  border-right: 2px solid $tertiary;
 
-        &::-webkit-scrollbar{
-            display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @include tablet {
+    display: block;
+  }
+
+  .wrapper {
+    padding: 10px 20px;
+
+    hr {
+      margin: 10px 0;
+      border: none;
+      height: 0.5px;
+      background-color: $background;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .item {
+        a {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          text-decoration: none;
+
+          img {
+            height: 30px;
+            width: 30px;
+            object-fit: cover;
+            border-radius: 5px;
+          }
         }
-        @include tablet{
-            display: block;
+        span {
+          font-size: 14px;
         }
-
-        .wrapper{
-            padding: 10px 20px;
-
-            hr{
-                margin: 10px 0;
-                border: none;
-                height: 0.5px;
-                background-color: $background;
-            }
-            .menu{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                .item{
-                    
-                    
-                    a{
-                        display: flex;
-                        gap: 5px;
-                        align-items: center;
-                        text-decoration: none;
-
-                        img{
-                            height: 30px;
-                            width: 30px;
-                            object-fit: cover;
-                            border-radius: 5px;
-                        }
-                    }
-                    span{
-                        font-size: 14px;
-                    }
-
-                }
-                .header{
-                    font-weight: 600;
-                    padding: 0;
-                    text-transform: uppercase;
-                }
-            }
-        }
+      }
+      .header {
+        font-weight: 600;
+        padding: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

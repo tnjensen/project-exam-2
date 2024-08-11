@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./postDetail.scss";
 import useApi from "../../../hooks/useApi.js";
 import { useName, useToken } from "../../../stores/useUserStore.jsx";
-import ServerWarning from "../../shared/ServerWarning.jsx";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
@@ -76,46 +75,50 @@ function PostDetail() {
 
   return (
     <div className="edit">
-      {owner && 
-      <Link to={`/profile/${owner.name}`} className="back-link">
-        <ArrowBackOutlinedIcon />
-        Back to {owner.name}&apos;s profile
-      </Link>}
-      { post && owner && currentUser === owner.name ? 
-        <h3>Edit Post</h3> :
+      {owner && (
+        <Link to={`/profile/${owner.name}`} className="back-link">
+          <ArrowBackOutlinedIcon />
+          Back to {owner.name}&apos;s profile
+        </Link>
+      )}
+      {post && owner && currentUser === owner.name ? (
+        <h3>Edit Post</h3>
+      ) : (
         <h3>Post Details</h3>
-      }
-      {error && <ServerWarning>{error}</ServerWarning>}
+      )}
+      {error && <p className="error">{error.message}</p>}
       <form className="edit-form">
-      {post && owner && currentUser === owner.name ?
-      <>
-        <label htmlFor="title">Title:</label>
-         <input
-          id="title"
-          type="text"
-          placeholder={post.title}
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-         />
-        </>
-        : 
-        <span>{post.title}</span>}
-        {post && owner && currentUser === owner.name ?
-        <>
-        <label htmlFor="content">Content:</label>
-         <input
-          id="content"
-          type="text"
-          placeholder={post.body}
-          onChange={(e) => setBody(e.target.value)}
-          value={body}
-        /> 
-        </>
-        : 
-        <span>{post.body}</span>}
-        {post && owner && currentUser === owner.name &&
+        {post && owner && currentUser === owner.name ? (
+          <>
+            <label htmlFor="title">Title:</label>
+            <input
+              id="title"
+              type="text"
+              placeholder={post.title}
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+          </>
+        ) : (
+          <span>{post.title}</span>
+        )}
+        {post && owner && currentUser === owner.name ? (
+          <>
+            <label htmlFor="content">Content:</label>
+            <input
+              id="content"
+              type="text"
+              placeholder={post.body}
+              onChange={(e) => setBody(e.target.value)}
+              value={body}
+            />
+          </>
+        ) : (
+          <span>{post.body}</span>
+        )}
+        {post && owner && currentUser === owner.name && (
           <label htmlFor="content">Image:</label>
-        }
+        )}
         <img src={post.media} alt="post" />
         {post && owner && currentUser === owner.name && (
           <input

@@ -1,129 +1,116 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.share{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    border-radius: 20px;
-    padding: 20px;
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  border-radius: 20px;
+  padding: 20px;
 
-    .container{
-        width: 100%;
-        
-        .top{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-    
-            .left{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
+  .container {
+    width: 100%;
 
-                .user{
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
 
-                    .profile-icon{
-                        width: 45px;
-                        height: 45px;
-                    }
-                }
-                input{
-                    margin-left: 0;
-                }
-            }
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-            .right{
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
 
-                .file{
-                    width: 100px;
-                    height: 100px;
-                    object-fit: cover;
-                    border-radius: 0;
-                }
-            }
-
-            img{
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                object-fit: cover;
-            }
-
-            input{
-                margin-left: 10px;
-                max-width: 80vw;
-    
-                @include tablet{
-                    max-width: 40vw;
-                }
-    
-            }
-
+          .profile-icon {
+            width: 45px;
+            height: 45px;
+          }
         }
-
-        .rule{
-            margin-bottom: 15px;
-        } 
-
-        .bottom{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-    
-            .left{
-                display: flex;
-                gap: 10px;
-                position: relative;
-                
-                img{
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 5px;
-                }
-                
-                input{
-                    padding: 5px;
-                }
-
-                .item{
-                    display: flex;
-                    flex-direction: column;
-                    cursor: pointer;
-                    
-                    span{
-                        padding-top: 5px;
-                    }
-                    .cancel{
-                        background-color: $primary;
-                        color: $darkTextColor;
-                        font-size: 14px;
-                        padding: 0 7px;
-                        
-                    }
-                }
-                
-            }
-    
-            button{
-                display: flex;
-                align-items: center;
-                height: 32px;
-                border: none;
-                border-radius: 5px;
-                padding: 15px 10px;
-                background-color: $secondary;
-                color: $darkTextColor;
-                font-weight: 600;
-                cursor: pointer;
-            }  
+        input {
+          margin-left: 0;
         }
+      }
+      .right {
+        .file {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 0;
+        }
+      }
+      img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+      }
+      input {
+        margin-left: 10px;
+        max-width: 80vw;
+
+        @include tablet {
+          max-width: 40vw;
+        }
+      }
     }
+    .rule {
+      margin-bottom: 15px;
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      .left {
+        display: flex;
+        gap: 10px;
+        position: relative;
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+        input {
+          padding: 5px;
+        }
+        .item {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+
+          span {
+            padding-top: 5px;
+          }
+          .cancel {
+            background-color: $primary;
+            color: $darkTextColor;
+            font-size: 14px;
+            padding: 0 7px;
+          }
+        }
+      }
+      button {
+        display: flex;
+        align-items: center;
+        height: 32px;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 10px;
+        background-color: $secondary;
+        color: $darkTextColor;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
 }

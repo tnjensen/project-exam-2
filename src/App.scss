@@ -1,119 +1,129 @@
 html {
-    box-sizing: border-box;
-    max-width: 1440px;
-    margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 $primary: #d33891;
-$primary-hover: rgba(211,56,145,0.8);
-$secondary: #1546E6;
-$secondary-hover: rgba(21,70,230,0.8);
+$primary-hover: rgba(211, 56, 145, 0.8);
+$secondary: #1546e6;
+$secondary-hover: rgba(21, 70, 230, 0.8);
 $tertiary: #62e636;
-$tertiary-hover: rgba(98,230,25,0.8);
+$tertiary-hover: rgba(98, 230, 25, 0.8);
 $darkTextColor: #fffefe;
 $background: #d3d3d3;
-$footer-background: rgba(20,18,29,80);
+$footer-background: rgba(20, 18, 29, 80);
 $form-background: #f3f3f3;
 $textColor: #000000;
-$gradient-primary: linear-gradient(rgba(211,56,145,0.3),rgba(211,56,145,0.1));
-$gradient-secondary: linear-gradient(rgba(98,230,54,0.3),rgba(98,230,54,0.1));
+$gradient-primary: linear-gradient(
+  rgba(211, 56, 145, 0.3),
+  rgba(211, 56, 145, 0.1)
+);
+$gradient-secondary: linear-gradient(
+  rgba(98, 230, 54, 0.3),
+  rgba(98, 230, 54, 0.1)
+);
 
-@mixin mobile{
-    @media (min-width:425px){
-        @content;
-    }
+@mixin mobile {
+  @media (min-width: 425px) {
+    @content;
+  }
 }
-@mixin tablet{
-    @media (min-width:768px){
-        @content;
-    }
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
 }
-@mixin desktop{
-    @media (min-width:992px){
-        @content;
-    }
+@mixin desktop {
+  @media (min-width: 992px) {
+    @content;
+  }
 }
-@mixin large{
-    @media (min-width:1280px){
-        @content;
-    }
+@mixin large {
+  @media (min-width: 1280px) {
+    @content;
+  }
 }
 
-body{
+body {
   font-family: "Nunito Sans", Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
 }
-h1,h2,h3,h4,h5,h6{
-  font-family: Lora, 'Times New Roman', Times, serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lora, "Times New Roman", Times, serif;
 }
-a{
-    color: $textColor;
-    text-decoration: none;
+a {
+  color: $textColor;
+  text-decoration: none;
 
-    &:hover{
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
-input{
-    font-size: .9rem;
-    border: none;
-    opacity: .9;
+input {
+  font-size: 0.9rem;
+  border: none;
+  opacity: 0.9;
 
-    @include tablet{
-        font-size: 1rem;
-    }
+  @include tablet {
+    font-size: 1rem;
+  }
 
-    &:focus{
-        outline: none;
-    }
-    &:focus::placeholder{
-        opacity: 0;
-    }
+  &:focus {
+    outline: none;
+  }
+  &:focus::placeholder {
+    opacity: 0;
+  }
 }
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
-button{
-    border: none;
-        
+button {
+  border: none;
 }
 
-$themes:(
-    light: (
-        textColor: #000,
-        bg: white,
-        logo: darkblue,
-        bgSoft: #f6f3f3,
-        textColorSoft: #555,
-        border: lightgrey
-    ),
-    dark: (
-        textColor: whitesmoke,
-        bg: #222,
-        logo: white,
-        bgSoft: #333,
-        textColorSoft: lightgrey,
-        border: #444
-    )
+$themes: (
+  light: (
+    textColor: #000,
+    bg: white,
+    logo: darkblue,
+    bgSoft: #f6f3f3,
+    textColorSoft: #555,
+    border: lightgrey,
+  ),
+  dark: (
+    textColor: whitesmoke,
+    bg: #222,
+    logo: white,
+    bgSoft: #333,
+    textColorSoft: lightgrey,
+    border: #444,
+  ),
 );
 
-@mixin themify($themes){
-    @each $theme, $map in $themes {
-        .theme-#{$theme} & {
-            $theme-map: () !global;
-            @each $key, $submap in $map {
-                $value: map-get(map-get($themes,$theme), "#{$key}");
-                $theme-map: map-merge(
-                    $theme-map, 
-                    (
-                        $key: $value,
-                    ) 
-                ) !global;
-            }
-            @content;
-            $theme-map: null !global;
-        }
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
     }
+  }
 }
-@function themed($key){
-    @return map-get($theme-map, $key);
+@function themed($key) {
+  @return map-get($theme-map, $key);
 }

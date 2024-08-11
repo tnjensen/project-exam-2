@@ -1,114 +1,102 @@
-@import '../../../App.scss';
+@import "../../../App.scss";
 
-.post{
+.post {
+  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  border-radius: 20px;
 
-    box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    border-radius: 20px;
-  
-    .container{
-        padding: 20px;
-    }
+  .container {
+    padding: 20px;
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    .user{
+    .userInfo {
+      display: flex;
+      gap: 20px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .user-details a {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        text-decoration: none;
 
-        .userInfo{
-            display: flex;
-            gap: 20px;
-    
-            img{
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-    
-            .user-details a{
-                display: flex;
-                flex-direction: column;
-                text-decoration: none;
-
-                .name{
-                    font-weight: 500;
-    
-                }
-                .date{
-                    font-size: 12px;
-                }
-    
-            }
+        .name {
+          font-weight: 500;
         }
-
-        .details{
-            margin-right: 10px;   
-            cursor: pointer;
-            
-            .more{
-                position: relative;
-                
-                a{
-                    position: absolute;
-                    right: 0;
-                    width: 40vw;
-                    background-color: white;
-                    border: 1px solid $background;
-                    color: $textColor;
-                    padding: 10px;
-                    border-radius: 0 0 10px 10px;
-
-                    @include mobile{
-                        width: 27vw;
-                    }
-                    @include tablet{
-                        width: 20vw;
-                    }
-                    @include desktop{
-                        width: 15vw;
-                    }
-                }
-            }
+        .date {
+          font-size: 12px;
         }
+      }
     }
-    .content{
-        margin: 20px 0;
+    .details {
+      margin-right: 10px;
+      cursor: pointer;
 
-        img{
-            width: 100%;
-            margin: 0 auto;
-            max-height: 600px;
-            object-fit:cover;
-            padding: 10px 0;
-           /*  height: 400px;
-            width: 100%;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center center; */
+      .more {
+        position: relative;
 
-            @include desktop{
-                width: 90%;
-                max-height: 800px;
-            }
+        a {
+          position: absolute;
+          right: 0;
+          width: 40vw;
+          background-color: white;
+          border: 1px solid $background;
+          color: $textColor;
+          padding: 10px;
+          border-radius: 0 0 10px 10px;
+
+          @include mobile {
+            width: 27vw;
+          }
+          @include tablet {
+            width: 20vw;
+          }
+          @include desktop {
+            width: 15vw;
+          }
         }
-        .likes{
-            display: flex;
-            
-        }
+      }
     }
-    .info{
-        display: flex;
-        align-items: center;
-        gap: 20px;
+  }
+  .content {
+    margin: 20px 0;
 
-        .item{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+    img {
+      width: 100%;
+      margin: 0 auto;
+      max-height: 600px;
+      object-fit: cover;
+      padding: 10px 0;
+
+      @include desktop {
+        width: 90%;
+        max-height: 800px;
+      }
     }
+    .likes {
+      display: flex;
+    }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
 }

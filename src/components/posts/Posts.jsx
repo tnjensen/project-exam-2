@@ -1,68 +1,74 @@
-import "./posts.scss";
-import useApi from "../../hooks/useApi.js"; 
-import Post from "./post/Post.jsx";
-import { useToken } from "../../stores/useUserStore.jsx";
+import { useToken } from "../../stores/useUserStore";
 import Share from "../share/Share";
-import { useEffect, useState } from "react";
+import Post from "./post/Post";
+import "./posts.scss";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { SearchOutlined } from "@mui/icons-material";
+import { useEffect, useState } from "react";
 
-function Posts() {
-  const apiUrl = import.meta.env.VITE_API_URL;
+function PostsQuery() {
+  /* const queryClient = useQueryClient(); */
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
+  const apiUrl = import.meta.env.VITE_API_URL;
   const token = useToken();
-  const {
-    data: posts,
-    isLoading,
-    isError,
-  } = useApi(apiUrl + `?_author=true&_comments=true&_reactions=true`, token);
-  console.log(posts);
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  };
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () =>
+      fetch(
+        apiUrl + `?_author=true&_comments=true&_reactions=true`,
+        options
+      ).then((res) => res.json()),
+  });
 
   useEffect(() => {
     setFilteredResults(filteredResults);
-  }, [filteredResults])
+  }, [filteredResults]);
 
-  if (isLoading) {
-    return <div></div>;
-  }
-  if (isError) {
-    return <div>Error loading posts.</div>;
-  }
-
-  
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
-    if (searchInput !== '') {
-        const filteredData = posts.filter((item) => {
-            return Object.values(item.title).join('').toLowerCase().includes(searchInput.toLowerCase())
-        })
-        setFilteredResults(filteredData)
+    if (searchInput !== "") {
+      const filteredData = data.filter((item) => {
+        return Object.values(item.title)
+          .join("")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(data);
     }
-    else{
-        setFilteredResults(posts)
-    }
+  };
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+  if (isError) {
+    return <span>{error.message}</span>;
   }
   return (
     <div className="posts">
       <Share />
       <div className="search">
-              <SearchOutlined />
-              <input
-                type="text"
-                placeholder="Search post title"
-                onChange={(e) => searchItems(e.target.value)}
-              />
-            </div>
-      {searchInput.length > 0 ? (
-                filteredResults.map((post) => (
-                  post.media && <Post key={post.id} post={post} />
-                ))
-            ) : (
-            posts.map((post) => (
-            post.media && <Post key={post.id} post={post} />
-            ))
-      )}
+        <SearchOutlined />
+        <input
+          type="text"
+          placeholder="Search post title"
+          onChange={(e) => searchItems(e.target.value)}
+        />
+      </div>
+      {searchInput.length > 0
+        ? filteredResults.map(
+            (post) => post.media && <Post key={post.id} post={post} />
+          )
+        : data.map((post) => post.media && <Post key={post.id} post={post} />)}
     </div>
   );
 }
-export default Posts;
+export default PostsQuery;
