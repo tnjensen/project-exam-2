@@ -2,12 +2,11 @@ import { useToken } from "../../stores/useUserStore";
 import Share from "../share/Share";
 import Post from "./post/Post";
 import "./posts.scss";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { SearchOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 
 function PostsQuery() {
-  /* const queryClient = useQueryClient(); */
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const apiUrl = import.meta.env.VITE_API_URL;

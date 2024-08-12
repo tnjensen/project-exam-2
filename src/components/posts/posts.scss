@@ -7,12 +7,17 @@
   margin: 10px 0;
   position: relative;
 
-  @include tablet{
-    margin: 10px 0 0 15px;
+  @include tablet {
+    margin: 15px 0 0 15px;
   }
 
   .search {
     display: flex;
+    padding-left: 15px;
+
+    @include tablet {
+      padding-left: 0;
+    }
 
     input {
       border: none;
