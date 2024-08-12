@@ -7,7 +7,7 @@
   height: calc(100vh - 50px); //Needed to stay in position for the scroll
   overflow: scroll;
   display: none;
-  border-right: 2px solid $tertiary;
+  margin-top: 5px;
 
   &::-webkit-scrollbar {
     display: none;
