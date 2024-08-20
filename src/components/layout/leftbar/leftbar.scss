@@ -30,29 +30,28 @@
       flex-direction: column;
       gap: 10px;
 
-      .item {
-        a {
-          display: flex;
-          gap: 5px;
-          align-items: center;
-          text-decoration: none;
+      .item a {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        align-items: center;
+        text-decoration: none;
 
-          img {
-            height: 30px;
-            width: 30px;
-            object-fit: cover;
-            border-radius: 5px;
-          }
-        }
-        span {
-          font-size: 14px;
+        img {
+          height: 30px;
+          width: 30px;
+          object-fit: cover;
+          border-radius: 5px;
         }
       }
-      .header {
-        font-weight: 600;
-        padding: 0;
-        text-transform: uppercase;
+      span {
+        font-size: 14px;
       }
+    }
+    .header {
+      font-weight: 600;
+      padding: 0;
+      text-transform: uppercase;
     }
   }
 }
