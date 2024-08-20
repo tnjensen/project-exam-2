@@ -138,9 +138,7 @@ function Profile() {
           className="cover"
           src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=600"
         />
-        {userProfile.avatar ? (
-          <img className="profile-image" src={userProfile.avatar} />
-        ) : profile.avatar ? (
+        {profile.avatar ? (
           <img className="profile-image" src={profile.avatar} />
         ) : (
           <img className="profile-image" src="/assets/person/noAvatar.png" />
