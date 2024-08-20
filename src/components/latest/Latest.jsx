@@ -2,10 +2,11 @@ import "./latest.scss";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useToken } from "../../stores/useUserStore";
+import useProfile from "../../hooks/useProfile";
 import useApi from "../../hooks/useApi";
 import { useParams } from "react-router-dom";
 
-function Latest({ profile }) {
+function Latest() {
   const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const token = useToken();
   const { name } = useParams();
@@ -15,8 +16,13 @@ function Latest({ profile }) {
       `/posts?_author=true&_comments=true&_reactions=true`,
     token
   );
+  const {
+    data: profile,
+  } = useProfile(
+    profileUrl + `/${name}?_followers=true&_following=true&_posts=true`,
+    token
+  );
 
-  console.log(posts);
   return (
     <div className="latest">
       <div className="friendInfo">
