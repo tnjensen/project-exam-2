@@ -15,7 +15,7 @@ function Sidebar() {
     isLoading,
     isError,
   } = useProfile(
-    profileUrl + `?offset=300_followers=true&_following=true&_posts=true`,
+    profileUrl + `?_followers=true&_following=true&_posts=true`,
     token
   );
   console.log(profiles);
