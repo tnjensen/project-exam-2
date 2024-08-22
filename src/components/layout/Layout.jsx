@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import LeftBar from "./leftbar/LeftBar";
 import RightBar from "./rightbar/Rightbar";
+import Footer from "./footer/Footer";
 
 const Layout = () => {
   return (
@@ -14,6 +15,7 @@ const Layout = () => {
         </div>
         <RightBar />
       </div>
+      <Footer />
     </div>
   );
 };
