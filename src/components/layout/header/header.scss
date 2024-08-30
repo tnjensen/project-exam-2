@@ -9,7 +9,6 @@ header {
   top: 0;
   background-color: $tertiary;
   z-index: 10;
-  margin-bottom: 5px;
 
   @include tablet{
     margin-bottom: 10px;
