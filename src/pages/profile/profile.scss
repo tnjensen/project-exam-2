@@ -41,20 +41,25 @@
     align-items: center;
     gap: 15px;
     flex-direction: column;
-    padding: 60px 15px;
+    padding: 70px 15px 40px 15px;
 
     @include tablet {
       flex-direction: row;
       gap: 30px;
       justify-content: space-between;
       align-items: flex-start;
+      padding: 55px 15px 30px 15px;
+    }
+    @include desktop{
+      padding: 65px 15px 30px 15px;
     }
     .left {
       display: flex;
-      gap: 5px;
+      gap: 15px;
 
       @include tablet{
         flex-direction: column;
+        padding-top: 20px;
       }
       @include desktop{
         flex-direction: row;
@@ -99,6 +104,7 @@
 
       .more {
         cursor: pointer;
+        padding-top: 20px;
       }
       .profile-details {
         width: 50vw;
