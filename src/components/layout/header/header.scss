@@ -83,15 +83,16 @@ header {
       ul {
         width: 45vw;
         position: absolute;
-        right: 5px;
+        right: -15px;
         top: 35px;
-        background-color: white;
-        border: 2px solid $background;
-        color: $textColor;
+        background-color: $primary;
         padding: 15px;
         border-radius: 0 0 10px 10px;
         line-height: 2rem;
 
+        a{
+          color: $darkTextColor;
+        }
         @include mobile {
           width: 40vw;
         }
