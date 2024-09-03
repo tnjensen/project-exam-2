@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 .friends {
-  width: 60vw;
+  width: 70vw;
   position: absolute;
   top: 50px;
   right: -45px;
@@ -12,10 +12,6 @@
   overflow: scroll;
   padding: 10px;
   z-index: 1000;
-
-  @include mobile{
-    width: 50vw;
-  }
 
   &::-webkit-scrollbar {
     display: none;
