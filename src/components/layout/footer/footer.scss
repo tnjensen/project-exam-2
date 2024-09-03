@@ -1,14 +1,19 @@
 @import '../../../App.scss';
 
 .footer{
+    background-color: $secondary;
     padding: 15px 0;
     font-size: 14px;
-    color: var($textColor);
+    color: $darkTextColor;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 
+    a{
+        color: $darkTextColor;
+    }
     .top{
         display: flex;
         gap: 15px;
