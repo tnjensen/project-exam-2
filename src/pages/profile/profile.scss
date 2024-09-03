@@ -88,15 +88,16 @@
       .bottom {
         .follow-button {
           position: relative;
-          top: 5px;
+          left: 50%;
           border-radius: 5px;
           background-color: $secondary;
           color: $darkTextColor;
-          padding: 5px 20px;
+          padding: 7px 13px;
           text-transform: uppercase;
           font-weight: 600;
           letter-spacing: 0.05rem;
           cursor: pointer;
+          margin-bottom: 10px;
         }
       }
     }
