@@ -16,7 +16,8 @@
       @include tablet {
         width: 100%;
         position: relative;
-        padding: 10px 0;
+        margin: 10px 0;
+        border-radius: 10px;
       }
     }
     .profile-image {
