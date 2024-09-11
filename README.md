@@ -38,6 +38,9 @@ To run the app, run the following commands:
 npm run dev
 ```
 
+To see the site, please visit:
+https://sentire.netlify.app/
+
 ## Contact
 
 [My Twitter page](www.twitter.com/ThomasNJensen1)
