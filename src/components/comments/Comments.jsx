@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./comments.scss";
 import { useAvatar, useToken } from "../../stores/useUserStore";
+import { apiUrl } from "../../constants/api";
+import { getAuthHeaders } from "../../shared/apiClient";
 import PropTypes from "prop-types";
 
 function Comments({ postId }) {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const avatar = useAvatar();
   const token = useToken();
   const [desc, setDesc] = useState("");
@@ -16,10 +17,7 @@ function Comments({ postId }) {
     const options = {
       method: "POST",
       body: JSON.stringify({ body: desc }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
     };
     await fetch(`${apiUrl}/${postId}/comment`, options)
       .then((res) => res.json())

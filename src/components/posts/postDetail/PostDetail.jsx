@@ -4,9 +4,10 @@ import useApi from "../../../hooks/useApi.js";
 import { useName, useToken } from "../../../stores/useUserStore.jsx";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import { apiUrl } from "../../../constants/api";
+import { getAuthHeaders } from "../../../shared/apiClient";
 
 function PostDetail() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const token = useToken();
   const { data: post } = useApi(apiUrl + `/${id}?_author=true`, token);
@@ -26,13 +27,14 @@ function PostDetail() {
 
   async function handleUpdate(e) {
     e.preventDefault();
+    const payload = { title: title || post.title, body: body || post.body };
+    if (file) {
+      payload.media = { url: file, alt: "" };
+    }
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "PUT",
-      body: JSON.stringify({ title, body, media: file || "" }),
+      body: JSON.stringify(payload),
     };
 
     try {
@@ -53,10 +55,7 @@ function PostDetail() {
     e.preventDefault();
 
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "DELETE",
     };
 

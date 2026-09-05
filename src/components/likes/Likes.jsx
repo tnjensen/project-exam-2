@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./likes.scss";
-import { useToken } from "../../stores/useUserStore";
+import { apiUrl } from "../../constants/api";
+import { getAuthHeaders } from "../../shared/apiClient";
 import PropTypes from "prop-types";
 
 const quickMenu = [
@@ -11,8 +12,6 @@ const quickMenu = [
   { title: 5, path: "", Icon: "😂" },
 ];
 function Likes({ postId }) {
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const token = useToken();
   const [like, setLike] = useState("");
 
   const handleClick = async (e) => {
@@ -22,10 +21,7 @@ function Likes({ postId }) {
     const options = {
       method: "PUT",
       body: JSON.stringify({ symbol: emoji }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
     };
     await fetch(`${apiUrl}/${postId}/react/${emoji}`, options)
       .then((res) => res.json())

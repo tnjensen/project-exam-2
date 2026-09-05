@@ -1,6 +1,6 @@
-export async function loginUser(credentials) {
-  const loginUrl = import.meta.env.VITE_LOGIN_URL;
+import { loginUrl } from "../constants/api";
 
+export async function loginUser(credentials) {
   return fetch(loginUrl, {
     method: "POST",
     headers: {

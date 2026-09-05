@@ -17,9 +17,12 @@ const useUserStore = create(
 export const useName = () => useUserStore((state) => state.user?.name);
 export const useAvatar = () => useUserStore((state) => state.user?.avatar);
 export const useToken = () => useUserStore((state) => state.user?.accessToken);
+export const useApiKey = () => useUserStore((state) => state.user?.apiKey);
 export const useBanner = () => useUserStore((state) => state.user?.banner);
 
 export const useUserActions = () => {
   const { setUser, clearUser } = useUserStore();
   return { setUser, clearUser };
 };
+
+export { useUserStore };

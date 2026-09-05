@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getAuthHeaders, unwrap, normalize } from "../shared/apiClient";
 
 export default function useGetProfiles(url, token) {
   const [data, setData] = useState([]);
@@ -8,10 +9,7 @@ export default function useGetProfiles(url, token) {
   useEffect(() => {
     const options = {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders({ Authorization: "Bearer " + token }),
     };
     async function getData() {
       try {
@@ -21,7 +19,7 @@ export default function useGetProfiles(url, token) {
 
         if (response.ok) {
           const json = await response.json();
-          return setData(json);
+          return setData(normalize(unwrap(json)));
         }
         throw new Error();
       } catch (error) {

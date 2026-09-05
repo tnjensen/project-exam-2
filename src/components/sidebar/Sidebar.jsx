@@ -4,9 +4,9 @@ import useProfile from "../../hooks/useProfile";
 import Profiles from "../profiles/Profiles";
 import { useAvatar, useName } from "../../stores/useUserStore";
 import { Link } from "react-router-dom";
+import { profileUrl } from "../../constants/api";
 
 function Sidebar() {
-  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const currentUser = useName();
   const avatar = useAvatar();
   const token = useToken();

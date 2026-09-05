@@ -1,26 +1,26 @@
-import { useAvatar, useName, useToken } from "../../stores/useUserStore";
+import { useAvatar, useName } from "../../stores/useUserStore";
 import "./share.scss";
 import Image2 from "../../assets/post/3.jpeg";
 import { useState } from "react";
+import { apiUrl } from "../../constants/api";
+import { getAuthHeaders } from "../../shared/apiClient";
 
 export default function Share() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const avatar = useAvatar();
-  const token = useToken();
   const name = useName();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [file, setFile] = useState(false);
-  const [error, setError] = useState(false);
 
   const upload = async () => {
+    const payload = { title: title, body: body };
+    if (file) {
+      payload.media = { url: file, alt: "" };
+    }
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "POST",
-      body: JSON.stringify({ title: title, body: body, media: file || "" }),
+      body: JSON.stringify(payload),
     };
 
     try {
@@ -28,12 +28,13 @@ export default function Share() {
       const json = await response.json();
 
       if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
+        console.log(json.errors?.[0]?.message ?? "There was an error");
+        return;
       }
 
       window.location.reload();
     } catch (error) {
-      setError(error.toString());
+      console.log(error);
     }
   };
 

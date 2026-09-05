@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import ServerWarning from "../shared/ServerWarning";
 import { useState } from "react";
 import Image2 from "../../assets/post/3.jpeg";
-import { useAvatar, useName, useToken } from "../../stores/useUserStore";
+import { useAvatar, useName } from "../../stores/useUserStore";
+import { apiUrl } from "../../constants/api";
+import { getAuthHeaders } from "../../shared/apiClient";
 
 const schema = yup
   .object({
@@ -19,34 +21,27 @@ const schema = yup
   .required();
 
 const ShareForm = () => {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const avatar = useAvatar();
-  const token = useToken();
   const name = useName();
   const [isLoading, setIsLoading] = useState(false);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const [file, setFile] = useState(false);
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  async function onSubmit() {
+  async function onSubmit(data) {
+    const payload = { title: data.title, body: data.body };
+    if (file) {
+      payload.media = { url: file, alt: "" };
+    }
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "POST",
-      body: JSON.stringify({ title: title, body: body, media: file || "" }),
+      body: JSON.stringify(payload),
     };
 
     try {

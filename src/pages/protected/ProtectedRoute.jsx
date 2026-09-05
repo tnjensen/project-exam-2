@@ -1,16 +1,39 @@
-import { useNavigate } from "react-router-dom";
-import { useName } from "../../stores/useUserStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { ensureGuestSession } from "../../shared/apiClient";
 
 export const ProtectedRoute = ({ children }) => {
-  const navigate = useNavigate();
-  const user = useName();
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  });
+    let mounted = true;
+    ensureGuestSession()
+      .then(() => {
+        if (mounted) setStatus("ready");
+      })
+      .catch(() => {
+        if (mounted) setStatus("error");
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  if (status === "loading") {
+    return <div style={{ padding: 40 }}>Loading...</div>;
+  }
+
+  if (status === "error") {
+    return (
+      <div style={{ padding: 40 }}>
+        Kunne ikke koble til API-en. Prøv igjen litt senere.
+      </div>
+    );
+  }
 
   return children;
+};
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };

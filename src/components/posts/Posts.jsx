@@ -5,18 +5,16 @@ import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { SearchOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+import { apiUrl } from "../../constants/api";
+import { getAuthHeaders, unwrap, normalize } from "../../shared/apiClient";
 
 function PostsQuery() {
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-  const apiUrl = import.meta.env.VITE_API_URL;
   const token = useToken();
   const options = {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
+    headers: getAuthHeaders({ Authorization: "Bearer " + token }),
   };
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["posts"],
@@ -24,7 +22,7 @@ function PostsQuery() {
       fetch(
         apiUrl + `?_author=true&_comments=true&_reactions=true`,
         options
-      ).then((res) => res.json()),
+      ).then((res) => res.json().then((json) => normalize(unwrap(json)))),
   });
 
   useEffect(() => {

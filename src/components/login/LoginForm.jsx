@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUrl } from "../../constants/api";
 import { useState } from "react";
-import { useUserActions } from "../../stores/useUserStore";
+import { completeLogin } from "../../shared/apiClient";
 
 const schema = yup
   .object({
@@ -21,8 +20,6 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { setUser } = useUserActions();
-
   const navigate = useNavigate();
 
   const {
@@ -34,25 +31,10 @@ function LoginForm() {
   });
 
   async function onSubmit(data) {
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    };
-
     try {
       setIsLoading(true);
       setError(null);
-      const response = await fetch(loginUrl, options);
-      const json = await response.json();
-
-      if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
-      }
-
-      setUser(json);
+      await completeLogin(data.email, data.password);
       navigate("/");
     } catch (error) {
       setError(error.toString());

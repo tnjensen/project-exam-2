@@ -1,9 +1,12 @@
-const baseUrl = "https://api.noroff.dev/api/v1/social";
+const baseUrl = "https://v2.api.noroff.dev";
+const socialUrl = `${baseUrl}/social`;
 
 export const loginUrl = `${baseUrl}/auth/login`;
 
 export const registerUrl = `${baseUrl}/auth/register`;
 
-export const apiUrl = `${baseUrl}/posts`;
+export const apiKeyUrl = `${baseUrl}/auth/create-api-key`;
 
-export const profileUrl = `${baseUrl}/profiles`;
+export const apiUrl = `${socialUrl}/posts`;
+
+export const profileUrl = `${socialUrl}/profiles`;

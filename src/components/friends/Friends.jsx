@@ -6,9 +6,9 @@ import "./friends.scss";
 import Followers from "../followers/Followers";
 import Latest from "../latest/Latest";
 import { useParams } from "react-router-dom";
+import { profileUrl } from "../../constants/api";
 
 function Friends() {
-  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const currentUser = useName();
   const user = useParams();
   const partUrl = window.location.href.split("/").pop();

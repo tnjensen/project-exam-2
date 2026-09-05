@@ -5,9 +5,9 @@ import { useToken } from "../../stores/useUserStore";
 import useProfile from "../../hooks/useProfile";
 import useApi from "../../hooks/useApi";
 import { useParams } from "react-router-dom";
+import { profileUrl } from "../../constants/api";
 
 function Latest() {
-  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const token = useToken();
   const { name } = useParams();
   const { data: posts } = useApi(

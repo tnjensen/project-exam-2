@@ -11,17 +11,16 @@ import useApi from "../../hooks/useApi";
 import Post from "../../components/posts/post/Post";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { profileUrl } from "../../constants/api";
+import { getAuthHeaders } from "../../shared/apiClient";
 
 function Profile() {
-  const profileUrl = import.meta.env.VITE_PROFILE_URL;
   const ref = useRef();
   const currentUser = useName();
   const token = useToken();
   const { name } = useParams();
   const [display, setDisplay] = useState(false);
-  const [error, setError] = useState(false);
   const [followed, setFollowed] = useState([]);
-  const [followers, setFollowers] = useState([]);
   const [avatar, setAvatar] = useState("");
   const [banner, setBanner] = useState("");
   const { data: userProfile } = useApi(
@@ -40,7 +39,6 @@ function Profile() {
 
   useEffect(() => {
     const followingProfiles = userProfile.following;
-    setFollowers(followingProfiles);
     const uniqueNames = [...new Set(followingProfiles)];
     const currentProfile = uniqueNames.filter((item) => item.name === name);
     setFollowed(currentProfile);
@@ -56,10 +54,7 @@ function Profile() {
   async function handleFollow(e) {
     e.preventDefault();
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "PUT",
     };
     try {
@@ -70,7 +65,7 @@ function Profile() {
       window.location.reload();
 
       if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
+        return console.log(json.errors?.[0]?.message ?? "There was an error");
       }
     } catch (error) {
       console.log(error);
@@ -79,10 +74,7 @@ function Profile() {
   async function handleUnFollow(e) {
     e.preventDefault();
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "PUT",
     };
     try {
@@ -93,7 +85,7 @@ function Profile() {
       window.location.reload();
 
       if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
+        return console.log(json.errors?.[0]?.message ?? "There was an error");
       }
     } catch (error) {
       console.log(error);
@@ -102,26 +94,24 @@ function Profile() {
 
   async function handleUpdate(e) {
     e.preventDefault();
+    const profilePayload = {
+      avatar: avatar ? { url: avatar, alt: "" } : undefined,
+      banner: banner ? { url: banner, alt: "" } : undefined,
+    };
     const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
+      headers: getAuthHeaders(),
       method: "PUT",
-      body: JSON.stringify({ avatar, banner }),
+      body: JSON.stringify(profilePayload),
     };
 
     try {
-      const response = await fetch(
-        profileUrl + `/${currentUser}` + `/media`,
-        options
-      );
+      const response = await fetch(profileUrl + `/${currentUser}`, options);
       const json = await response.json();
       window.location.reload();
       console.log(json);
 
       if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
+        return console.log(json.errors?.[0]?.message ?? "There was an error");
       }
     } catch (error) {
       console.log(error);

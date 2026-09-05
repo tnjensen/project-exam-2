@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { registerUrl } from "../../constants/api";
 
 const schema = yup
   .object({
@@ -19,15 +20,12 @@ const schema = yup
       .required(
         "Please enter a password between 6 and 10 characters long, using a number, at least one capital letter and one special character"
       ),
-    banner: yup.string(),
     avatar: yup.string(),
   })
   .required();
 
 const RegisterForm = () => {
-  const registerUrl = import.meta.env.VITE_REGISTER_URL;
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -40,25 +38,32 @@ const RegisterForm = () => {
   });
 
   async function onSubmit(data) {
+    const payload = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+    if (data.avatar) {
+      payload.avatar = { url: data.avatar, alt: "" };
+    }
     const options = {
       headers: { "Content-Type": "application/json" },
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     };
 
     try {
       setIsLoading(true);
-      setError(null);
       const response = await fetch(registerUrl, options);
       const json = await response.json();
 
       if (!response.ok) {
-        return setError(json.errors?.[0]?.message ?? "There was an error");
+        return console.log(json.errors?.[0]?.message ?? "There was an error");
       }
 
       navigate("/login");
     } catch (error) {
-      setError(error.toString());
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
